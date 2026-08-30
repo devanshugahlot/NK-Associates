@@ -77,6 +77,20 @@ const Contact = () => {
       return;
     }
 
+    // Construct WhatsApp message and redirect synchronously to prevent browser popup block
+    const whatsappText = `Hello NK Associates,
+
+I would like to request the following service:
+*Service:* ${formData.service}
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+*Message:* ${formData.message || 'N/A'}`;
+
+    const cleanPhone = contactInfo.whatsappNumber.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(whatsappText)}`;
+    window.open(whatsappUrl, '_blank');
+
     setIsSubmitting(true);
 
     // Simulate API request

@@ -31,6 +31,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { servicesData } from '../data/services';
+import { contactInfo } from '../data/contactInfo';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import PageTransition from '../components/PageTransition';
@@ -156,6 +157,24 @@ const Services = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    
+    // Construct WhatsApp message and redirect synchronously to prevent browser popup block
+    const selectedService = servicesData.find(s => s.id === formData.service);
+    const serviceTitle = selectedService ? selectedService.title : formData.service;
+    
+    const whatsappText = `Hello NK Associates,
+
+I would like to request the following service:
+*Service:* ${serviceTitle}
+*Name:* ${formData.name}
+*Phone:* ${formData.phone}
+*Email:* ${formData.email}
+*Message:* ${formData.message || 'N/A'}`;
+
+    const cleanPhone = contactInfo.whatsappNumber.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(whatsappText)}`;
+    window.open(whatsappUrl, '_blank');
+
     setFormStatus('submitting');
     
     // Simulate API Submission

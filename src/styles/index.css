@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Custom Premium Scrollbar for Webkit Browsers */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f0f9ff; /* Soft sky blue bg (brand-extralight) */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #bae6fd; /* light blue border */
+    border-radius: 9999px;
+    border: 2.5px solid #f0f9ff;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0ea5e9; /* Sky Blue (brand-sky) */
+  }
+
+  /* Reset outline styles for better accessibility keyboard focus */
+  :focus-visible {
+    outline: 2px solid #0ea5e9;
+    outline-offset: 4px;
+  }
+
+  /* Smooth overall scroll */
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Custom classes if needed for glassmorphism overlays */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+/* Accessibility: Respect user settings for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

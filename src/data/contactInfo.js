@@ -2,10 +2,10 @@ export const contactInfo = {
   companyName: "NK Associates",
   tagline: "Things You Hate, Let Us Calculate",
   address: "4th Floor, Sanjay Mansion, Shri Ramnagar Colony, Dada Gurudev Nagar, Sanganer, Jaipur, Rajasthan 302029",
-  phoneDisplay: "+91 98290 12345",
-  phoneValue: "+919829012345",
+  phoneDisplay: "+91 75688 20015",
+  phoneValue: "+917568820015",
   email: "info@nkassociates.co.in",
-  whatsappNumber: "+919829012345",
+  whatsappNumber: "+917568820015",
   whatsappText: "Hello NK Associates, I would like to inquire about your tax/GST services.",
   businessHours: [
     { days: "Monday - Saturday", hours: "10:00 AM - 6:30 PM" },

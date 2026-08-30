@@ -160,7 +160,7 @@ const Services = () => {
     
     // Construct WhatsApp message and redirect synchronously to prevent browser popup block
     const selectedService = servicesData.find(s => s.id === formData.service);
-    const serviceTitle = selectedService ? selectedService.title : formData.service;
+    const serviceTitle = formData.service === 'other' ? 'Other Service' : (selectedService ? selectedService.title : formData.service);
     
     const whatsappText = `Hello NK Associates,
 
@@ -560,6 +560,7 @@ I would like to request the following service:
                             {service.title}
                           </option>
                         ))}
+                        <option value="other">Other Service</option>
                       </select>
                     </div>
                   </div>

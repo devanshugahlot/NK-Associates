@@ -336,6 +336,7 @@ I would like to request the following service:
                             {service.title}
                           </option>
                         ))}
+                        <option value="Other Service">Other Service</option>
                       </select>
                       {/* Arrow marker */}
                       <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-slate-400">

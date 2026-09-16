@@ -4,6 +4,7 @@ import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { galleryCategories, galleryItems } from '../data/gallery';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -37,6 +38,12 @@ const Gallery = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="Office & Team Gallery | NK Associates Chartered Accountants Jaipur"
+        description="Explore the modern office workspace, team collaboration, and client meeting environment of NK Associates Chartered Accountants in Sanganer, Jaipur."
+        keywords="NK Associates office, CA office photos Jaipur, NK Associates workplace gallery, CA firm Jaipur"
+        canonicalPath="/gallery"
+      />
       {/* Gallery Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-brand-sky/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -54,7 +61,7 @@ const Gallery = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl font-extrabold tracking-tight"
           >
-            NK Associates Gallery
+            NK Associates Gallery | Office & Workplace in Jaipur
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -112,7 +119,7 @@ const Gallery = () => {
                   <div className="aspect-[4/3] w-full overflow-hidden bg-slate-200 relative">
                     <img
                       src={item.image}
-                      alt={item.title}
+                      alt={`${item.title} - NK Associates Office Jaipur`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
@@ -191,7 +198,7 @@ const Gallery = () => {
               >
                 <img
                   src={filteredItems[activeImageIdx].image}
-                  alt={filteredItems[activeImageIdx].title}
+                  alt={`${filteredItems[activeImageIdx].title} - NK Associates Office Jaipur`}
                   className="max-w-full max-h-full object-contain"
                 />
               </motion.div>

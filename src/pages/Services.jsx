@@ -35,6 +35,7 @@ import { contactInfo } from '../data/contactInfo';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 // Map icon names to Lucide React components
 const iconMap = {
@@ -209,6 +210,12 @@ I would like to request the following service:
 
   return (
     <PageTransition>
+      <SEO
+        title="CA & Tax Services | Jaipur & Pan-India - NK Associates"
+        description="100% digital CA and tax compliance services across India: GST registration & filings, Income Tax return filing, TDS, statutory audits, and company incorporation."
+        keywords="GST registration India, ITR filing online, CA services Jaipur, TDS return filing, company incorporation India, statutory audit Rajasthan, bookkeeping Jaipur"
+        canonicalPath="/services"
+      />
       {/* Services Hero */}
       <section className="bg-brand-navy text-white py-14 sm:py-20 lg:py-28 relative overflow-hidden">
         {/* Dynamic mesh gradient overlay */}
@@ -220,9 +227,9 @@ I would like to request the following service:
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-slate-800 text-brand-sky text-[10px] md:text-xs font-semibold uppercase tracking-wider border border-slate-700/60"
+            className="inline-flex items-center gap-1.5 px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-slate-800 text-brand-sky text-[10px] md:text-xs font-semibold uppercase tracking-wider border border-slate-700/60"
           >
-            Explore Services
+            <span>🇮🇳 Available Pan-India • 100% Digital Workflow</span>
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
@@ -230,7 +237,7 @@ I would like to request the following service:
             transition={{ delay: 0.1 }}
             className="text-2xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight leading-tight"
           >
-            Comprehensive Financial & Compliance Directory
+            Pan-India CA, Taxation & Corporate Directory
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -238,7 +245,7 @@ I would like to request the following service:
             transition={{ delay: 0.2 }}
             className="text-slate-300 text-xs sm:text-base max-w-3xl mx-auto leading-relaxed"
           >
-            Expert legal filings, corporate accounting, audits, and taxation support. Explore all services below and get professional guidance.
+            Expert legal filings, corporate accounting, audits, and taxation support for clients nationwide, backed by our Jaipur head office.
           </motion.p>
         </div>
       </section>
@@ -248,7 +255,7 @@ I would like to request the following service:
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Controls: Search and Filters (Sticky on scroll) */}
-          <div className="sticky top-[69px] md:top-[77px] z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6 mb-8 flex flex-col lg:flex-row gap-4 justify-between items-center transition-all duration-300">
+          <div className="sticky top-[98px] md:top-[105px] z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6 mb-8 flex flex-col lg:flex-row gap-4 justify-between items-center transition-all duration-300">
             {/* Search Input */}
             <div className="relative w-full lg:max-w-sm">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-brand-gray" />

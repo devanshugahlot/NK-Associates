@@ -16,7 +16,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 group focus:outline-none">
               <img
                 src={logo}
-                alt="NK Associates Logo"
+                alt="NK Associates Logo - Chartered Accountants & Tax Consultants Jaipur"
                 className="h-10 md:h-12 w-auto object-contain bg-white rounded p-0.5"
               />
               <div className="flex flex-col">
@@ -29,8 +29,12 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed">
-              NK Associates is a premier Chartered Accountant and financial tax consultancy firm based in Jaipur. We deliver professional audit, GST, TDS, accounting, and compliance solutions with unwavering integrity.
+              Headquartered in Jaipur, Rajasthan, NK Associates provides 100% digital, paperless Chartered Accountant, GST, Income Tax, and corporate compliance solutions to startups, MSMEs, and individual taxpayers across all Indian states.
             </p>
+            <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold bg-emerald-950/40 border border-emerald-800/60 px-3 py-1.5 rounded-xl w-fit">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>🇮🇳 Serving Clients Across India</span>
+            </div>
             <div className="text-xs italic text-slate-400 border-l-2 border-brand-sky pl-3">
               "{contactInfo.tagline}"
             </div>
@@ -117,7 +121,7 @@ const Footer = () => {
           {/* Column 4: Contact Info */}
           <div>
             <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
-              Office Contact
+              Corporate Head Office
             </h3>
             <ul className="space-y-4 text-sm text-slate-400">
               <li className="flex items-start gap-3">
@@ -160,9 +164,9 @@ const Footer = () => {
           <div>
             &copy; {new Date().getFullYear()} NK Associates. All Rights Reserved.
           </div>
-          <div className="flex items-center gap-2 text-[10px] bg-slate-900/60 border border-slate-800 px-3 py-1 rounded-full text-slate-400">
+          <div className="flex items-center gap-2 text-[10px] bg-slate-900/60 border border-slate-800 px-3.5 py-1 rounded-full text-slate-400">
             <ShieldCheck className="w-3.5 h-3.5 text-brand-sky" />
-            <span>Registered Chartered Accountant Firm Services</span>
+            <span>Chartered Accountant Practice • Jaipur HQ & Pan-India Services</span>
           </div>
           <div className="flex gap-6">
             <a href="#/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>

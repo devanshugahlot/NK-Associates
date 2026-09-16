@@ -5,6 +5,7 @@ import { contactInfo } from '../data/contactInfo';
 import { servicesData } from '../data/services';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -111,18 +112,24 @@ I would like to request the following service:
 
   return (
     <PageTransition>
+      <SEO
+        title="Contact Us | NK Associates - CA Office in Jaipur & Pan-India Desk"
+        description="Connect with NK Associates: Visit our Jaipur head office or book an instant 100% digital consultation from anywhere in India. Call +91-75688-20015."
+        keywords="contact CA Jaipur, Pan India CA consultation, tax consultant phone number Jaipur, NK Associates address, CA office in Sanganer Jaipur"
+        canonicalPath="/contact"
+      />
       {/* Contact Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-brand-sky/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60">
-            Get In Touch
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60">
+            <span>🇮🇳 Nationwide Digital Consultation • Head Office: Jaipur</span>
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            Let's Discuss Your Requirement
+            Connect With Our Tax & CA Experts
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-            NK Associates is located in Jaipur. Contact our office to speak with a tax consultant or request compliance assistance.
+            Visit our corporate head office in Sanganer, Jaipur, or consult with our certified tax team online from anywhere across India via WhatsApp, phone, or video meet.
           </p>
         </div>
       </section>
@@ -137,14 +144,24 @@ I would like to request the following service:
             <div className="lg:col-span-5 space-y-8 text-left">
               <div className="space-y-4">
                 <span className="text-sm font-bold uppercase tracking-wider text-brand-sky">
-                  Office Details
+                  Jaipur HQ & Pan-India Desk
                 </span>
                 <h2 className="text-3xl font-extrabold text-brand-navy tracking-tight">
                   NK Associates
                 </h2>
                 <p className="text-brand-charcoal text-sm leading-relaxed">
-                  Have a question about GST registration, filing, or tax planning? Reach out to our team in Jaipur. We are committed to responding within 24 business hours.
+                  Have questions regarding GST registration, return filing, or business tax planning? Contact our senior team. We respond within 2-4 business hours.
                 </p>
+
+                {/* Digital Desk Callout Card */}
+                <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-4 text-xs space-y-1">
+                  <div className="font-bold text-emerald-800 flex items-center gap-1.5">
+                    <span>⚡ 100% Digital For Pan-India Clients</span>
+                  </div>
+                  <p className="text-emerald-700 leading-relaxed">
+                    Operating outside Jaipur? You don't need to visit our office. Share your documents securely over WhatsApp and our team will complete your filings remotely.
+                  </p>
+                </div>
               </div>
 
               {/* Detail Blocks */}
@@ -156,7 +173,7 @@ I would like to request the following service:
                     <MapPin className="w-5 h-5 text-brand-sky" />
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-brand-navy text-sm uppercase tracking-wider">Office Location</h4>
+                    <h4 className="font-extrabold text-brand-navy text-sm uppercase tracking-wider">Corporate Head Office</h4>
                     <p className="text-sm text-brand-charcoal leading-relaxed mt-1">{contactInfo.address}</p>
                   </div>
                 </div>

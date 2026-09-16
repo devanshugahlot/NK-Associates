@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 const About = () => {
   const steps = [
@@ -64,6 +65,12 @@ const About = () => {
 
   return (
     <PageTransition>
+      <SEO
+        title="About Us | NK Associates - CA & Tax Consultants | Jaipur & Pan-India"
+        description="Learn about NK Associates, a premier Chartered Accountant firm headquartered in Jaipur, delivering 100% digital GST, Income Tax, and corporate compliance services across India."
+        keywords="about NK Associates, Chartered Accountant Jaipur, Pan India CA services, tax consultants team Jaipur, CA firm profile Rajasthan"
+        canonicalPath="/about"
+      />
       {/* About Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         {/* Background Gradients */}
@@ -74,9 +81,9 @@ const About = () => {
           <motion.span
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-block px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60"
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60"
           >
-            Meet the Firm
+            <span>🇮🇳 Pan-India Services • Head Office: Jaipur</span>
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 15 }}
@@ -84,7 +91,7 @@ const About = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl sm:text-5xl font-extrabold tracking-tight"
           >
-            About NK Associates
+            About NK Associates | Chartered Accountants
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
@@ -92,7 +99,7 @@ const About = () => {
             transition={{ delay: 0.2 }}
             className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
           >
-            NK Associates is a premier Chartered Accountant and tax consultancy firm based in Sanganer, Jaipur. We deliver professional audit, GST, TDS, accounting, and corporate compliance services designed to simplify your regulatory obligations.
+            Headquartered in Sanganer, Jaipur, NK Associates delivers high-precision audit, GST, TDS, accounting, and corporate compliance services to businesses and individuals across all Indian states through our 100% digital, paperless workflow.
           </motion.p>
         </div>
       </section>
@@ -104,15 +111,15 @@ const About = () => {
             
             {/* Left Content Column */}
             <div className="lg:col-span-6 space-y-6 text-left">
-              <span className="text-sm font-semibold uppercase text-brand-sky tracking-wider">Our Profile</span>
+              <span className="text-sm font-semibold uppercase text-brand-sky tracking-wider">Our Profile & Reach</span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy leading-tight">
-                Partnering in Your Financial Growth & Compliance
+                Rooted in Jaipur, Empowering Businesses Across India
               </h2>
               <p className="text-brand-charcoal text-sm md:text-base leading-relaxed">
-                Navigating complex tax compliance and accounting rules shouldn't keep you from focusing on your business. Since inception, NK Associates has been a reliable regulatory partner for retail businesses, industrial units, startups, and salaried taxpayers in Jaipur and across Rajasthan.
+                Navigating complex tax compliance and accounting regulations shouldn't slow your growth. NK Associates was established with a clear mission: to combine the trust and accountability of a physical Chartered Accountant firm with the speed, convenience, and reach of a modern 100% digital practice.
               </p>
               <p className="text-brand-charcoal text-sm md:text-base leading-relaxed">
-                Our team practices a proactive tax advisory methodology. We don't just file your reports; we inspect your ledger data, optimize deductions under active sections, and build structured record systems that make audits a straightforward process.
+                From our corporate head office in Sanganer, Jaipur, we serve manufacturers, retail enterprises, IT firms, startups, and salaried professionals in Rajasthan, Delhi NCR, Mumbai, Bengaluru, and nationwide.
               </p>
 
               {/* Quick Checklist */}

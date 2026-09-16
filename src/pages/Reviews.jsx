@@ -5,6 +5,7 @@ import { reviewsData, reviewStats } from '../data/reviews';
 import SectionHeading from '../components/ui/SectionHeading';
 import Button from '../components/ui/Button';
 import PageTransition from '../components/PageTransition';
+import SEO from '../components/SEO';
 
 // Helper component to render stars
 const StarRating = ({ rating, size = 16 }) => {
@@ -28,6 +29,12 @@ const StarRating = ({ rating, size = 16 }) => {
 const Reviews = () => {
   return (
     <PageTransition>
+      <SEO
+        title="Client Reviews & Ratings | NK Associates Chartered Accountants Jaipur"
+        description="Read verified client reviews and ratings (4.8/5) for NK Associates. Trusted CA and tax consultancy firm for GST, Income Tax return filing in Jaipur."
+        keywords="NK Associates reviews, CA Jaipur ratings, client testimonials tax consultant Jaipur, best CA in Jaipur reviews"
+        canonicalPath="/reviews"
+      />
       {/* Reviews Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-brand-sky/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -36,7 +43,7 @@ const Reviews = () => {
             Client Testimonials
           </span>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
-            What Our Clients Say
+            Client Reviews & Testimonials | NK Associates
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
             NK Associates is proud to help businesses and individuals stay compliant. Read verified reviews about our GST, TDS, and tax consultation services.

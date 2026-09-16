@@ -1,0 +1,6 @@
+# Robots.txt for NK Associates (https://nkassociate.in/)
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://nkassociate.in/sitemap.xml

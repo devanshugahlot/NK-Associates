@@ -1,4 +1,39 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "nkassociates.in"
+        }
+      ],
+      "destination": "https://nkassociate.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.nkassociates.in"
+        }
+      ],
+      "destination": "https://nkassociate.in/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.nkassociate.in"
+        }
+      ],
+      "destination": "https://nkassociate.in/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]

@@ -36,7 +36,8 @@ const Navbar = () => {
     { name: 'Services', path: '/services' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Reviews', path: '/reviews' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact', path: '/contact' },
+    { name: 'Privacy Policy', path: '/privacy' }
   ];
 
   const cleanPhone = contactInfo.whatsappNumber.replace(/[^0-9]/g, '');
@@ -133,7 +134,7 @@ const Navbar = () => {
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden lg:flex items-center gap-7">
+              <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
                 {navLinks.map((link) => (
                   <NavLink
                     key={link.name}

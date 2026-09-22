@@ -112,6 +112,11 @@ const Footer = () => {
                   <span>Contact Us</span>
                 </Link>
               </li>
+              <li>
+                <Link to="/privacy" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <span>Privacy Policy</span>
+                </Link>
+              </li>
             </ul>
           </div>
 

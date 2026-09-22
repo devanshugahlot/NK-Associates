@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail, Clock, ShieldCheck } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, ShieldCheck, Linkedin, Facebook, Instagram } from 'lucide-react';
 import logo from '../assets/logo.png';
 import { contactInfo } from '../data/contactInfo';
 
@@ -12,7 +12,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           
           {/* Column 1: Brand Info */}
-          <div className="flex flex-col space-y-6">
+          <div className="flex flex-col space-y-5">
             <Link to="/" className="flex items-center gap-3 group focus:outline-none">
               <img
                 src={logo}
@@ -37,6 +37,42 @@ const Footer = () => {
             </div>
             <div className="text-xs italic text-slate-400 border-l-2 border-brand-sky pl-3">
               "{contactInfo.tagline}"
+            </div>
+
+            {/* Social Media Links */}
+            <div className="pt-2">
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2.5">
+                Connect With Us
+              </span>
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={contactInfo.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates on LinkedIn"
+                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href={contactInfo.socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates on Facebook"
+                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                >
+                  <Facebook className="w-4 h-4" />
+                </a>
+                <a
+                  href={contactInfo.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates on Instagram"
+                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                >
+                  <Instagram className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
 
@@ -169,7 +205,7 @@ const Footer = () => {
             <span>Chartered Accountant Practice • Jaipur HQ & Pan-India Services</span>
           </div>
           <div className="flex gap-6">
-            <a href="#/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+            <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
             <a href="#/terms" className="hover:text-slate-300 transition-colors">Terms & Conditions</a>
           </div>
         </div>

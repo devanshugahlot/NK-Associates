@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, Phone, MessageSquare } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, MessageSquare, Linkedin, Facebook, Instagram } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 import Button from './ui/Button';
@@ -68,7 +68,39 @@ const Navbar = () => {
                 <span>{contactInfo.phoneDisplay}</span>
               </a>
               <span className="hidden md:inline text-slate-600">|</span>
-              <span className="hidden md:inline text-emerald-400 font-medium">100% Digital & Paperless</span>
+              <span className="hidden lg:inline text-emerald-400 font-medium">100% Digital & Paperless</span>
+              <span className="hidden sm:inline text-slate-600">|</span>
+              
+              {/* Social Media Links */}
+              <div className="flex items-center gap-2.5">
+                <a
+                  href={contactInfo.socialLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates LinkedIn"
+                  className="hover:text-brand-sky text-slate-400 transition-colors"
+                >
+                  <Linkedin className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href={contactInfo.socialLinks.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates Facebook"
+                  className="hover:text-brand-sky text-slate-400 transition-colors"
+                >
+                  <Facebook className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href={contactInfo.socialLinks.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="NK Associates Instagram"
+                  className="hover:text-brand-sky text-slate-400 transition-colors"
+                >
+                  <Instagram className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -204,6 +236,38 @@ const Navbar = () => {
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
                     <span>WhatsApp</span>
+                  </a>
+                </div>
+
+                {/* Mobile Social Links */}
+                <div className="pt-3 flex items-center justify-center gap-3">
+                  <span className="text-xs text-slate-500 font-medium">Follow Us:</span>
+                  <a
+                    href={contactInfo.socialLinks.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-colors"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                  </a>
+                  <a
+                    href={contactInfo.socialLinks.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-[#1877F2] text-slate-600 hover:text-white flex items-center justify-center transition-colors"
+                  >
+                    <Facebook className="w-4 h-4" />
+                  </a>
+                  <a
+                    href={contactInfo.socialLinks.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-8 h-8 rounded-lg bg-slate-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-600 hover:text-white flex items-center justify-center transition-colors"
+                  >
+                    <Instagram className="w-4 h-4" />
                   </a>
                 </div>
 

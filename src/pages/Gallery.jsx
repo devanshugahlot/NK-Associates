@@ -130,8 +130,8 @@ const Gallery = () => {
             </p>
           </div>
 
-          {/* Masonry Layout for Mixed Portrait & Landscape Photos */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance]">
+          {/* Uniform Responsive Grid Layout - Consistent Heights */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {galleryItems.map((item, idx) => (
               <motion.div
                 key={item.id}
@@ -140,10 +140,10 @@ const Gallery = () => {
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.35, delay: (idx % 3) * 0.06 }}
                 onClick={() => setActiveImageIdx(idx)}
-                className="break-inside-avoid mb-6 group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col h-full"
               >
-                {/* Image Container with Natural Height */}
-                <div className="relative overflow-hidden bg-slate-900">
+                {/* Image Container with Uniform Height Across All Cards */}
+                <div className="h-56 sm:h-60 md:h-64 w-full relative overflow-hidden bg-slate-900 shrink-0">
                   <img
                     src={item.image}
                     alt={`${item.title} - NK Associates Chartered Accountants Jaipur`}
@@ -152,7 +152,7 @@ const Gallery = () => {
                         e.currentTarget.src = item.image.replace('.jpeg', '.jpg');
                       }
                     }}
-                    className="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-108"
                     loading="lazy"
                   />
 
@@ -172,10 +172,10 @@ const Gallery = () => {
                 {/* Card Caption */}
                 <div className="p-5 flex-1 flex flex-col justify-between bg-white border-t border-slate-100">
                   <div>
-                    <h3 className="font-bold text-brand-navy text-base group-hover:text-brand-sky transition-colors">
+                    <h3 className="font-bold text-brand-navy text-base group-hover:text-brand-sky transition-colors line-clamp-1">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-slate-500 leading-relaxed mt-1.5">
+                    <p className="text-xs text-slate-500 leading-relaxed mt-1.5 line-clamp-2">
                       {item.desc}
                     </p>
                   </div>

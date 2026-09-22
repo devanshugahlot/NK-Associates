@@ -47,9 +47,17 @@
   <!-- Office & Workplace Gallery -->
   <url>
     <loc>https://nkassociate.in/gallery</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://nkassociate.in/privacy</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

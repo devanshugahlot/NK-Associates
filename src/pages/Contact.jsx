@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, AlertCircle, Linkedin, Facebook, Instagram, Share2 } from 'lucide-react';
 import { contactInfo } from '../data/contactInfo';
 import { servicesData } from '../data/services';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -217,6 +217,46 @@ I would like to request the following service:
                           <span className="font-semibold text-brand-navy">{bh.days}:</span> {bh.hours}
                         </div>
                       ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Media Channels */}
+                <div className="flex gap-4 items-start pt-4 border-t border-slate-100">
+                  <div className="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0 mt-1">
+                    <Share2 className="w-5 h-5 text-brand-sky" />
+                  </div>
+                  <div>
+                    <h4 className="font-extrabold text-brand-navy text-sm uppercase tracking-wider">Social Channels</h4>
+                    <p className="text-xs text-brand-charcoal mt-0.5 mb-2.5">Follow our official updates & tax insights</p>
+                    <div className="flex items-center gap-2.5">
+                      <a
+                        href={contactInfo.socialLinks.linkedin}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="NK Associates LinkedIn"
+                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                      >
+                        <Linkedin className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={contactInfo.socialLinks.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="NK Associates Facebook"
+                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-[#1877F2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                      >
+                        <Facebook className="w-4 h-4" />
+                      </a>
+                      <a
+                        href={contactInfo.socialLinks.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="NK Associates Instagram"
+                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                      >
+                        <Instagram className="w-4 h-4" />
+                      </a>
                     </div>
                   </div>
                 </div>

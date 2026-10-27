@@ -255,7 +255,7 @@ I would like to request the following service:
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-4xl lg:text-6xl font-extrabold tracking-tight leading-tight"
+            className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight break-words"
           >
             Pan-India CA, Taxation & Corporate Directory
           </motion.h1>
@@ -325,7 +325,7 @@ I would like to request the following service:
           </div>
           
           {/* Controls: Search and Filters (Sticky on scroll) */}
-          <div className="sticky top-[98px] md:top-[105px] z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6 mb-8 flex flex-col lg:flex-row gap-4 justify-between items-center transition-all duration-300">
+          <div className="sticky top-[80px] md:top-[95px] z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-slate-100 p-3 sm:p-4 md:p-6 mb-8 flex flex-col lg:flex-row gap-3 sm:gap-4 justify-between items-center transition-all duration-300">
             {/* Search Input */}
             <div className="relative w-full lg:max-w-sm">
               <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4.5 h-4.5 text-brand-gray" />
@@ -334,12 +334,12 @@ I would like to request the following service:
                 placeholder="Search (e.g. GST, ITR, Audit...)"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium bg-slate-50/50"
+                className="w-full min-h-[44px] pl-10 pr-9 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium bg-slate-50/50"
               />
               {searchTerm && (
                 <button
                   onClick={() => setSearchTerm('')}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-gray hover:text-brand-navy p-1 rounded-full hover:bg-slate-200/50 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-brand-gray hover:text-brand-navy p-1.5 rounded-full hover:bg-slate-200/50 transition-colors"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -347,12 +347,12 @@ I would like to request the following service:
             </div>
 
             {/* Category Filter Pills (Horizontal Scrolling on Mobile) */}
-            <div className="flex gap-2 w-full lg:w-auto justify-start lg:justify-end overflow-x-auto no-scrollbar pb-1 lg:pb-0 scroll-smooth snap-x">
+            <div className="flex gap-2 w-full lg:w-auto justify-start lg:justify-end overflow-x-auto no-scrollbar pb-1.5 lg:pb-0 scroll-smooth snap-x">
               {['all', 'taxation', 'business-setup', 'audit-cert', 'compliance-auth'].map((catId) => (
                 <button
                   key={catId}
                   onClick={() => setSelectedCategory(catId)}
-                  className={`px-3.5 py-2 rounded-xl text-xs md:text-sm font-bold whitespace-nowrap snap-align-start transition-all duration-300 ${
+                  className={`min-h-[40px] px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap snap-align-start transition-all duration-300 touch-manipulation ${
                     selectedCategory === catId
                       ? 'bg-brand-sky text-white shadow-premium'
                       : 'bg-slate-50 text-brand-charcoal hover:bg-slate-100 border border-slate-100'
@@ -559,10 +559,10 @@ I would like to request the following service:
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleFormSubmit} className="space-y-5 md:space-y-6 text-left">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                <form onSubmit={handleFormSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 text-left">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                     {/* Name */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label className="text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
                         <User className="w-3.5 h-3.5 text-brand-sky" />
                         <span>Full Name</span>
@@ -575,12 +575,12 @@ I would like to request the following service:
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="John Doe"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium"
+                        className="w-full min-h-[44px] px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium"
                       />
                     </div>
 
                     {/* Phone */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label className="text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
                         <Phone className="w-3.5 h-3.5 text-brand-sky" />
                         <span>Phone Number</span>
@@ -593,14 +593,14 @@ I would like to request the following service:
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="+91 98765 43210"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium"
+                        className="w-full min-h-[44px] px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 md:gap-6">
                     {/* Email */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label className="text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
                         <Mail className="w-3.5 h-3.5 text-brand-sky" />
                         <span>Email Address</span>
@@ -613,12 +613,12 @@ I would like to request the following service:
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium"
+                        className="w-full min-h-[44px] px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium"
                       />
                     </div>
 
                     {/* Select Service Dropdown */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label className="text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
                         <Briefcase className="w-3.5 h-3.5 text-brand-sky" />
                         <span>Required Service</span>
@@ -629,7 +629,7 @@ I would like to request the following service:
                         required
                         value={formData.service}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium bg-white"
+                        className="w-full min-h-[44px] px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium bg-white"
                       >
                         <option value="" disabled>Select a service...</option>
                         {servicesData.map((service) => (
@@ -643,7 +643,7 @@ I would like to request the following service:
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <label className="text-xs font-bold text-brand-navy uppercase tracking-wider flex items-center gap-1.5">
                       <MessageSquare className="w-3.5 h-3.5 text-brand-sky" />
                       <span>Additional Message / Requirements</span>
@@ -654,7 +654,7 @@ I would like to request the following service:
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Please details any specific requirements or timelines..."
-                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-sm font-medium resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl border border-slate-200 focus:border-brand-sky focus:ring-2 focus:ring-brand-sky/20 transition-all text-base md:text-sm font-medium resize-none"
                     ></textarea>
                   </div>
 

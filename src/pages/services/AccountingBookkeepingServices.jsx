@@ -55,7 +55,7 @@ const AccountingBookkeepingServices = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="Accounting & Bookkeeping | NK Associates"
         description="Outsourced bookkeeping, cloud accounting in Tally Prime & Zoho Books, bank reconciliation, monthly MIS reports, and payroll management by NK Associates."
@@ -81,29 +81,29 @@ const AccountingBookkeepingServices = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-cyan-50 text-cyan-800 border border-cyan-100 mb-4">
-              <Calculator className="w-3.5 h-3.5 text-cyan-600" />
+              <Calculator className="w-3.5 h-3.5 text-cyan-600 shrink-0" />
               Corporate Financial Accounting & Virtual CFO
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Digital Bookkeeping & Strategic Accounting Services
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               Empower your enterprise with real-time financial clarity. NK Associates delivers outsourced accounting and bookkeeping solutions for startups, small-and-medium enterprises (SMEs), and corporate entities. We handle everyday voucher entry, bank reconciliations, vendor payables, and payroll while providing founders with actionable monthly MIS financial dashboards.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
                 Outsource Your Accounts
               </Button>
               <a 
                 href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20want%20to%20discuss%20monthly%20accounting%20and%20bookkeeping.`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
               >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600" />
+                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
                 WhatsApp Advisory
               </a>
             </div>
@@ -111,7 +111,7 @@ const AccountingBookkeepingServices = () => {
         </div>
 
         {/* Deliverables Grid */}
-        <section className="mb-14">
+        <section className="mb-10 sm:mb-14">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
               Comprehensive Financial Accounting Suite
@@ -209,38 +209,38 @@ const AccountingBookkeepingServices = () => {
         </section>
 
         {/* Benefits Section */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
                 Why Outsource Accounting to NK Associates?
               </h2>
-              <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
                 Hiring an in-house accounting team comes with expensive overheads, training hassles, and risk of non-compliance. Our outsourced accounting model gives you CA-supervised accuracy at a fraction of the cost:
               </p>
-              <div className="space-y-3.5 text-sm text-slate-700">
+              <div className="space-y-3.5 text-xs sm:text-sm text-slate-700">
                 <div className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Cost Reduction:</strong> Save up to 60% compared to full-time in-house accountants, software licenses, and hardware.</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Chartered Accountant Supervision:</strong> All ledger entries and reconciliations are vetted by qualified CA professionals.</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Tax Alignment:</strong> Books are maintained directly in harmony with GST and Income Tax requirements, minimizing year-end audit adjustments.</span>
                 </div>
                 <div className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-cyan-100 text-cyan-800 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Data Security & Backup:</strong> Encrypted cloud storage and role-based access to safeguard your corporate financial secrets.</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-cyan-50/50 rounded-xl p-6 border border-cyan-100">
+            <div className="bg-cyan-50/50 rounded-xl p-5 sm:p-6 border border-cyan-100">
               <h3 className="text-lg font-bold text-brand-navy mb-3">Accounting Software We Support</h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-4">
                 We integrate seamlessly with your preferred ERP and cloud accounting software:
               </p>
               <div className="grid grid-cols-2 gap-3 text-xs md:text-sm font-semibold text-slate-800">
@@ -250,7 +250,7 @@ const AccountingBookkeepingServices = () => {
                 <div className="p-3 bg-white rounded-lg border border-cyan-100 text-center">Busy Accounting</div>
               </div>
               <div className="mt-6 pt-4 border-t border-cyan-200">
-                <Link to="/contact" className="text-cyan-800 font-semibold text-xs hover:underline inline-flex items-center">
+                <Link to="/contact" className="text-cyan-800 font-semibold text-xs hover:underline inline-flex items-center min-h-[44px]">
                   Get a Customized Monthly Accounting Quote <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Link>
               </div>
@@ -259,13 +259,13 @@ const AccountingBookkeepingServices = () => {
         </section>
 
         {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-8 flex flex-wrap justify-between items-center gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
+          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← View All Core Services
           </Link>
-          <div className="flex gap-4">
-            <Link to="/services/income-tax" className="text-brand-sky hover:underline font-medium">Income Tax Services →</Link>
-            <Link to="/services/company-registration" className="text-brand-sky hover:underline font-medium">Company Registration →</Link>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/services/income-tax" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Income Tax Services →</Link>
+            <Link to="/services/company-registration" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Company Registration →</Link>
           </div>
         </div>
       </div>

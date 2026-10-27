@@ -57,7 +57,7 @@ const GSTServices = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="GST Services | NK Associates"
         description="Comprehensive GST registration, monthly GSTR-1 & 3B return filing, annual GSTR-9 reconciliation, and department notice assistance by NK Associates Jaipur."
@@ -83,29 +83,29 @@ const GSTServices = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-brand-sky border border-sky-100 mb-4">
-              <Receipt className="w-3.5 h-3.5" />
+              <Receipt className="w-3.5 h-3.5 shrink-0" />
               Goods & Services Tax (GST) Practice
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Professional GST Registration & Return Filing Services
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               NK Associates provides end-to-end digital GST compliance solutions for proprietorships, partnership firms, LLPs, Private Limited companies, and e-commerce sellers across Jaipur and Pan-India. From new GSTIN applications to annual audits, we safeguard your business against penalties while maximizing your legal Input Tax Credit (ITC).
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
                 Consult a GST Expert
               </Button>
               <a 
                 href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20need%20assistance%20with%20GST%20services.`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
               >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600" />
+                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
                 WhatsApp Advisory
               </a>
             </div>
@@ -113,7 +113,7 @@ const GSTServices = () => {
         </div>
 
         {/* Detailed Solutions Grid */}
-        <section className="mb-14">
+        <section className="mb-10 sm:mb-14">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
               Comprehensive GST Compliance Spectrum
@@ -211,58 +211,58 @@ const GSTServices = () => {
         </section>
 
         {/* Content Section: Documents & Process */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
                 Documents Required for GST Registration
               </h2>
-              <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
                 NK Associates ensures paperless document onboarding. To initiate your registration or transfer compliance, keep the following records ready for our chartered tax desk:
               </p>
-              <ul className="space-y-3 text-sm text-slate-700">
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Proprietor/Partner/Director:</strong> PAN Card, Aadhaar Card, Passport photo, and contact details.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Business Constitution Proof:</strong> Partnership deed, LLP agreement, or Certificate of Incorporation (MCA).</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Registered Office Proof:</strong> Electricity bill / property tax receipt along with NOC from the premise owner.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Bank Account Proof:</strong> Cancelled cheque leaf or updated bank statement showing IFSC and entity name.</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
+            <div className="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
               <h3 className="text-lg font-bold text-brand-navy mb-3">Why Choose NK Associates for GST?</h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-4">
                 We combine deep statutory knowledge with real-time tracking systems to guarantee zero late fees and complete audit defense.
               </p>
-              <div className="space-y-3 text-sm">
+              <div className="space-y-3 text-xs sm:text-sm">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-brand-sky" />
+                  <ShieldCheck className="w-5 h-5 text-brand-sky shrink-0" />
                   <span className="font-semibold text-slate-800">100% Digital Document Exchange</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-brand-sky" />
+                  <Clock className="w-5 h-5 text-brand-sky shrink-0" />
                   <span className="font-semibold text-slate-800">Advance Due-Date Alerts (3 Days Prior)</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="w-5 h-5 text-brand-sky" />
+                  <FileSpreadsheet className="w-5 h-5 text-brand-sky shrink-0" />
                   <span className="font-semibold text-slate-800">Monthly ITC Maximization Reconciliation</span>
                 </div>
               </div>
               <div className="mt-6 pt-4 border-t border-slate-200">
                 <Link 
                   to="/contact" 
-                  className="inline-flex items-center text-brand-sky font-semibold text-sm hover:underline"
+                  className="inline-flex items-center text-brand-sky font-semibold text-sm hover:underline min-h-[44px]"
                 >
                   Schedule a Consultation in Jaipur Office <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
@@ -272,13 +272,13 @@ const GSTServices = () => {
         </section>
 
         {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-8 flex flex-wrap justify-between items-center gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
+          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← View All Core Services
           </Link>
-          <div className="flex gap-4">
-            <Link to="/services/income-tax" className="text-brand-sky hover:underline font-medium">Income Tax Services →</Link>
-            <Link to="/services/audit-assurance" className="text-brand-sky hover:underline font-medium">Audit & Assurance →</Link>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/services/income-tax" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Income Tax Services →</Link>
+            <Link to="/services/audit-assurance" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Audit & Assurance →</Link>
           </div>
         </div>
       </div>

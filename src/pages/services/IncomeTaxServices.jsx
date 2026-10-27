@@ -57,7 +57,7 @@ const IncomeTaxServices = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="Income Tax Services | NK Associates"
         description="Expert Income Tax Return (ITR) filing for individuals and corporates, capital gains advisory, tax saving under Section 80C, and scrutiny representation by NK Associates."
@@ -83,29 +83,29 @@ const IncomeTaxServices = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100 mb-4">
-              <Coins className="w-3.5 h-3.5" />
+              <Coins className="w-3.5 h-3.5 shrink-0" />
               Direct Taxation & Advisory Practice
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Expert Income Tax Return Filing & Strategic Tax Planning
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               Navigate changing tax regulations with absolute confidence. NK Associates offers professional tax calculation, Form 26AS/AIS/TIS reconciliation, regime selection (Old vs New), and corporate tax optimization for individuals, professionals, firms, and companies in Jaipur and pan-India.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
                 File Your ITR with a CA
               </Button>
               <a 
                 href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20need%20assistance%20with%20Income%20Tax%20Return%20filing.`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
               >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600" />
+                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
                 WhatsApp Consultation
               </a>
             </div>
@@ -113,7 +113,7 @@ const IncomeTaxServices = () => {
         </div>
 
         {/* Core Services Grid */}
-        <section className="mb-14">
+        <section className="mb-10 sm:mb-14">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
               Tailored Direct Tax Solutions
@@ -211,38 +211,38 @@ const IncomeTaxServices = () => {
         </section>
 
         {/* Checklist & Due Dates Section */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
                 Information & Records Checklist for ITR
               </h2>
-              <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
                 NK Associates ensures strict data confidentiality. To receive an accurate pre-filing tax computation, furnish the following documents:
               </p>
-              <ul className="space-y-3 text-sm text-slate-700">
+              <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Identification & Banking:</strong> PAN card, Aadhaar card, and all active bank account statements for the financial year.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Income Certificates:</strong> Form 16 from employer, Form 16A from banks/clients, and interest certificates from savings/FDs.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Investment Proofs:</strong> Life insurance premium (LIC), health insurance (80D), ELSS mutual funds, and tuition fee receipts.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5">✓</span>
+                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
                   <span><strong>Investment Trading P&L:</strong> Consolidated capital gains tax statement from brokers (Zerodha, Groww, AngelOne, etc.).</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-emerald-50/50 rounded-xl p-6 border border-emerald-100">
+            <div className="bg-emerald-50/50 rounded-xl p-5 sm:p-6 border border-emerald-100">
               <h3 className="text-lg font-bold text-brand-navy mb-3">Key Tax Filing Deadlines in India</h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-4">
                 Missing statutory deadlines attracts mandatory late fees under Section 234F and penal interest under Section 234A.
               </p>
               <div className="space-y-3 text-xs md:text-sm">
@@ -266,7 +266,7 @@ const IncomeTaxServices = () => {
               <div className="mt-6 pt-4 border-t border-emerald-200">
                 <Link 
                   to="/contact" 
-                  className="inline-flex items-center text-emerald-700 font-semibold text-sm hover:underline"
+                  className="inline-flex items-center text-emerald-700 font-semibold text-sm hover:underline min-h-[44px]"
                 >
                   Book In-Person CA Review in Jaipur <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
@@ -276,13 +276,13 @@ const IncomeTaxServices = () => {
         </section>
 
         {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-8 flex flex-wrap justify-between items-center gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
+          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← View All Core Services
           </Link>
-          <div className="flex gap-4">
-            <Link to="/services/gst" className="text-brand-sky hover:underline font-medium">GST Services →</Link>
-            <Link to="/services/audit-assurance" className="text-brand-sky hover:underline font-medium">Audit & Assurance →</Link>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/services/gst" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">GST Services →</Link>
+            <Link to="/services/audit-assurance" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Audit & Assurance →</Link>
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@ const SectionHeading = ({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-navy mt-2 leading-tight"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-brand-navy mt-2 leading-tight break-words"
       >
         {title}
         <span className="block h-1 w-20 bg-brand-sky mt-4 rounded-full mx-auto md:mx-0" style={{ margin: isLeft ? '1rem 0 0 0' : '1rem auto 0 auto' }}></span>

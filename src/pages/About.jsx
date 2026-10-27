@@ -109,7 +109,7 @@ const About = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl font-extrabold tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight break-words leading-tight"
           >
             About NK Associates | Chartered Accountants
           </motion.h1>
@@ -117,7 +117,7 @@ const About = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+            className="text-slate-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed"
           >
             Headquartered in Sanganer, Jaipur, NK Associates delivers high-precision audit, GST, TDS, accounting, and corporate compliance services to businesses and individuals across all Indian states through our 100% digital, paperless workflow.
           </motion.p>
@@ -125,20 +125,20 @@ const About = () => {
       </section>
 
       {/* Intro and Image Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Content Column */}
-            <div className="lg:col-span-6 space-y-6 text-left">
-              <span className="text-sm font-semibold uppercase text-brand-sky tracking-wider">Our Profile & Reach</span>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-brand-navy leading-tight">
+            <div className="lg:col-span-6 space-y-5 sm:space-y-6 text-left">
+              <span className="text-xs sm:text-sm font-semibold uppercase text-brand-sky tracking-wider">Our Profile & Reach</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy leading-tight break-words">
                 Rooted in Jaipur, Empowering Businesses Across India
               </h2>
-              <p className="text-brand-charcoal text-sm md:text-base leading-relaxed">
+              <p className="text-brand-charcoal text-xs sm:text-sm md:text-base leading-relaxed">
                 Navigating complex tax compliance and accounting regulations shouldn't slow your growth. NK Associates was established with a clear mission: to combine the trust and accountability of a physical Chartered Accountant firm with the speed, convenience, and reach of a modern 100% digital practice.
               </p>
-              <p className="text-brand-charcoal text-sm md:text-base leading-relaxed">
+              <p className="text-brand-charcoal text-xs sm:text-sm md:text-base leading-relaxed">
                 From our corporate head office in Sanganer, Jaipur, we serve manufacturers, retail enterprises, IT firms, startups, and salaried professionals in Rajasthan, Delhi NCR, Mumbai, Bengaluru, and nationwide.
               </p>
 
@@ -150,7 +150,7 @@ const About = () => {
                   "Fast & Secure Data Handling",
                   "Dedicated Relationship Support"
                 ].map((txt, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-brand-navy font-semibold text-sm">
+                  <div key={idx} className="flex items-center gap-2 text-brand-navy font-semibold text-xs sm:text-sm">
                     <div className="w-5 h-5 rounded-full bg-brand-light flex items-center justify-center shrink-0">
                       <Check className="w-3.5 h-3.5 text-brand-sky" />
                     </div>
@@ -167,7 +167,7 @@ const About = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="relative w-full max-w-[500px] h-[350px] md:h-[400px] rounded-3xl overflow-hidden shadow-premium border border-slate-100"
+                className="relative w-full max-w-[500px] h-[260px] sm:h-[350px] md:h-[400px] rounded-3xl overflow-hidden shadow-premium border border-slate-100"
               >
                 {/* Embedded Office / Consultant Image */}
                 <img
@@ -178,9 +178,9 @@ const About = () => {
                 />
                 
                 {/* Glass Badge Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 bg-white/80 backdrop-blur-md px-6 py-4 rounded-2xl shadow-lg border border-white/20 text-left">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/80 backdrop-blur-md px-4 py-3 sm:px-6 sm:py-4 rounded-2xl shadow-lg border border-white/20 text-left">
                   <span className="text-xs font-bold uppercase text-brand-sky">Jaipur Head Office</span>
-                  <p className="text-sm font-extrabold text-brand-navy mt-1">4th Floor, Sanjay Mansion, Sanganer</p>
+                  <p className="text-xs sm:text-sm font-extrabold text-brand-navy mt-1">4th Floor, Sanjay Mansion, Sanganer</p>
                 </div>
               </motion.div>
             </div>
@@ -190,7 +190,7 @@ const About = () => {
       </section>
 
       {/* Core Values Section */}
-      <section className="py-20 bg-slate-50 border-y border-slate-100">
+      <section className="py-14 sm:py-20 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Our Pillars"
@@ -198,7 +198,7 @@ const About = () => {
             subtitle="The principles that guide how NK Associates works for you, ensuring client trust and strict compliance at every step."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {coreValues.map((value, idx) => (
               <motion.div
                 key={idx}
@@ -206,7 +206,7 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
-                className="bg-white p-8 rounded-2xl border border-slate-100 shadow-sm flex gap-5 text-left"
+                className="bg-white p-5 sm:p-8 rounded-2xl border border-slate-100 shadow-sm flex gap-4 sm:gap-5 text-left"
               >
                 <div className="w-12 h-12 rounded-xl bg-brand-light flex items-center justify-center shrink-0">
                   {value.icon}

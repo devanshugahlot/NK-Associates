@@ -8,11 +8,11 @@ const Footer = () => {
   return (
     <footer className="bg-brand-navy text-slate-300 border-t border-slate-800">
       {/* Main Footer Links Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           
           {/* Column 1: Brand Info */}
-          <div className="flex flex-col space-y-5">
+          <div className="flex flex-col space-y-4 sm:space-y-5">
             <Link to="/" className="flex items-center gap-3 group focus:outline-none">
               <img
                 src={logo}
@@ -28,7 +28,7 @@ const Footer = () => {
                 </span>
               </div>
             </Link>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
               Headquartered in Jaipur, Rajasthan, NK Associates provides 100% digital, paperless Chartered Accountant, GST, Income Tax, and corporate compliance solutions to startups, MSMEs, and individual taxpayers across all Indian states.
             </p>
             <div className="flex items-center gap-2 text-xs text-emerald-400 font-semibold bg-emerald-950/40 border border-emerald-800/60 px-3 py-1.5 rounded-xl w-fit">
@@ -50,7 +50,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="NK Associates on LinkedIn"
-                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-[#0A66C2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110 touch-manipulation"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -59,7 +59,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="NK Associates on Facebook"
-                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-[#1877F2] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110 touch-manipulation"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -68,7 +68,7 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="NK Associates on Instagram"
-                  className="w-9 h-9 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110"
+                  className="w-10 h-10 rounded-xl bg-slate-800 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-300 hover:text-white flex items-center justify-center transition-all duration-300 border border-slate-700/60 shadow-sm hover:scale-110 touch-manipulation"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -78,52 +78,52 @@ const Footer = () => {
 
           {/* Column 2: Quick Links */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
+            <h3 className="text-white font-semibold text-base mb-4 sm:mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
               Quick Links
             </h3>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-1.5 text-xs sm:text-sm">
               <li>
-                <Link to="/" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link to="/about-us" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/about-us" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>About Us</span>
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/services" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>All Services</span>
                 </Link>
               </li>
               <li>
-                <Link to="/careers" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/careers" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Careers & Articleship</span>
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/blog" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Tax Blog & Updates</span>
                 </Link>
               </li>
               <li>
-                <Link to="/gallery" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/gallery" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Office Gallery</span>
                 </Link>
               </li>
               <li>
-                <Link to="/reviews" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/reviews" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Client Reviews</span>
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/contact" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Contact Us</span>
                 </Link>
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/privacy" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Privacy Policy</span>
                 </Link>
               </li>
@@ -132,37 +132,37 @@ const Footer = () => {
 
           {/* Column 3: Practice Areas */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
+            <h3 className="text-white font-semibold text-base mb-4 sm:mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
               Practice Areas
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-1.5 text-xs sm:text-sm">
               <li>
-                <Link to="/services/gst" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/gst" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   GST Registration & Returns
                 </Link>
               </li>
               <li>
-                <Link to="/services/income-tax" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/income-tax" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   Income Tax (ITR) Filing
                 </Link>
               </li>
               <li>
-                <Link to="/services/audit-assurance" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/audit-assurance" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   Statutory & Tax Audit
                 </Link>
               </li>
               <li>
-                <Link to="/services/company-registration" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/company-registration" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   Company & LLP Registration
                 </Link>
               </li>
               <li>
-                <Link to="/services/accounting-bookkeeping" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/accounting-bookkeeping" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   Accounting & Bookkeeping
                 </Link>
               </li>
               <li>
-                <Link to="/services#project-report" className="hover:text-white transition-colors duration-300">
+                <Link to="/services#project-report" className="hover:text-white transition-colors duration-200 py-1 inline-block">
                   Project Report & CMA Data
                 </Link>
               </li>
@@ -171,10 +171,10 @@ const Footer = () => {
 
           {/* Column 4: Contact Info */}
           <div>
-            <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
+            <h3 className="text-white font-semibold text-base mb-4 sm:mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
               Corporate Head Office
             </h3>
-            <ul className="space-y-4 text-sm text-slate-400">
+            <ul className="space-y-3.5 text-xs sm:text-sm text-slate-400">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-brand-sky shrink-0 mt-0.5" />
                 <span className="leading-relaxed text-slate-300">
@@ -183,13 +183,13 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-brand-sky shrink-0" />
-                <a href={`tel:${contactInfo.phoneValue}`} className="hover:text-white text-slate-300 transition-colors">
+                <a href={`tel:${contactInfo.phoneValue}`} className="hover:text-white text-slate-300 transition-colors py-1">
                   {contactInfo.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-brand-sky shrink-0" />
-                <a href={`mailto:${contactInfo.email}`} className="hover:text-white text-slate-300 transition-colors break-all">
+                <a href={`mailto:${contactInfo.email}`} className="hover:text-white text-slate-300 transition-colors break-all py-1">
                   {contactInfo.email}
                 </a>
               </li>
@@ -197,7 +197,7 @@ const Footer = () => {
                 <Clock className="w-4 h-4 text-brand-sky shrink-0 mt-0.5" />
                 <div>
                   {contactInfo.businessHours.map((h, i) => (
-                    <div key={i} className="text-slate-300 text-xs">
+                    <div key={i} className="text-slate-300 text-xs py-0.5">
                       <span className="font-medium">{h.days}:</span> {h.hours}
                     </div>
                   ))}

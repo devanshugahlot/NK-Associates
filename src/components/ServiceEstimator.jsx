@@ -104,49 +104,49 @@ const ServiceEstimator = () => {
   return (
     <div className="bg-white rounded-3xl shadow-xl border border-sky-100 overflow-hidden text-left">
       {/* Header Banner */}
-      <div className="bg-gradient-to-r from-brand-navy via-slate-800 to-brand-navy p-6 md:p-8 text-white relative overflow-hidden">
+      <div className="bg-gradient-to-r from-brand-navy via-slate-800 to-brand-navy p-5 sm:p-6 md:p-8 text-white relative overflow-hidden">
         <div className="absolute -right-10 -bottom-10 w-40 h-40 bg-brand-sky/20 rounded-full blur-2xl pointer-events-none"></div>
-        <div className="flex flex-wrap items-center justify-between gap-4 relative z-10">
+        <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 relative z-10">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-sky/20 text-brand-sky text-xs font-semibold uppercase tracking-wider mb-2 border border-brand-sky/30">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Interactive Service & Fee Estimator</span>
             </div>
-            <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight break-words">
               Get an Instant CA Consultation Plan
             </h3>
-            <p className="text-slate-300 text-sm mt-1 max-w-xl">
+            <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-xl">
               Select your business profile below to review required documents, turnaround time, and consult our CA team instantly on WhatsApp.
             </p>
           </div>
-          <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3.5 py-1.5 rounded-full font-medium">
-            <ShieldCheck className="w-4 h-4 text-emerald-400" />
+          <div className="flex items-center gap-2 text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800/80 px-3 py-1.5 rounded-full font-medium">
+            <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
             <span>100% Confidential & Secure</span>
           </div>
         </div>
       </div>
 
-      <div className="p-6 md:p-8 space-y-8">
+      <div className="p-4 sm:p-6 md:p-8 space-y-6 sm:space-y-8">
         {/* Step 1: Select Profile */}
         <div>
           <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
             Step 1: Choose Your Category
           </label>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3">
             {profiles.map((profile) => {
               const isActive = selectedProfile === profile.id;
               return (
                 <button
                   key={profile.id}
                   onClick={() => handleProfileChange(profile.id)}
-                  className={`p-3.5 rounded-2xl text-left border transition-all duration-200 flex items-center gap-3 ${
+                  className={`p-3 sm:p-3.5 min-h-[44px] rounded-2xl text-left border transition-all duration-200 flex items-center gap-3 touch-manipulation ${
                     isActive
                       ? 'bg-sky-50 border-brand-sky text-brand-navy font-bold shadow-xs'
                       : 'bg-slate-50 hover:bg-slate-100/80 border-slate-200 text-brand-charcoal font-medium'
                   }`}
                 >
-                  <span className="text-xl">{profile.icon}</span>
-                  <span className="text-xs md:text-sm leading-snug">{profile.label}</span>
+                  <span className="text-xl shrink-0">{profile.icon}</span>
+                  <span className="text-xs sm:text-sm leading-snug">{profile.label}</span>
                 </button>
               );
             })}
@@ -158,21 +158,21 @@ const ServiceEstimator = () => {
           <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
             Step 2: Select Service Required
           </label>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3">
             {currentServices.map((srv, idx) => {
               const isSelected = selectedServiceIndex === idx;
               return (
                 <button
                   key={srv.id}
                   onClick={() => setSelectedServiceIndex(idx)}
-                  className={`p-4 rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between ${
+                  className={`p-3.5 sm:p-4 min-h-[44px] rounded-2xl text-left border transition-all duration-200 flex flex-col justify-between touch-manipulation ${
                     isSelected
                       ? 'bg-sky-50 border-brand-sky ring-2 ring-brand-sky/20 shadow-xs'
                       : 'bg-white hover:bg-slate-50 border-slate-200'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2">
-                    <span className={`text-sm font-bold leading-tight ${isSelected ? 'text-brand-skyDark' : 'text-brand-navy'}`}>
+                    <span className={`text-xs sm:text-sm font-bold leading-tight ${isSelected ? 'text-brand-skyDark' : 'text-brand-navy'}`}>
                       {srv.name}
                     </span>
                     {isSelected && (
@@ -182,7 +182,7 @@ const ServiceEstimator = () => {
                     )}
                   </div>
                   <span className="text-[11px] font-semibold text-slate-500 mt-2 flex items-center gap-1">
-                    <Clock className="w-3 h-3 text-brand-sky" /> {srv.time}
+                    <Clock className="w-3 h-3 text-brand-sky shrink-0" /> {srv.time}
                   </span>
                 </button>
               );
@@ -191,22 +191,22 @@ const ServiceEstimator = () => {
         </div>
 
         {/* Step 3: Result Card with Document Checklist & WhatsApp CTA */}
-        <div className="bg-slate-50 rounded-2xl p-5 md:p-6 border border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        <div className="bg-slate-50 rounded-2xl p-4 sm:p-5 md:p-6 border border-slate-200 flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
           <div className="space-y-4 flex-1">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="text-xs font-bold uppercase tracking-wider bg-white px-3 py-1 rounded-lg border border-slate-200 text-brand-navy">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-white px-2.5 py-1 rounded-lg border border-slate-200 text-brand-navy">
                 Plan Overview
               </span>
-              <span className="text-xs font-semibold text-emerald-700 bg-emerald-100 px-3 py-1 rounded-lg flex items-center gap-1">
-                <Clock className="w-3 h-3 text-emerald-600" />
+              <span className="text-[11px] sm:text-xs font-semibold text-emerald-700 bg-emerald-100 px-2.5 py-1 rounded-lg flex items-center gap-1">
+                <Clock className="w-3 h-3 text-emerald-600 shrink-0" />
                 Delivery: {activeService.time}
               </span>
-              <span className="text-xs font-semibold text-blue-700 bg-blue-100 px-3 py-1 rounded-lg">
+              <span className="text-[11px] sm:text-xs font-semibold text-blue-700 bg-blue-100 px-2.5 py-1 rounded-lg">
                 Pan-India 100% Online
               </span>
             </div>
 
-            <h4 className="text-lg md:text-xl font-extrabold text-brand-navy">
+            <h4 className="text-base sm:text-lg md:text-xl font-extrabold text-brand-navy">
               {activeService.name}
             </h4>
 
@@ -223,7 +223,7 @@ const ServiceEstimator = () => {
             {/* Document Checklist */}
             <div className="pt-2 border-t border-slate-200/80">
               <div className="text-xs font-bold text-slate-600 mb-1.5 flex items-center gap-1">
-                <FileCheck className="w-3.5 h-3.5 text-brand-sky" />
+                <FileCheck className="w-3.5 h-3.5 text-brand-sky shrink-0" />
                 <span>Standard Documents Needed:</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
@@ -245,9 +245,9 @@ const ServiceEstimator = () => {
               href={whatsappInquiryUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3.5 px-5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all duration-200 group"
+              className="w-full min-h-[44px] flex items-center justify-center gap-2 py-3 px-4 sm:px-5 rounded-xl bg-emerald-500 hover:bg-emerald-600 active:scale-98 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 group touch-manipulation"
             >
-              <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <MessageSquare className="w-4 h-4 group-hover:scale-110 transition-transform shrink-0" />
               <span>Get Fee Quote via WhatsApp</span>
             </a>
             <span className="text-[11px] text-center text-slate-400 font-medium">

@@ -97,7 +97,7 @@ const Gallery = () => {
       />
 
       {/* Hero Header */}
-      <section className="bg-brand-navy text-white py-14 lg:py-20 relative overflow-hidden">
+      <section className="bg-brand-navy text-white py-10 sm:py-14 lg:py-20 relative overflow-hidden">
         {/* Ambient background glows */}
         <div className="absolute -right-16 -top-16 w-96 h-96 bg-brand-sky/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -left-16 -bottom-16 w-80 h-80 bg-brand-navyLight/40 rounded-full blur-3xl pointer-events-none" />
@@ -106,9 +106,9 @@ const Gallery = () => {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/90 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/70 shadow-sm"
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-800/90 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/70 shadow-sm"
           >
-            <Building2 className="w-3.5 h-3.5 text-brand-sky" />
+            <Building2 className="w-3.5 h-3.5 text-brand-sky shrink-0" />
             <span>Workplace & Infrastructure</span>
           </motion.div>
 
@@ -116,7 +116,7 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight"
+            className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight break-words max-w-4xl mx-auto"
           >
             NK Associates Office & Workplace Gallery
           </motion.h1>
@@ -125,7 +125,7 @@ const Gallery = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.16 }}
-            className="text-slate-300 text-sm sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
+            className="text-slate-300 text-xs sm:text-base lg:text-lg max-w-3xl mx-auto leading-relaxed"
           >
             A visual showcase of our professional office premises in Jaipur — featuring high-speed digital infrastructure, collaborative workstations, and client consultation suites.
           </motion.p>
@@ -133,25 +133,25 @@ const Gallery = () => {
       </section>
 
       {/* Gallery Showcase Section */}
-      <section className="py-12 lg:py-16 bg-slate-50 min-h-screen">
+      <section className="py-8 sm:py-12 lg:py-16 bg-slate-50 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Status Header Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-6 mb-8 border-b border-slate-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 pb-5 sm:pb-6 mb-6 sm:mb-8 border-b border-slate-200">
             <div className="flex items-center gap-2.5">
-              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100" />
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100 shrink-0" />
               <p className="text-xs sm:text-sm font-bold text-brand-navy tracking-wide uppercase">
                 Official Workplace Gallery • <span className="text-brand-sky">{galleryItems.length} Photos</span>
               </p>
             </div>
 
-            <p className="text-xs text-slate-500 font-medium">
-              Click any image to view in high definition lightbox
+            <p className="text-xs text-slate-500 font-medium text-center sm:text-right">
+              Tap or click any image to view in high definition lightbox
             </p>
           </div>
 
           {/* Uniform Responsive Grid Layout - Consistent Heights */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-8">
             {galleryItems.map((item, idx) => (
               <motion.div
                 key={item.id}
@@ -210,12 +210,12 @@ const Gallery = () => {
           </div>
 
           {/* Bottom CTA Banner */}
-          <div className="mt-16 bg-gradient-to-r from-brand-navy to-slate-900 rounded-3xl p-8 sm:p-10 text-white text-center sm:text-left relative overflow-hidden shadow-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="mt-12 sm:mt-16 bg-gradient-to-r from-brand-navy to-slate-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 text-white text-center sm:text-left relative overflow-hidden shadow-xl border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="space-y-2 max-w-xl">
               <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-brand-sky">
                 <Sparkles className="w-3.5 h-3.5" /> Visit Us In Person
               </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+              <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight break-words">
                 Plan a Visit to Our Jaipur Head Office
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
@@ -225,7 +225,7 @@ const Gallery = () => {
 
             <Link
               to="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-sky hover:bg-brand-skyDark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 shrink-0"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-brand-sky hover:bg-brand-skyDark text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 shrink-0 min-h-[44px] w-full sm:w-auto"
             >
               <span>Schedule Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -242,7 +242,7 @@ const Gallery = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-4 sm:p-6 select-none"
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 select-none"
             onClick={(e) => {
               if (e.target === e.currentTarget) setActiveImageIdx(null);
             }}
@@ -251,7 +251,7 @@ const Gallery = () => {
             onTouchEnd={handleTouchEnd}
           >
             {/* Top Toolbar */}
-            <div className="flex items-center justify-between text-white z-50 px-2 sm:px-4 py-2">
+            <div className="flex items-center justify-between text-white z-50 px-1 sm:px-4 py-2">
               <div className="flex items-center gap-3">
                 <span className="text-xs font-bold uppercase tracking-widest text-brand-sky bg-white/10 px-3 py-1 rounded-full border border-white/10">
                   {activeImageIdx + 1} / {galleryItems.length}
@@ -263,7 +263,7 @@ const Gallery = () => {
 
               <button
                 onClick={() => setActiveImageIdx(null)}
-                className="text-white/80 hover:text-white p-2.5 rounded-full bg-white/10 hover:bg-white/20 focus:outline-none transition-colors border border-white/10"
+                className="text-white/80 hover:text-white p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 focus:outline-none transition-colors border border-white/10"
                 aria-label="Close Lightbox"
               >
                 <X className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -278,7 +278,7 @@ const Gallery = () => {
                   e.stopPropagation();
                   handlePrev();
                 }}
-                className="absolute left-2 sm:left-6 text-white p-3 sm:p-4 rounded-full bg-white/10 hover:bg-white/25 focus:outline-none transition-all z-30 border border-white/15 backdrop-blur-md"
+                className="absolute left-1 sm:left-6 text-white p-2.5 sm:p-4 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 focus:outline-none transition-all z-30 border border-white/15 backdrop-blur-md"
                 aria-label="Previous Image"
               >
                 <ChevronLeft className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -291,7 +291,7 @@ const Gallery = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.25 }}
-                className="max-w-5xl max-h-[72vh] flex flex-col items-center justify-center"
+                className="max-w-5xl max-h-[72dvh] flex flex-col items-center justify-center"
               >
                 <img
                   src={galleryItems[activeImageIdx].image}
@@ -301,7 +301,7 @@ const Gallery = () => {
                       e.currentTarget.src = galleryItems[activeImageIdx].image.replace('.jpeg', '.jpg');
                     }
                   }}
-                  className="max-w-full max-h-[68vh] object-contain rounded-xl shadow-2xl"
+                  className="max-w-full max-h-[64dvh] object-contain rounded-xl shadow-2xl"
                 />
               </motion.div>
 
@@ -311,7 +311,7 @@ const Gallery = () => {
                   e.stopPropagation();
                   handleNext();
                 }}
-                className="absolute right-2 sm:right-6 text-white p-3 sm:p-4 rounded-full bg-white/10 hover:bg-white/25 focus:outline-none transition-all z-30 border border-white/15 backdrop-blur-md"
+                className="absolute right-1 sm:right-6 text-white p-2.5 sm:p-4 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-full bg-white/10 hover:bg-white/25 focus:outline-none transition-all z-30 border border-white/15 backdrop-blur-md"
                 aria-label="Next Image"
               >
                 <ChevronRight className="w-6 h-6 sm:w-8 sm:h-8" />
@@ -321,10 +321,10 @@ const Gallery = () => {
             {/* Bottom Caption & Thumbnail Strip */}
             <div className="w-full max-w-4xl mx-auto space-y-3 z-50 text-center pb-2">
               <div className="text-white px-4">
-                <h4 className="text-base sm:text-lg font-extrabold text-white">
+                <h4 className="text-sm sm:text-lg font-extrabold text-white break-words">
                   {galleryItems[activeImageIdx].title}
                 </h4>
-                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl mx-auto leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-300 mt-1 max-w-xl mx-auto leading-relaxed line-clamp-2 sm:line-clamp-none">
                   {galleryItems[activeImageIdx].desc}
                 </p>
               </div>
@@ -335,7 +335,8 @@ const Gallery = () => {
                   <button
                     key={thumb.id}
                     onClick={() => setActiveImageIdx(tIdx)}
-                    className={`relative shrink-0 w-10 h-8 sm:w-14 sm:h-10 rounded-md overflow-hidden border-2 transition-all duration-200 ${
+                    aria-label={`View photo ${tIdx + 1}`}
+                    className={`relative shrink-0 w-11 h-9 sm:w-14 sm:h-10 rounded-md overflow-hidden border-2 transition-all duration-200 min-h-[36px] ${
                       activeImageIdx === tIdx
                         ? 'border-brand-sky scale-110 shadow-md ring-2 ring-brand-sky/40'
                         : 'border-white/20 opacity-50 hover:opacity-100'

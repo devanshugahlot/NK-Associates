@@ -3,10 +3,15 @@
 @tailwind utilities;
 
 @layer base {
+  /* Universal box-sizing & border defaults */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
   /* Custom Premium Scrollbar for Webkit Browsers */
   ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 8px;
+    height: 8px;
   }
   
   ::-webkit-scrollbar-track {
@@ -16,7 +21,7 @@
   ::-webkit-scrollbar-thumb {
     background: #bae6fd; /* light blue border */
     border-radius: 9999px;
-    border: 2.5px solid #f0f9ff;
+    border: 2px solid #f0f9ff;
   }
   
   ::-webkit-scrollbar-thumb:hover {
@@ -29,14 +34,44 @@
     outline-offset: 4px;
   }
 
-  /* Smooth overall scroll */
+  /* Smooth overall scroll & mobile viewport bounds */
   html {
     scroll-behavior: smooth;
     -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
+    max-width: 100%;
     overflow-x: hidden;
+    position: relative;
+    width: 100%;
+    min-height: 100dvh;
+    line-height: 1.5;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Responsive media defaults */
+  img, video, iframe, svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Prevent automatic iOS Safari zoom when tapping inputs */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="number"],
+    input[type="search"],
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -46,6 +81,15 @@
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Minimum 44x44px interactive tap area helper */
+  .tap-target-44 {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
@@ -59,10 +103,29 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  /* Dynamic viewport height utilities */
+  .h-dvh {
+    height: 100dvh;
+  }
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
+  .max-h-dvh {
+    max-height: 100dvh;
+  }
+
+  /* Safe area insets utilities */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

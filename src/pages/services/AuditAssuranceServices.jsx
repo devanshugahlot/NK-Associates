@@ -55,7 +55,7 @@ const AuditAssuranceServices = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="Audit & Assurance Services | NK Associates"
         description="Independent statutory audit, Section 44AB tax audit, internal audit, stock verification, and CA certified UDIN reports by NK Associates in Jaipur & Pan-India."
@@ -81,29 +81,29 @@ const AuditAssuranceServices = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-100 mb-4">
-              <Scale className="w-3.5 h-3.5" />
+              <Scale className="w-3.5 h-3.5 shrink-0" />
               Statutory Assurance & Attestation
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Independent Audit & Financial Assurance Services
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               Establish credibility with banks, regulatory bodies, and investors. NK Associates offers rigorous, objective audit and assurance solutions adhering to the Standards on Auditing (SAs) issued by ICAI. We identify internal control vulnerabilities, ensure complete statutory compliance, and authenticate true and fair financial reporting.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
                 Request Audit Consultation
               </Button>
               <a 
                 href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20would%20like%20to%20discuss%20audit%20and%20assurance%20services.`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
               >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600" />
+                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
                 Speak with Lead Auditor
               </a>
             </div>
@@ -111,7 +111,7 @@ const AuditAssuranceServices = () => {
         </div>
 
         {/* Service Details Grid */}
-        <section className="mb-14">
+        <section className="mb-10 sm:mb-14">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
               Comprehensive Audit & Attestation Capabilities
@@ -209,13 +209,13 @@ const AuditAssuranceServices = () => {
         </section>
 
         {/* Process & Transparency */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
                 Our Structured Audit Methodology
               </h2>
-              <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
                 At NK Associates, we execute audits with high ethical standards and absolute independence, safeguarding company promoters from statutory penalties and management oversights:
               </p>
               <div className="space-y-4">
@@ -243,9 +243,9 @@ const AuditAssuranceServices = () => {
               </div>
             </div>
 
-            <div className="bg-indigo-50/50 rounded-xl p-6 border border-indigo-100">
+            <div className="bg-indigo-50/50 rounded-xl p-5 sm:p-6 border border-indigo-100">
               <h3 className="text-lg font-bold text-brand-navy mb-3">Statutory Audit Thresholds at a Glance</h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-4">
                 Know when your business is required by law to conduct a formal audit by a Chartered Accountant:
               </p>
               <div className="space-y-3 text-xs md:text-sm">
@@ -263,7 +263,7 @@ const AuditAssuranceServices = () => {
                 </div>
               </div>
               <div className="mt-5 text-right">
-                <Link to="/contact" className="text-indigo-700 font-semibold text-xs hover:underline inline-flex items-center">
+                <Link to="/contact" className="text-indigo-700 font-semibold text-xs hover:underline inline-flex items-center min-h-[44px]">
                   Consult our Audit Partner in Jaipur <ArrowRight className="w-3.5 h-3.5 ml-1" />
                 </Link>
               </div>
@@ -272,13 +272,13 @@ const AuditAssuranceServices = () => {
         </section>
 
         {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-8 flex flex-wrap justify-between items-center gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
+          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← View All Core Services
           </Link>
-          <div className="flex gap-4">
-            <Link to="/services/company-registration" className="text-brand-sky hover:underline font-medium">Company Registration →</Link>
-            <Link to="/services/accounting-bookkeeping" className="text-brand-sky hover:underline font-medium">Accounting & Bookkeeping →</Link>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/services/company-registration" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Company Registration →</Link>
+            <Link to="/services/accounting-bookkeeping" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Accounting & Bookkeeping →</Link>
           </div>
         </div>
       </div>

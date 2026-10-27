@@ -14,7 +14,7 @@ const Button = ({
   disabled = false,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-sky focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-sky focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation select-none';
   
   const variants = {
     primary: 'bg-brand-sky text-white hover:bg-brand-skyDark shadow-premium hover:shadow-premium-hover border border-brand-sky hover:border-brand-skyDark',
@@ -25,7 +25,7 @@ const Button = ({
     white: 'bg-white text-brand-navy hover:bg-brand-extralight shadow-md hover:shadow-lg border border-slate-100',
   };
 
-  const sizes = 'px-6 py-3 text-sm md:text-base';
+  const sizes = 'px-5 sm:px-6 py-2.5 sm:py-3 min-h-[44px] text-xs sm:text-sm md:text-base';
   
   const content = (
     <>

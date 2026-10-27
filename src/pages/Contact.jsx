@@ -142,10 +142,10 @@ I would like to request the following service:
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-brand-sky/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60">
+          <span className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-[11px] sm:text-xs font-semibold uppercase tracking-wider border border-slate-700/60 max-w-full truncate">
             <span>🇮🇳 Nationwide Digital Consultation • Head Office: Jaipur</span>
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight break-words leading-tight">
             Connect With Our Tax & CA Experts
           </h1>
           <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
@@ -255,7 +255,7 @@ I would like to request the following service:
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="NK Associates LinkedIn"
-                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                        className="w-10 h-10 sm:w-9 sm:h-9 min-w-[44px] min-h-[44px] rounded-xl bg-slate-100 hover:bg-[#0A66C2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 touch-manipulation"
                       >
                         <Linkedin className="w-4 h-4" />
                       </a>
@@ -264,7 +264,7 @@ I would like to request the following service:
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="NK Associates Facebook"
-                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-[#1877F2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                        className="w-10 h-10 sm:w-9 sm:h-9 min-w-[44px] min-h-[44px] rounded-xl bg-slate-100 hover:bg-[#1877F2] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 touch-manipulation"
                       >
                         <Facebook className="w-4 h-4" />
                       </a>
@@ -273,7 +273,7 @@ I would like to request the following service:
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="NK Associates Instagram"
-                        className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105"
+                        className="w-10 h-10 sm:w-9 sm:h-9 min-w-[44px] min-h-[44px] rounded-xl bg-slate-100 hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] text-slate-600 hover:text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 touch-manipulation"
                       >
                         <Instagram className="w-4 h-4" />
                       </a>
@@ -286,7 +286,7 @@ I would like to request the following service:
 
             {/* Right Column: Contact form */}
             <div className="lg:col-span-7">
-              <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 md:p-10 shadow-sm relative">
+              <div className="bg-slate-50 border border-slate-100 rounded-3xl p-4 sm:p-6 md:p-10 shadow-sm relative">
                 
                 {/* Success Overlay Banner */}
                 <AnimatePresence>
@@ -312,14 +312,14 @@ I would like to request the following service:
                   )}
                 </AnimatePresence>
 
-                <h3 className="text-xl font-extrabold text-brand-navy mb-8 text-left border-b border-slate-200 pb-3">
+                <h3 className="text-xl font-extrabold text-brand-navy mb-6 sm:mb-8 text-left border-b border-slate-200 pb-3">
                   Submit Online Enquiry
                 </h3>
 
-                <form onSubmit={handleSubmit} className="space-y-6 text-left" noValidate>
+                <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 text-left" noValidate>
                   
                   {/* Full Name */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <label htmlFor="name" className="block text-xs font-bold uppercase tracking-wider text-brand-navy">
                       Full Name
                     </label>
@@ -330,7 +330,7 @@ I would like to request the following service:
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="e.g. Amit Sharma"
-                      className={`w-full px-4 py-3 rounded-lg border bg-white text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
+                      className={`w-full min-h-[44px] px-4 py-2.5 sm:py-3 rounded-lg border bg-white text-base md:text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
                         errors.name ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-brand-sky'
                       }`}
                     />
@@ -342,9 +342,9 @@ I would like to request the following service:
                     )}
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                     {/* Phone Number */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label htmlFor="phone" className="block text-xs font-bold uppercase tracking-wider text-brand-navy">
                         Phone Number
                       </label>
@@ -355,7 +355,7 @@ I would like to request the following service:
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="e.g. 9829012345"
-                        className={`w-full px-4 py-3 rounded-lg border bg-white text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
+                        className={`w-full min-h-[44px] px-4 py-2.5 sm:py-3 rounded-lg border bg-white text-base md:text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
                           errors.phone ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-brand-sky'
                         }`}
                       />
@@ -368,7 +368,7 @@ I would like to request the following service:
                     </div>
 
                     {/* Email */}
-                    <div className="space-y-2">
+                    <div className="space-y-1.5">
                       <label htmlFor="email" className="block text-xs font-bold uppercase tracking-wider text-brand-navy">
                         Email Address
                       </label>
@@ -379,7 +379,7 @@ I would like to request the following service:
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="e.g. amit@example.com"
-                        className={`w-full px-4 py-3 rounded-lg border bg-white text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
+                        className={`w-full min-h-[44px] px-4 py-2.5 sm:py-3 rounded-lg border bg-white text-base md:text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all ${
                           errors.email ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-brand-sky'
                         }`}
                       />
@@ -393,7 +393,7 @@ I would like to request the following service:
                   </div>
 
                   {/* Service Required Dropdown */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <label htmlFor="service" className="block text-xs font-bold uppercase tracking-wider text-brand-navy">
                       Service Required
                     </label>
@@ -403,7 +403,7 @@ I would like to request the following service:
                         name="service"
                         value={formData.service}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-3 rounded-lg border bg-white text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all appearance-none ${
+                        className={`w-full min-h-[44px] px-4 py-2.5 sm:py-3 rounded-lg border bg-white text-base md:text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all appearance-none ${
                           errors.service ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-brand-sky'
                         }`}
                       >
@@ -431,7 +431,7 @@ I would like to request the following service:
                   </div>
 
                   {/* Message */}
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     <label htmlFor="message" className="block text-xs font-bold uppercase tracking-wider text-brand-navy">
                       Describe Your Requirement
                     </label>
@@ -442,7 +442,7 @@ I would like to request the following service:
                       onChange={handleInputChange}
                       rows="4"
                       placeholder="Please details what GST or Income Tax queries you have..."
-                      className={`w-full px-4 py-3 rounded-lg border bg-white text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all resize-none ${
+                      className={`w-full px-4 py-2.5 sm:py-3 rounded-lg border bg-white text-base md:text-sm text-brand-navy placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-sky/20 transition-all resize-none ${
                         errors.message ? 'border-red-400 focus:border-red-400' : 'border-slate-200 focus:border-brand-sky'
                       }`}
                     ></textarea>
@@ -459,7 +459,7 @@ I would like to request the following service:
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full bg-brand-sky text-white py-3.5 px-6 font-semibold rounded-lg hover:bg-brand-skyDark transition-all duration-300 shadow-premium hover:shadow-premium-hover flex items-center justify-center gap-2 group disabled:opacity-65"
+                      className="w-full min-h-[48px] bg-brand-sky text-white py-3.5 px-6 font-semibold rounded-lg hover:bg-brand-skyDark active:scale-98 transition-all duration-300 shadow-premium hover:shadow-premium-hover flex items-center justify-center gap-2 group disabled:opacity-65 touch-manipulation"
                     >
                       {isSubmitting ? (
                         <>

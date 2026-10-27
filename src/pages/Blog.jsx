@@ -74,7 +74,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="Tax Blog & Insights | NK Associates"
         description="Stay updated with the latest Income Tax amendments, GST notifications, statutory due dates, and corporate MCA compliance insights from NK Associates Jaipur."
@@ -96,19 +96,19 @@ const Blog = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-100 mb-4">
-              <FileText className="w-3.5 h-3.5 text-amber-600" />
+              <FileText className="w-3.5 h-3.5 text-amber-600 shrink-0" />
               Tax Knowledge Hub & Regulatory Updates
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Chartered Accountant Insights & Tax Compliance Updates
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               Welcome to the NK Associates knowledge desk. Here, our certified tax professionals and auditors analyze circulars from the Central Board of Direct Taxes (CBDT), CBIC notifications, GST Council decisions, and MCA statutory announcements into actionable business intelligence for entrepreneurs and finance heads.
             </p>
-            <div className="flex flex-wrap gap-4 text-xs font-semibold text-slate-600">
+            <div className="flex flex-wrap gap-2.5 sm:gap-4 text-xs font-semibold text-slate-600">
               <span className="bg-slate-100 px-3 py-1 rounded-full">#DirectTax</span>
               <span className="bg-slate-100 px-3 py-1 rounded-full">#GSTAlerts</span>
               <span className="bg-slate-100 px-3 py-1 rounded-full">#MCACompliance</span>
@@ -118,21 +118,21 @@ const Blog = () => {
         </div>
 
         {/* Featured Articles Grid */}
-        <section className="mb-14">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
+        <section className="mb-10 sm:mb-14">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy break-words">
               Latest Tax Articles & Practical Advisory
             </h2>
-            <p className="text-slate-600 text-sm mt-2">
+            <p className="text-slate-600 text-xs sm:text-sm mt-2">
               In-depth analysis written by practicing Chartered Accountants and tax consultants in Jaipur.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {blogArticles.map((article) => (
               <article 
                 key={article.id}
-                className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow p-6 sm:p-8 flex flex-col justify-between"
+                className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow p-5 sm:p-8 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between text-xs text-slate-500 mb-3">
@@ -144,10 +144,10 @@ const Blog = () => {
                       {article.date}
                     </span>
                   </div>
-                  <h3 className="text-xl font-bold text-brand-navy mb-3 hover:text-brand-sky transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-3 hover:text-brand-sky transition-colors break-words">
                     {article.title}
                   </h3>
-                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
                     {article.excerpt}
                   </p>
                 </div>
@@ -158,7 +158,7 @@ const Blog = () => {
                   </span>
                   <Link 
                     to="/contact" 
-                    className="text-brand-sky font-bold hover:underline inline-flex items-center gap-1"
+                    className="text-brand-sky font-bold hover:underline inline-flex items-center gap-1 min-h-[44px]"
                   >
                     Consult on this Topic <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
@@ -169,39 +169,39 @@ const Blog = () => {
         </section>
 
         {/* Monthly Statutory Compliance Calendar */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
-          <h2 className="text-2xl font-bold text-brand-navy mb-4">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
             Standard Monthly Tax Due Dates Calendar
           </h2>
-          <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
             Keep your business ahead of statutory penalties. Here is a summary of standard recurring tax filing obligations for Indian businesses:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs md:text-sm">
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
               <span className="text-xs font-bold text-brand-sky block mb-1">Every Month (7th)</span>
               <h4 className="font-bold text-brand-navy mb-1">TDS / TCS Deposit</h4>
-              <p className="text-xs text-slate-600">Payment of tax deducted or collected during preceding month via government portal.</p>
+              <p className="text-xs text-slate-600 leading-relaxed">Payment of tax deducted or collected during preceding month via government portal.</p>
             </div>
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
               <span className="text-xs font-bold text-brand-sky block mb-1">Every Month (11th)</span>
               <h4 className="font-bold text-brand-navy mb-1">GSTR-1 Outward Return</h4>
-              <p className="text-xs text-slate-600">Filing details of outward sales supplies for taxpayers under regular monthly scheme.</p>
+              <p className="text-xs text-slate-600 leading-relaxed">Filing details of outward sales supplies for taxpayers under regular monthly scheme.</p>
             </div>
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
               <span className="text-xs font-bold text-brand-sky block mb-1">Every Month (20th)</span>
               <h4 className="font-bold text-brand-navy mb-1">GSTR-3B Summary Return</h4>
-              <p className="text-xs text-slate-600">Summary monthly return, input tax credit claim, and net tax liability payout.</p>
+              <p className="text-xs text-slate-600 leading-relaxed">Summary monthly return, input tax credit claim, and net tax liability payout.</p>
             </div>
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
               <span className="text-xs font-bold text-brand-sky block mb-1">Quarterly (31st)</span>
               <h4 className="font-bold text-brand-navy mb-1">Quarterly TDS Return</h4>
-              <p className="text-xs text-slate-600">Form 24Q (Salary), 26Q (Non-salary), and 27Q (Foreign payments) quarterly submissions.</p>
+              <p className="text-xs text-slate-600 leading-relaxed">Form 24Q (Salary), 26Q (Non-salary), and 27Q (Foreign payments) quarterly submissions.</p>
             </div>
           </div>
           <div className="mt-6 text-center">
             <Link 
               to="/contact" 
-              className="inline-flex items-center text-sm font-semibold text-brand-sky hover:underline"
+              className="inline-flex items-center text-xs sm:text-sm font-semibold text-brand-sky hover:underline min-h-[44px]"
             >
               Need personalized compliance assistance for your firm? Contact our Jaipur desk →
             </Link>
@@ -209,11 +209,11 @@ const Blog = () => {
         </section>
 
         {/* Back navigation */}
-        <div className="border-t border-slate-200 pt-8 flex justify-between items-center text-sm">
-          <Link to="/" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-sm">
+          <Link to="/" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← Back to Home
           </Link>
-          <Link to="/services" className="text-brand-sky hover:underline font-medium">
+          <Link to="/services" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">
             Explore Core CA Services →
           </Link>
         </div>

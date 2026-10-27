@@ -7,11 +7,11 @@ const FloatingActions = () => {
   const callUrl = `tel:${contactInfo.phoneValue}`;
 
   return (
-    <div className="fixed bottom-6 left-0 right-0 z-40 pointer-events-none flex justify-between px-6">
+    <div className="fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom,0px))] left-0 right-0 z-40 pointer-events-none flex justify-between px-3 sm:px-6">
       {/* Call Button (Bottom Left) */}
       <a
         href={callUrl}
-        className="pointer-events-auto flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-brand-sky text-white rounded-full shadow-lg hover:bg-brand-skyDark transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-2 focus:ring-brand-sky"
+        className="pointer-events-auto flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-brand-sky text-white rounded-full shadow-lg hover:bg-brand-skyDark transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-2 focus:ring-brand-sky touch-manipulation"
         aria-label="Call NK Associates"
       >
         <Phone className="w-5 h-5 md:w-6 md:h-6" />
@@ -25,7 +25,7 @@ const FloatingActions = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="pointer-events-auto relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full shadow-xl hover:bg-[#20ba5a] transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-2 focus:ring-[#25D366]"
+        className="pointer-events-auto relative flex items-center justify-center w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full shadow-xl hover:bg-[#20ba5a] transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-2 focus:ring-[#25D366] touch-manipulation"
         aria-label="Chat with Senior CA on WhatsApp"
       >
         {/* Pulsing Outer Ring */}

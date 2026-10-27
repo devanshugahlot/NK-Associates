@@ -32,18 +32,18 @@ import { contactInfo } from '../data/contactInfo';
 // Helper component for counter animation
 const CounterItem = ({ number, label, suffix = "" }) => {
   return (
-    <div className="text-center p-6 bg-white rounded-2xl shadow-premium border border-slate-100 flex flex-col items-center justify-center">
+    <div className="text-center p-3.5 sm:p-6 bg-white rounded-2xl shadow-premium border border-slate-100 flex flex-col items-center justify-center">
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: true }}
         transition={{ type: 'spring', stiffness: 100, delay: 0.1 }}
-        className="text-4xl md:text-5xl font-extrabold text-brand-navy flex items-center justify-center"
+        className="text-2xl sm:text-3xl md:text-5xl font-extrabold text-brand-navy flex items-center justify-center"
       >
         <span className="text-brand-sky">{number}</span>
-        {suffix && <span className="text-brand-sky ml-1">{suffix}</span>}
+        {suffix && <span className="text-brand-sky ml-0.5">{suffix}</span>}
       </motion.div>
-      <span className="mt-2 text-sm md:text-base text-brand-charcoal font-medium">
+      <span className="mt-1.5 text-xs sm:text-sm md:text-base text-brand-charcoal font-medium leading-snug">
         {label}
       </span>
     </div>
@@ -251,13 +251,13 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-brand-navy leading-tight tracking-tight"
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-brand-navy leading-tight tracking-tight break-words"
               >
                 Chartered Accountants & <br />
                 <span className="bg-gradient-to-r from-brand-sky via-cyan-500 to-blue-600 bg-clip-text text-transparent">
                   Tax Consultants
                 </span>
-                <span className="block text-2xl sm:text-3xl md:text-4xl font-bold text-slate-700 mt-2">
+                <span className="block text-xl sm:text-2xl md:text-4xl font-bold text-slate-700 mt-2">
                   Serving Clients Across India
                 </span>
               </motion.h1>
@@ -266,7 +266,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-base sm:text-lg text-brand-charcoal leading-relaxed max-w-xl"
+                className="text-sm sm:text-base md:text-lg text-brand-charcoal leading-relaxed max-w-xl"
               >
                 Headquartered in Jaipur, Rajasthan, <strong>NK Associates</strong> delivers 100% digital, prompt, and audit-proof GST, Income Tax (ITR), TDS, and Company Incorporation services for businesses & individuals nationwide.
               </motion.p>
@@ -276,7 +276,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.25 }}
-                className="grid grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-semibold text-slate-700 max-w-lg"
+                className="grid grid-cols-1 xs:grid-cols-2 gap-2 sm:gap-2.5 pt-1 text-xs sm:text-sm font-semibold text-slate-700 max-w-lg"
               >
                 <div className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-lg border border-slate-200/80 shadow-xs">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
@@ -300,7 +300,7 @@ const Home = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex flex-wrap gap-3.5 pt-3"
+                className="flex flex-wrap gap-2.5 sm:gap-3.5 pt-3"
               >
                 <Button to="/contact" variant="primary" icon={<ArrowRight className="w-4 h-4" />}>
                   Book Free Consultation
@@ -309,9 +309,9 @@ const Home = () => {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-2.5 min-h-[44px] rounded-xl bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all touch-manipulation"
                 >
-                  <MessageSquare className="w-4 h-4" />
+                  <MessageSquare className="w-4 h-4 shrink-0" />
                   <span>WhatsApp Senior CA</span>
                 </a>
                 <Button to="/services" variant="outline">
@@ -326,7 +326,7 @@ const Home = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.7 }}
-                className="w-full max-w-[430px] bg-white rounded-3xl shadow-xl border border-sky-100 p-6 md:p-7 flex flex-col justify-between relative overflow-hidden text-left"
+                className="w-full max-w-[430px] bg-white rounded-3xl shadow-xl border border-sky-100 p-4 sm:p-6 md:p-7 flex flex-col justify-between relative overflow-hidden text-left"
               >
                 {/* Background glow accent */}
                 <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-sky-50 to-white/0 pointer-events-none"></div>
@@ -351,8 +351,8 @@ const Home = () => {
                     <div className="text-slate-400 text-[11px] font-bold uppercase tracking-wider">
                       Tax Savings Maximized For Clients
                     </div>
-                    <div className="text-3xl font-extrabold text-brand-navy flex items-baseline gap-2 mt-0.5">
-                      ₹1,84,500 <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">▲ 14.8% Saved</span>
+                    <div className="text-2xl sm:text-3xl font-extrabold text-brand-navy flex flex-wrap items-baseline gap-1.5 sm:gap-2 mt-0.5">
+                      <span>₹1,84,500</span> <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">▲ 14.8% Saved</span>
                     </div>
                   </div>
 
@@ -400,11 +400,11 @@ const Home = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Badge 1 */}
+              {/* Floating Badge 1 (Shown on tablet and desktop, hidden on small mobile to prevent horizontal overflow) */}
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-6 md:-left-8 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl flex items-center gap-2.5 z-20 pointer-events-none"
+                className="hidden sm:flex absolute -top-4 -left-6 md:-left-8 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl items-center gap-2.5 z-20 pointer-events-none"
               >
                 <div className="p-1.5 bg-emerald-50 text-emerald-500 rounded-lg">
                   <CheckCircle className="w-4 h-4" />
@@ -415,11 +415,11 @@ const Home = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Badge 2 */}
+              {/* Floating Badge 2 (Shown on tablet and desktop) */}
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-1/2 -right-6 md:-right-8 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl flex items-center gap-2.5 z-20 pointer-events-none"
+                className="hidden sm:flex absolute top-1/2 -right-6 md:-right-8 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl items-center gap-2.5 z-20 pointer-events-none"
               >
                 <div className="p-1.5 bg-sky-50 text-brand-sky rounded-lg">
                   <TrendingUp className="w-4 h-4" />
@@ -430,11 +430,11 @@ const Home = () => {
                 </div>
               </motion.div>
 
-              {/* Floating Badge 3 */}
+              {/* Floating Badge 3 (Shown on tablet and desktop) */}
               <motion.div
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-5 left-10 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl flex items-center gap-2.5 z-20 pointer-events-none"
+                className="hidden sm:flex absolute -bottom-5 left-10 bg-white shadow-lg border border-sky-100 px-3.5 py-2.5 rounded-2xl items-center gap-2.5 z-20 pointer-events-none"
               >
                 <div className="p-1.5 bg-indigo-50 text-brand-navy rounded-lg">
                   <ShieldCheck className="w-4 h-4" />
@@ -451,9 +451,9 @@ const Home = () => {
       </section>
 
       {/* Trust Counters */}
-      <section className="py-12 bg-slate-50 border-y border-slate-100">
+      <section className="py-10 sm:py-12 bg-slate-50 border-y border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
             <CounterItem number="4.8" suffix="/5" label="Google Verified Rating" />
             <CounterItem number="54" suffix="+" label="Client Testimonials" />
             <CounterItem number="100" suffix="%" label="Digital & Paperless" />
@@ -545,7 +545,7 @@ const Home = () => {
             subtitle="Comprehensive taxation, statutory audit representation, bookkeeping and business compliance services designed for enterprises and professionals."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {serviceCards.map((service, index) => (
               <motion.div
                 key={service.id}
@@ -554,23 +554,23 @@ const Home = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 whileHover={{ y: -6 }}
-                className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col justify-between text-left group"
+                className="bg-white rounded-2xl p-5 sm:p-8 border border-slate-200/80 shadow-premium hover:shadow-premium-hover transition-all duration-300 flex flex-col justify-between text-left group"
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="w-14 h-14 bg-brand-light rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
+                  <div className="flex items-center justify-between mb-4 sm:mb-6">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 bg-brand-light rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
                       {service.icon}
                     </div>
                     {service.tag && (
-                      <span className="text-[11px] font-bold text-brand-skyDark bg-brand-light/70 border border-sky-100 px-2.5 py-1 rounded-full">
+                      <span className="text-[10px] sm:text-[11px] font-bold text-brand-skyDark bg-brand-light/70 border border-sky-100 px-2.5 py-1 rounded-full">
                         {service.tag}
                       </span>
                     )}
                   </div>
-                  <h3 className="text-xl font-bold text-brand-navy mb-3">
+                  <h3 className="text-lg sm:text-xl font-bold text-brand-navy mb-2 sm:mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-brand-charcoal leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-brand-charcoal leading-relaxed mb-5 sm:mb-6">
                     {service.desc}
                   </p>
                 </div>
@@ -658,7 +658,7 @@ const Home = () => {
             subtitle="Combining the physical accountability of our Jaipur headquarters with the modern speed of a 100% digital Pan-India CA practice."
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseFeatures.map((feat, index) => (
               <motion.div
                 key={index}
@@ -666,15 +666,15 @@ const Home = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="bg-slate-50 hover:bg-white rounded-2xl p-8 border border-slate-100 hover:border-slate-200/60 shadow-sm hover:shadow-premium transition-all duration-300 text-left"
+                className="bg-slate-50 hover:bg-white rounded-2xl p-5 sm:p-8 border border-slate-100 hover:border-slate-200/60 shadow-sm hover:shadow-premium transition-all duration-300 text-left"
               >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm border border-slate-100">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-5 sm:mb-6 shadow-sm border border-slate-100">
                   {feat.icon}
                 </div>
-                <h3 className="text-lg md:text-xl font-bold text-brand-navy mb-3">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-brand-navy mb-2 sm:mb-3">
                   {feat.title}
                 </h3>
-                <p className="text-sm text-brand-charcoal leading-relaxed">
+                <p className="text-xs sm:text-sm text-brand-charcoal leading-relaxed">
                   {feat.desc}
                 </p>
               </motion.div>
@@ -684,7 +684,7 @@ const Home = () => {
       </section>
 
       {/* FAQ Section (Matches FAQPage Schema & Enhances Search Ranking) */}
-      <section className="py-20 bg-slate-50 border-t border-slate-100">
+      <section className="py-16 sm:py-20 bg-slate-50 border-t border-slate-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             badge="Common Inquiries"
@@ -692,7 +692,7 @@ const Home = () => {
             subtitle="Find quick answers regarding our GST registration, Income Tax return filing, corporate compliance, and CA services in Jaipur."
           />
 
-          <div className="space-y-4 mt-12">
+          <div className="space-y-3 sm:space-y-4 mt-8 sm:mt-12">
             {homeFaqs.map((faq, index) => {
               const isOpen = openFaq === index;
               return (
@@ -702,10 +702,10 @@ const Home = () => {
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-slate-50/50 transition-colors"
+                    className="w-full px-4 py-3.5 sm:px-6 sm:py-5 min-h-[44px] text-left flex items-center justify-between gap-3 sm:gap-4 hover:bg-slate-50/50 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-sky/20"
                     aria-expanded={isOpen}
                   >
-                    <span className="text-base md:text-lg font-bold text-brand-navy">
+                    <span className="text-sm sm:text-base md:text-lg font-bold text-brand-navy leading-snug">
                       {faq.q}
                     </span>
                     <span className="shrink-0 p-1.5 rounded-full bg-slate-100 text-brand-navy">
@@ -720,9 +720,9 @@ const Home = () => {
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="border-t border-slate-100 px-6 py-5 bg-slate-50/40"
+                        className="border-t border-slate-100 px-4 py-3.5 sm:px-6 sm:py-5 bg-slate-50/40"
                       >
-                        <p className="text-sm md:text-base text-brand-charcoal leading-relaxed mb-3">
+                        <p className="text-xs sm:text-sm md:text-base text-brand-charcoal leading-relaxed mb-3">
                           {faq.a}
                         </p>
                         {faq.link && (

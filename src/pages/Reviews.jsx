@@ -59,25 +59,25 @@ const Reviews = () => {
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">
         <div className="absolute right-0 top-0 w-80 h-80 bg-brand-sky/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60">
+          <span className="inline-block px-3.5 sm:px-4 py-1.5 rounded-full bg-slate-800 text-brand-sky text-xs font-semibold uppercase tracking-wider border border-slate-700/60">
             Client Testimonials
           </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight break-words leading-tight">
             Client Reviews & Testimonials | NK Associates
           </h1>
-          <p className="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed">
             NK Associates is proud to help businesses and individuals stay compliant. Read verified reviews about our GST, TDS, and tax consultation services.
           </p>
         </div>
       </section>
 
       {/* Trust Statistics Summary Header */}
-      <section className="py-12 bg-slate-50 border-b border-slate-100 text-left">
+      <section className="py-8 sm:py-12 bg-slate-50 border-b border-slate-100 text-left">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-white rounded-3xl p-5 sm:p-8 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8">
             <div className="space-y-2">
               <div className="flex items-center gap-2.5">
-                <span className="text-5xl font-extrabold text-brand-navy">
+                <span className="text-4xl sm:text-5xl font-extrabold text-brand-navy">
                   {reviewStats.averageRating}
                 </span>
                 <div className="space-y-1">
@@ -87,12 +87,12 @@ const Reviews = () => {
                   </span>
                 </div>
               </div>
-              <p className="text-sm text-brand-charcoal">
+              <p className="text-xs sm:text-sm text-brand-charcoal">
                 Based on client feedback for GST filings, Income Tax return preparation, and corporate accounting consultation.
               </p>
             </div>
             
-            <div className="flex items-center gap-3 bg-brand-light px-5 py-3 rounded-2xl border border-sky-100 shrink-0">
+            <div className="flex items-center gap-3 bg-brand-light px-4 sm:px-5 py-3 rounded-2xl border border-sky-100 shrink-0 w-full sm:w-auto">
               <CheckCircle2 className="w-6 h-6 text-brand-sky shrink-0" />
               <div className="flex flex-col text-left">
                 <span className="text-sm font-bold text-brand-navy">100% Verified Reviews</span>
@@ -104,14 +104,14 @@ const Reviews = () => {
       </section>
 
       {/* Reviews Grid */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-12 sm:py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {reviewsData.map((review) => (
               <div
                 key={review.id}
-                className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between text-left relative"
+                className="bg-white p-5 sm:p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between text-left relative"
               >
                 {/* Quote Decorative Icon */}
                 <Quote className="absolute top-6 right-8 w-12 h-12 text-slate-100 pointer-events-none" />

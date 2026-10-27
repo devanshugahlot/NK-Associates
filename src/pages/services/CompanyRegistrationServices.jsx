@@ -55,7 +55,7 @@ const CompanyRegistrationServices = () => {
   };
 
   return (
-    <div className="pt-24 pb-16 bg-brand-extralight min-h-screen">
+    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
       <SEO 
         title="Company Registration | NK Associates"
         description="Fast Private Limited Company registration, LLP incorporation, MSME Udyam certificate, Startup India DPIIT recognition, and ROC compliance by NK Associates Jaipur."
@@ -81,29 +81,29 @@ const CompanyRegistrationServices = () => {
         </nav>
 
         {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-8 md:p-12 mb-12">
+        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
           <div className="max-w-3xl">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-50 text-brand-navy border border-blue-100 mb-4">
-              <Building className="w-3.5 h-3.5 text-brand-sky" />
+              <Building className="w-3.5 h-3.5 text-brand-sky shrink-0" />
               Corporate Secretarial & Startup Setup Practice
             </span>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
               Private Limited & LLP Registration Services in India
             </h1>
-            <p className="text-base md:text-lg text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
               Turn your entrepreneurial vision into a legally recognized legal entity. NK Associates offers fast-track, 100% paperless company incorporation under the Ministry of Corporate Affairs (MCA). From name reservation and DSC generation to Certificate of Incorporation (COI), PAN, TAN, and bank account setup, our corporate team manages the entire lifecycle.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
                 Incorporate Your Business
               </Button>
               <a 
                 href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20want%20to%20register%20a%20new%20company/LLP.`}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
               >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600" />
+                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
                 Speak with Incorporation Expert
               </a>
             </div>
@@ -111,7 +111,7 @@ const CompanyRegistrationServices = () => {
         </div>
 
         {/* Business Structures Grid */}
-        <section className="mb-14">
+        <section className="mb-10 sm:mb-14">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
               Select the Ideal Legal Structure for Your Enterprise
@@ -209,13 +209,13 @@ const CompanyRegistrationServices = () => {
         </section>
 
         {/* Incorporation Steps */}
-        <section className="bg-white rounded-2xl p-8 md:p-10 border border-slate-100 shadow-sm mb-12">
+        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-2xl font-bold text-brand-navy mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
                 4-Step Hassle-Free Company Incorporation Process
               </h2>
-              <p className="text-sm text-slate-600 mb-6 leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
                 With NK Associates, forming your company takes just 5 to 7 working days with zero physical visits to government offices:
               </p>
               <div className="space-y-4">
@@ -250,31 +250,31 @@ const CompanyRegistrationServices = () => {
               </div>
             </div>
 
-            <div className="bg-blue-50/50 rounded-xl p-6 border border-blue-100">
+            <div className="bg-blue-50/50 rounded-xl p-5 sm:p-6 border border-blue-100">
               <h3 className="text-lg font-bold text-brand-navy mb-3">Documents Needed from Promoters</h3>
-              <p className="text-sm text-slate-600 mb-4">
+              <p className="text-xs sm:text-sm text-slate-600 mb-4">
                 Scan copies required to begin your company registration:
               </p>
               <ul className="space-y-2.5 text-xs md:text-sm text-slate-700">
                 <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs">✓</span>
+                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs shrink-0">✓</span>
                   <span><strong>Directors:</strong> PAN card & Aadhaar card.</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs">✓</span>
+                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs shrink-0">✓</span>
                   <span><strong>Address Proof:</strong> Bank statement or utility bill (under 2 months old).</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs">✓</span>
+                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs shrink-0">✓</span>
                   <span><strong>Registered Office:</strong> Electricity bill & NOC from owner.</span>
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs">✓</span>
+                  <span className="w-4 h-4 rounded-full bg-blue-200 text-brand-navy flex items-center justify-center text-xs shrink-0">✓</span>
                   <span><strong>Photographs:</strong> Passport size photographs of all directors.</span>
                 </li>
               </ul>
               <div className="mt-6 pt-4 border-t border-blue-200">
-                <Link to="/contact" className="text-brand-navy font-semibold text-xs hover:underline inline-flex items-center">
+                <Link to="/contact" className="text-brand-navy font-semibold text-xs hover:underline inline-flex items-center min-h-[44px]">
                   Start Your Incorporation Online Today <ArrowRight className="w-3.5 h-3.5 ml-1 text-brand-sky" />
                 </Link>
               </div>
@@ -283,13 +283,13 @@ const CompanyRegistrationServices = () => {
         </section>
 
         {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-8 flex flex-wrap justify-between items-center gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1">
+        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
+          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
             ← View All Core Services
           </Link>
-          <div className="flex gap-4">
-            <Link to="/services/accounting-bookkeeping" className="text-brand-sky hover:underline font-medium">Accounting & Bookkeeping →</Link>
-            <Link to="/services/gst" className="text-brand-sky hover:underline font-medium">GST Services →</Link>
+          <div className="flex flex-wrap gap-4">
+            <Link to="/services/accounting-bookkeeping" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Accounting & Bookkeeping →</Link>
+            <Link to="/services/gst" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">GST Services →</Link>
           </div>
         </div>
       </div>

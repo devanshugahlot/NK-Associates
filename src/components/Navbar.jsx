@@ -36,8 +36,7 @@ const Navbar = () => {
     { name: 'Services', path: '/services' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Reviews', path: '/reviews' },
-    { name: 'Contact', path: '/contact' },
-    { name: 'Privacy Policy', path: '/privacy' }
+    { name: 'Contact', path: '/contact' }
   ];
 
   const cleanPhone = contactInfo.whatsappNumber.replace(/[^0-9]/g, '');

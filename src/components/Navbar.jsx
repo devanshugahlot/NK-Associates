@@ -46,7 +46,6 @@ const Navbar = () => {
     { name: 'About Us', path: '/about-us' },
     { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Careers', path: '/careers' },
-    { name: 'Tax Blog', path: '/blog' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Reviews', path: '/reviews' },
     { name: 'Contact Us', path: '/contact' }
@@ -130,45 +129,45 @@ const Navbar = () => {
           <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between gap-2">
               {/* Logo */}
-              <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none min-w-0">
+              <Link to="/" className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0">
                 <img
                   src={logo}
                   alt="NK Associates - Chartered Accountants & Tax Consultants"
-                  className="h-9 sm:h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
+                  className="h-9 sm:h-10 md:h-11 xl:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 shrink-0"
                 />
-                <div className="flex flex-col min-w-0">
-                  <span className="text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-brand-navy leading-none truncate">
+                <div className="flex flex-col shrink-0">
+                  <span className="text-base sm:text-lg md:text-xl font-extrabold tracking-tight text-brand-navy leading-none whitespace-nowrap">
                     NK Associates
                   </span>
-                  <span className="text-[9px] sm:text-[10px] text-brand-skyDark font-semibold tracking-wide uppercase mt-0.5 truncate max-w-[170px] xs:max-w-none">
-                    Chartered Accountants • Pan-India
+                  <span className="text-[9px] sm:text-[10px] text-brand-skyDark font-semibold tracking-wide uppercase mt-0.5 whitespace-nowrap">
+                    Chartered Accountants
                   </span>
                 </div>
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden lg:flex items-center gap-1.5 xl:gap-4">
+              <nav className="hidden lg:flex items-center gap-1 xl:gap-2.5 2xl:gap-3.5 shrink-0">
                 {navLinks.map((link) => {
                   if (link.hasDropdown) {
                     return (
                       <div 
                         key={link.name} 
-                        className="relative group py-2"
+                        className="relative group py-2 shrink-0"
                         onMouseEnter={() => setIsServicesOpen(true)}
                         onMouseLeave={() => setIsServicesOpen(false)}
                       >
                         <NavLink
                           to={link.path}
                           className={({ isActive }) =>
-                            `flex items-center gap-1 text-xs xl:text-sm font-semibold tracking-wide transition-colors duration-200 px-2 py-1.5 rounded-lg focus:outline-none ${
+                            `flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm font-semibold tracking-wide transition-colors duration-200 px-2 xl:px-2.5 py-1.5 rounded-lg focus:outline-none shrink-0 ${
                               isActive || location.pathname.startsWith('/services')
                                 ? 'text-brand-sky'
                                 : 'text-brand-navy hover:text-brand-sky'
                             }`
                           }
                         >
-                          {link.name}
-                          <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                          <span>{link.name}</span>
+                          <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180 shrink-0" />
                         </NavLink>
 
                         {/* Dropdown Menu */}
@@ -194,7 +193,7 @@ const Navbar = () => {
                       key={link.name}
                       to={link.path}
                       className={({ isActive }) =>
-                        `relative text-xs xl:text-sm font-semibold tracking-wide transition-colors duration-200 px-2 py-1.5 rounded-lg focus:outline-none ${
+                        `relative whitespace-nowrap text-xs xl:text-sm font-semibold tracking-wide transition-colors duration-200 px-2 xl:px-2.5 py-1.5 rounded-lg focus:outline-none shrink-0 ${
                           isActive
                             ? 'text-brand-sky'
                             : 'text-brand-navy hover:text-brand-sky'
@@ -203,7 +202,7 @@ const Navbar = () => {
                     >
                       {({ isActive }) => (
                         <>
-                          {link.name}
+                          <span>{link.name}</span>
                           {isActive && (
                             <motion.span
                               layoutId="activeNavUnderline"
@@ -219,18 +218,17 @@ const Navbar = () => {
               </nav>
 
               {/* Desktop CTA */}
-              <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
+              <div className="hidden lg:flex items-center gap-2 xl:gap-2.5 shrink-0">
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-all shadow-xs"
+                  className="hidden xl:inline-flex items-center gap-1.5 px-2.5 xl:px-3 py-2 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-all shadow-xs whitespace-nowrap shrink-0"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="hidden xl:inline">WhatsApp CA</span>
-                  <span className="xl:hidden">WhatsApp</span>
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                  <span>WhatsApp CA</span>
                 </a>
-                <Button to="/contact" variant="primary" className="!px-3.5 !py-2 !text-xs xl:!text-sm" icon={<ArrowRight className="w-3.5 h-3.5" />}>
+                <Button to="/contact" variant="primary" className="!px-3 xl:!px-4 !py-2 !text-xs xl:!text-sm whitespace-nowrap shrink-0" icon={<ArrowRight className="w-3.5 h-3.5 shrink-0" />}>
                   Book Consultation
                 </Button>
               </div>

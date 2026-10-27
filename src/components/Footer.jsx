@@ -103,11 +103,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/blog" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
-                  <span>Tax Blog & Updates</span>
-                </Link>
-              </li>
-              <li>
                 <Link to="/gallery" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
                   <span>Office Gallery</span>
                 </Link>

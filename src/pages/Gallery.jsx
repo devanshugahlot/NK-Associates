@@ -67,13 +67,33 @@ const Gallery = () => {
     touchEndX.current = 0;
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Office Gallery",
+        "item": "https://nkassociate.in/gallery"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="Office & Workplace Gallery | NK Associates Chartered Accountants Jaipur"
-        description="Explore the modern workspace, meeting rooms, and collaborative environment of NK Associates Chartered Accountants in Jaipur. Featuring 15 authentic office views."
+        title="Office Gallery | NK Associates"
+        description="Explore the modern corporate workspace, consultation desks, and collaborative environment of NK Associates Chartered Accountants in Sanganer, Jaipur."
         keywords="NK Associates office, CA office photos Jaipur, NK Associates workplace gallery, CA firm Jaipur office, chartered accountant jaipur office"
         canonicalPath="/gallery"
+        schemaJson={breadcrumbSchema}
       />
 
       {/* Hero Header */}

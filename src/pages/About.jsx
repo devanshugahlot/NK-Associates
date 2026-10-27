@@ -63,13 +63,33 @@ const About = () => {
     }
   ];
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "About Us",
+        "item": "https://nkassociate.in/about-us"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="About Us | NK Associates - CA & Tax Consultants | Jaipur & Pan-India"
-        description="Learn about NK Associates, a premier Chartered Accountant firm headquartered in Jaipur, delivering 100% digital GST, Income Tax, and corporate compliance services across India."
+        title="About Us | NK Associates"
+        description="Learn about NK Associates, leading Chartered Accountants in Jaipur providing digital GST, ITR, company audit, and corporate compliance services across India."
         keywords="about NK Associates, Chartered Accountant Jaipur, Pan India CA services, tax consultants team Jaipur, CA firm profile Rajasthan"
-        canonicalPath="/about"
+        canonicalPath="/about-us"
+        schemaJson={breadcrumbSchema}
       />
       {/* About Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">

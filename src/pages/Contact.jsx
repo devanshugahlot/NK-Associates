@@ -110,13 +110,33 @@ I would like to request the following service:
     }, 1500);
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Contact Us",
+        "item": "https://nkassociate.in/contact"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="Contact Us | NK Associates - CA Office in Jaipur & Pan-India Desk"
-        description="Connect with NK Associates: Visit our Jaipur head office or book an instant 100% digital consultation from anywhere in India. Call +91-75688-20015."
+        title="Contact Us | NK Associates"
+        description="Connect with NK Associates: Visit our Jaipur head office in Sanganer or book an online tax and CA consultation from anywhere in India. Call +91-75688-20015."
         keywords="contact CA Jaipur, Pan India CA consultation, tax consultant phone number Jaipur, NK Associates address, CA office in Sanganer Jaipur"
         canonicalPath="/contact"
+        schemaJson={breadcrumbSchema}
       />
       {/* Contact Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">

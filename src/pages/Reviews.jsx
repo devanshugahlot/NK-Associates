@@ -27,13 +27,33 @@ const StarRating = ({ rating, size = 16 }) => {
 };
 
 const Reviews = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Client Reviews",
+        "item": "https://nkassociate.in/reviews"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="Client Reviews & Ratings | NK Associates Chartered Accountants Jaipur"
+        title="Client Reviews | NK Associates"
         description="Read verified client reviews and ratings (4.8/5) for NK Associates. Trusted CA and tax consultancy firm for GST, Income Tax return filing in Jaipur."
         keywords="NK Associates reviews, CA Jaipur ratings, client testimonials tax consultant Jaipur, best CA in Jaipur reviews"
         canonicalPath="/reviews"
+        schemaJson={breadcrumbSchema}
       />
       {/* Reviews Hero */}
       <section className="bg-brand-navy text-white py-16 lg:py-24 relative overflow-hidden">

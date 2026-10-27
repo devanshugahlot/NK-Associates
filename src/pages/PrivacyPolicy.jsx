@@ -21,13 +21,33 @@ import SEO from '../components/SEO';
 import { contactInfo } from '../data/contactInfo';
 
 const PrivacyPolicy = () => {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Privacy Policy",
+        "item": "https://nkassociate.in/privacy"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="Privacy Policy | NK Associates Private Limited"
-        description="Official Privacy Policy of NK Associates Private Limited (nkassociate.in). Learn how we collect, process, store and safeguard your tax, financial and personal information."
+        title="Privacy Policy | NK Associates"
+        description="Official Privacy Policy of NK Associates. Learn how we securely process, store, and safeguard your financial and tax records under strict confidentiality."
         keywords="NK Associates privacy policy, data security chartered accountant, client data protection Jaipur CA, tax data privacy nkassociate.in"
         canonicalPath="/privacy"
+        schemaJson={breadcrumbSchema}
       />
 
       {/* Hero Header */}

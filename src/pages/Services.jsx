@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   UserCheck,
@@ -208,13 +208,33 @@ I would like to request the following service:
     return matchesSearch && matchesCategory;
   });
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nkassociate.in/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Services",
+        "item": "https://nkassociate.in/services"
+      }
+    ]
+  };
+
   return (
     <PageTransition>
       <SEO
-        title="CA & Tax Services | Jaipur & Pan-India - NK Associates"
-        description="100% digital CA and tax compliance services across India: GST registration & filings, Income Tax return filing, TDS, statutory audits, and company incorporation."
+        title="Services | NK Associates"
+        description="Comprehensive CA and tax compliance services across India: GST registration, Income Tax return filing, statutory audit, company registration, and bookkeeping."
         keywords="GST registration India, ITR filing online, CA services Jaipur, TDS return filing, company incorporation India, statutory audit Rajasthan, bookkeeping Jaipur"
         canonicalPath="/services"
+        schemaJson={breadcrumbSchema}
       />
       {/* Services Hero */}
       <section className="bg-brand-navy text-white py-14 sm:py-20 lg:py-28 relative overflow-hidden">
@@ -253,6 +273,56 @@ I would like to request the following service:
       {/* Main Interactive Directory Section */}
       <section className="py-10 md:py-24 bg-brand-extralight/40 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Dedicated Service Practices Grid for Search Engines & Quick Navigation */}
+          <div className="mb-12">
+            <div className="mb-6">
+              <h2 className="text-xl md:text-2xl font-bold text-brand-navy">Explore Dedicated Service Practices</h2>
+              <p className="text-xs md:text-sm text-slate-500 mt-1">Detailed guides, documentation checklists, and statutory procedures for your business needs.</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <Link to="/services/gst" className="p-4 rounded-xl bg-white border border-slate-200 hover:border-brand-sky hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-brand-sky uppercase tracking-wide bg-sky-50 px-2 py-0.5 rounded">Practice 01</span>
+                  <h3 className="text-sm font-bold text-brand-navy group-hover:text-brand-sky transition-colors mt-2">GST Services</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">New GSTIN, monthly GSTR-1/3B, and GSTR-9C reconciliation.</p>
+                </div>
+                <span className="text-xs font-semibold text-brand-sky mt-3 inline-flex items-center">Explore Details →</span>
+              </Link>
+              <Link to="/services/income-tax" className="p-4 rounded-xl bg-white border border-slate-200 hover:border-brand-sky hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wide bg-emerald-50 px-2 py-0.5 rounded">Practice 02</span>
+                  <h3 className="text-sm font-bold text-brand-navy group-hover:text-brand-sky transition-colors mt-2">Income Tax</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">Personal & corporate ITR, capital gains, tax planning.</p>
+                </div>
+                <span className="text-xs font-semibold text-emerald-700 mt-3 inline-flex items-center">Explore Details →</span>
+              </Link>
+              <Link to="/services/audit-assurance" className="p-4 rounded-xl bg-white border border-slate-200 hover:border-brand-sky hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-indigo-700 uppercase tracking-wide bg-indigo-50 px-2 py-0.5 rounded">Practice 03</span>
+                  <h3 className="text-sm font-bold text-brand-navy group-hover:text-brand-sky transition-colors mt-2">Audit & Assurance</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">Statutory audits, tax audits u/s 44AB, and UDIN certificates.</p>
+                </div>
+                <span className="text-xs font-semibold text-indigo-700 mt-3 inline-flex items-center">Explore Details →</span>
+              </Link>
+              <Link to="/services/company-registration" className="p-4 rounded-xl bg-white border border-slate-200 hover:border-brand-sky hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-blue-700 uppercase tracking-wide bg-blue-50 px-2 py-0.5 rounded">Practice 04</span>
+                  <h3 className="text-sm font-bold text-brand-navy group-hover:text-brand-sky transition-colors mt-2">Company Setup</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">Pvt Ltd, LLP, MSME Udyam, and ROC annual filings.</p>
+                </div>
+                <span className="text-xs font-semibold text-blue-700 mt-3 inline-flex items-center">Explore Details →</span>
+              </Link>
+              <Link to="/services/accounting-bookkeeping" className="p-4 rounded-xl bg-white border border-slate-200 hover:border-brand-sky hover:shadow-md transition-all group flex flex-col justify-between">
+                <div>
+                  <span className="text-[10px] font-bold text-cyan-800 uppercase tracking-wide bg-cyan-50 px-2 py-0.5 rounded">Practice 05</span>
+                  <h3 className="text-sm font-bold text-brand-navy group-hover:text-brand-sky transition-colors mt-2">Bookkeeping</h3>
+                  <p className="text-xs text-slate-600 mt-1 leading-relaxed">Tally Prime, Zoho Books, bank reconciliation, and MIS.</p>
+                </div>
+                <span className="text-xs font-semibold text-cyan-800 mt-3 inline-flex items-center">Explore Details →</span>
+              </Link>
+            </div>
+          </div>
           
           {/* Controls: Search and Filters (Sticky on scroll) */}
           <div className="sticky top-[98px] md:top-[105px] z-30 bg-white/95 backdrop-blur-md rounded-2xl shadow-sm border border-slate-100 p-4 md:p-6 mb-8 flex flex-col lg:flex-row gap-4 justify-between items-center transition-all duration-300">

@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, ArrowRight, Phone, MessageSquare, Linkedin, Facebook, Instagram } from 'lucide-react';
+import { Menu, X, ArrowRight, Phone, MessageSquare, Linkedin, Facebook, Instagram, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '../assets/logo.png';
 import Button from './ui/Button';
 import { contactInfo } from '../data/contactInfo';
 
+const serviceSubLinks = [
+  { name: 'All Services Overview', path: '/services' },
+  { name: 'GST Registration & Filing', path: '/services/gst' },
+  { name: 'Income Tax Return (ITR)', path: '/services/income-tax' },
+  { name: 'Audit & Assurance', path: '/services/audit-assurance' },
+  { name: 'Company Registration', path: '/services/company-registration' },
+  { name: 'Accounting & Bookkeeping', path: '/services/accounting-bookkeeping' },
+];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -28,15 +38,18 @@ const Navbar = () => {
   // Close mobile menu on page change
   useEffect(() => {
     setIsOpen(false);
+    setIsServicesOpen(false);
   }, [location]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'Services', path: '/services' },
+    { name: 'About Us', path: '/about-us' },
+    { name: 'Services', path: '/services', hasDropdown: true },
+    { name: 'Careers', path: '/careers' },
+    { name: 'Tax Blog', path: '/blog' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Reviews', path: '/reviews' },
-    { name: 'Contact', path: '/contact' }
+    { name: 'Contact Us', path: '/contact' }
   ];
 
   const cleanPhone = contactInfo.whatsappNumber.replace(/[^0-9]/g, '');
@@ -133,33 +146,75 @@ const Navbar = () => {
               </Link>
 
               {/* Desktop Navigation Links */}
-              <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
-                {navLinks.map((link) => (
-                  <NavLink
-                    key={link.name}
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `relative text-sm font-semibold tracking-wide transition-colors duration-200 py-2 focus:outline-none ${
-                        isActive
-                          ? 'text-brand-sky'
-                          : 'text-brand-navy hover:text-brand-sky'
-                      }`
-                    }
-                  >
-                    {({ isActive }) => (
-                      <>
-                        {link.name}
-                        {isActive && (
-                          <motion.span
-                            layoutId="activeNavUnderline"
-                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-sky rounded-full"
-                            transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                          />
-                        )}
-                      </>
-                    )}
-                  </NavLink>
-                ))}
+              <nav className="hidden lg:flex items-center gap-3 xl:gap-5">
+                {navLinks.map((link) => {
+                  if (link.hasDropdown) {
+                    return (
+                      <div 
+                        key={link.name} 
+                        className="relative group py-2"
+                        onMouseEnter={() => setIsServicesOpen(true)}
+                        onMouseLeave={() => setIsServicesOpen(false)}
+                      >
+                        <NavLink
+                          to={link.path}
+                          className={({ isActive }) =>
+                            `flex items-center gap-1 text-sm font-semibold tracking-wide transition-colors duration-200 py-1 focus:outline-none ${
+                              isActive || location.pathname.startsWith('/services')
+                                ? 'text-brand-sky'
+                                : 'text-brand-navy hover:text-brand-sky'
+                            }`
+                          }
+                        >
+                          {link.name}
+                          <ChevronDown className="w-3.5 h-3.5 transition-transform group-hover:rotate-180" />
+                        </NavLink>
+
+                        {/* Dropdown Menu */}
+                        <div className="absolute top-full left-0 w-64 pt-2 opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-200 z-50">
+                          <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-2 space-y-0.5">
+                            {serviceSubLinks.map((sub) => (
+                              <Link
+                                key={sub.name}
+                                to={sub.path}
+                                className="block px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:text-brand-sky hover:bg-sky-50/60 transition-colors"
+                              >
+                                {sub.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <NavLink
+                      key={link.name}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `relative text-sm font-semibold tracking-wide transition-colors duration-200 py-1 focus:outline-none ${
+                          isActive
+                            ? 'text-brand-sky'
+                            : 'text-brand-navy hover:text-brand-sky'
+                        }`
+                      }
+                    >
+                      {({ isActive }) => (
+                        <>
+                          {link.name}
+                          {isActive && (
+                            <motion.span
+                              layoutId="activeNavUnderline"
+                              className="absolute -bottom-1 left-0 right-0 h-0.5 bg-brand-sky rounded-full"
+                              transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                            />
+                          )}
+                        </>
+                      )}
+                    </NavLink>
+                  );
+                })}
               </nav>
 
               {/* Desktop CTA */}
@@ -200,24 +255,56 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: 'easeInOut' }}
-              className="lg:hidden bg-white border-b border-slate-200 shadow-xl overflow-hidden"
+              className="lg:hidden bg-white border-b border-slate-200 shadow-xl overflow-hidden max-h-[85vh] overflow-y-auto"
             >
-              <div className="px-4 pt-3 pb-6 space-y-2">
-                {navLinks.map((link) => (
-                  <NavLink
-                    key={link.name}
-                    to={link.path}
-                    className={({ isActive }) =>
-                      `block px-3.5 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
-                        isActive
-                          ? 'bg-brand-light text-brand-skyDark'
-                          : 'text-brand-navy hover:bg-slate-50 hover:text-brand-sky'
-                      }`
-                    }
-                  >
-                    {link.name}
-                  </NavLink>
-                ))}
+              <div className="px-4 pt-3 pb-6 space-y-1.5">
+                {navLinks.map((link) => {
+                  if (link.hasDropdown) {
+                    return (
+                      <div key={link.name} className="space-y-1">
+                        <NavLink
+                          to={link.path}
+                          className={({ isActive }) =>
+                            `block px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                              isActive || location.pathname.startsWith('/services')
+                                ? 'bg-brand-light text-brand-skyDark'
+                                : 'text-brand-navy hover:bg-slate-50 hover:text-brand-sky'
+                            }`
+                          }
+                        >
+                          {link.name}
+                        </NavLink>
+                        <div className="pl-4 space-y-1 border-l-2 border-slate-100 ml-3">
+                          {serviceSubLinks.map((sub) => (
+                            <Link
+                              key={sub.name}
+                              to={sub.path}
+                              className="block py-1 px-2 text-xs text-slate-600 hover:text-brand-sky transition-colors font-medium"
+                            >
+                              • {sub.name}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <NavLink
+                      key={link.name}
+                      to={link.path}
+                      className={({ isActive }) =>
+                        `block px-3.5 py-2 rounded-xl text-sm font-semibold transition-colors ${
+                          isActive
+                            ? 'bg-brand-light text-brand-skyDark'
+                            : 'text-brand-navy hover:bg-slate-50 hover:text-brand-sky'
+                        }`
+                      }
+                    >
+                      {link.name}
+                    </NavLink>
+                  );
+                })}
 
                 {/* Mobile Quick Actions */}
                 <div className="pt-4 border-t border-slate-100 grid grid-cols-2 gap-2">
@@ -281,9 +368,6 @@ const Navbar = () => {
           )}
         </AnimatePresence>
       </header>
-
-      {/* Spacer to push content below the sticky navbar + top announcement bar */}
-      <div className="h-[98px] md:h-[105px]"></div>
     </>
   );
 };

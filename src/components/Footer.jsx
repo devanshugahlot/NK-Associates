@@ -81,25 +81,35 @@ const Footer = () => {
             <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
               Quick Links
             </h3>
-            <ul className="space-y-3.5 text-sm">
+            <ul className="space-y-3 text-sm">
               <li>
                 <Link to="/" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
                   <span>Home</span>
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                <Link to="/about-us" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
                   <span>About Us</span>
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
-                  <span>Our Services</span>
+                  <span>All Services</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/careers" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <span>Careers & Articleship</span>
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
+                  <span>Tax Blog & Updates</span>
                 </Link>
               </li>
               <li>
                 <Link to="/gallery" className="hover:text-white transition-colors duration-300 flex items-center gap-2">
-                  <span>Gallery</span>
+                  <span>Office Gallery</span>
                 </Link>
               </li>
               <li>
@@ -120,40 +130,40 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Column 3: Services */}
+          {/* Column 3: Practice Areas */}
           <div>
             <h3 className="text-white font-semibold text-base mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-8 after:bg-brand-sky">
-              Our Services
+              Practice Areas
             </h3>
             <ul className="space-y-3.5 text-sm">
               <li>
-                <Link to="/services#gst-reg" className="hover:text-white transition-colors duration-300">
-                  GST Services
+                <Link to="/services/gst" className="hover:text-white transition-colors duration-300">
+                  GST Registration & Returns
                 </Link>
               </li>
               <li>
-                <Link to="/services#itr" className="hover:text-white transition-colors duration-300">
-                  Income Tax Return
+                <Link to="/services/income-tax" className="hover:text-white transition-colors duration-300">
+                  Income Tax (ITR) Filing
                 </Link>
               </li>
               <li>
-                <Link to="/services#notice-reply" className="hover:text-white transition-colors duration-300">
-                  TDS & Notices Reply
-                </Link>
-              </li>
-              <li>
-                <Link to="/services#audit" className="hover:text-white transition-colors duration-300">
+                <Link to="/services/audit-assurance" className="hover:text-white transition-colors duration-300">
                   Statutory & Tax Audit
                 </Link>
               </li>
               <li>
-                <Link to="/services#company-reg" className="hover:text-white transition-colors duration-300">
-                  Company Incorporation
+                <Link to="/services/company-registration" className="hover:text-white transition-colors duration-300">
+                  Company & LLP Registration
+                </Link>
+              </li>
+              <li>
+                <Link to="/services/accounting-bookkeeping" className="hover:text-white transition-colors duration-300">
+                  Accounting & Bookkeeping
                 </Link>
               </li>
               <li>
                 <Link to="/services#project-report" className="hover:text-white transition-colors duration-300">
-                  Project Report & CMA
+                  Project Report & CMA Data
                 </Link>
               </li>
             </ul>

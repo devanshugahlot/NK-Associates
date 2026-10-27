@@ -12,7 +12,16 @@ import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
 import Reviews from "./pages/Reviews";
 import Contact from "./pages/Contact";
+import Careers from "./pages/Careers";
+import Blog from "./pages/Blog";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+
+// Specialized Service Subpages
+import GSTServices from "./pages/services/GSTServices";
+import IncomeTaxServices from "./pages/services/IncomeTaxServices";
+import AuditAssuranceServices from "./pages/services/AuditAssuranceServices";
+import CompanyRegistrationServices from "./pages/services/CompanyRegistrationServices";
+import AccountingBookkeepingServices from "./pages/services/AccountingBookkeepingServices";
 
 const App = () => {
   return (
@@ -26,12 +35,26 @@ const App = () => {
       {/* Page Routing */}
       <main className="flex-grow">
         <Routes>
+          {/* Main Landmark Pages */}
           <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+
+          {/* Dedicated Service Practice Pages */}
+          <Route path="/services/gst" element={<GSTServices />} />
+          <Route path="/services/income-tax" element={<IncomeTaxServices />} />
+          <Route path="/services/audit-assurance" element={<AuditAssuranceServices />} />
+          <Route path="/services/company-registration" element={<CompanyRegistrationServices />} />
+          <Route path="/services/accounting-bookkeeping" element={<AccountingBookkeepingServices />} />
+
+          {/* Supporting Landmark Pages */}
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 

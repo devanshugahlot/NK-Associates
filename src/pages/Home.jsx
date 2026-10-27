@@ -60,13 +60,13 @@ const homeFaqs = [
   {
     q: "How can I register for GST with NK Associates from outside Jaipur?",
     a: "You simply upload your documents (PAN, Aadhaar, electricity bill, and rent agreement/NOC) via WhatsApp or email. Our certified team reviews everything, files the application online, tracks the ARN, and secures your GSTIN without you needing to step outside your office.",
-    link: "/services#gst-reg",
+    link: "/services/gst",
     linkText: "View GST Registration Services"
   },
   {
     q: "Does NK Associates file Income Tax Returns (ITR) for salaried & business clients?",
     a: "Yes, NK Associates files all forms of Income Tax Returns including ITR-1, ITR-2, ITR-3, ITR-4, ITR-5, and ITR-6 for salaried individuals, professionals, traders, LLPs, and companies, ensuring maximum tax savings and compliance with latest IT rules.",
-    link: "/services#itr",
+    link: "/services/income-tax",
     linkText: "Explore Income Tax Services"
   },
   {
@@ -133,42 +133,48 @@ const Home = () => {
       title: "GST Return Filing",
       desc: "Monthly & quarterly GSTR-1 and GSTR-3B filings, and purchase reconciliation (ITC optimization).",
       icon: <Receipt className="w-8 h-8 text-brand-sky" />,
-      tag: "Pan-India Digital"
+      tag: "Pan-India Digital",
+      link: "/services/gst"
     },
     {
       id: "itr",
       title: "Income Tax Return",
       desc: "Expert filing of personal and business Income Tax Returns (ITR-1 to ITR-4) with tax planning.",
       icon: <Percent className="w-8 h-8 text-brand-sky" />,
-      tag: "Fast 24-48h Delivery"
+      tag: "Fast 24-48h Delivery",
+      link: "/services/income-tax"
     },
     {
       id: "company-reg",
       title: "Company Incorporation",
       desc: "End-to-end setup and registration of Private Limited, OPC, LLP, and partnership firms nationwide.",
       icon: <Briefcase className="w-8 h-8 text-brand-sky" />,
-      tag: "100% Online MCA"
+      tag: "100% Online MCA",
+      link: "/services/company-registration"
     },
     {
       id: "audit",
       title: "Statutory & Tax Audit",
       desc: "Independent statutory audits, internal financial audits, and Section 44AB tax audits.",
       icon: <ShieldCheck className="w-8 h-8 text-brand-sky" />,
-      tag: "Audited Financials"
+      tag: "Audited Financials",
+      link: "/services/audit-assurance"
     },
     {
       id: "project-report",
       title: "Project Report & CMA",
       desc: "Preparation of detailed project reports, financial projections, and CMA data for bank loans.",
       icon: <TrendingUp className="w-8 h-8 text-brand-sky" />,
-      tag: "Bank Loan Approved"
+      tag: "Bank Loan Approved",
+      link: "/services/audit-assurance"
     },
     {
       id: "notice-reply",
       title: "Tax Notice Reply",
       desc: "Legal drafting and representation for Income Tax, GST, and corporate department notices.",
       icon: <ShieldAlert className="w-8 h-8 text-brand-sky" />,
-      tag: "Expert Legal Draft"
+      tag: "Expert Legal Draft",
+      link: "/services/income-tax"
     }
   ];
 
@@ -568,7 +574,7 @@ const Home = () => {
                     {service.desc}
                   </p>
                 </div>
-                <Button to={`/services#${service.id}`} variant="light" className="w-full flex justify-between items-center group-hover:bg-brand-sky group-hover:text-white transition-colors duration-300">
+                <Button to={service.link || `/services#${service.id}`} variant="light" className="w-full flex justify-between items-center group-hover:bg-brand-sky group-hover:text-white transition-colors duration-300">
                   <span>Learn More</span>
                   <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -596,7 +602,7 @@ const Home = () => {
                 Whether you need a fresh GST registration, monthly GSTR return filing, amendment filings, or revocation of cancellation, we manage the entire lifecycle with zero hassle.
               </p>
               <div className="pt-2 flex flex-wrap gap-3">
-                <Button to="/services#gst-reg" variant="primary" icon={<ArrowRight className="w-4 h-4" />}>
+                <Button to="/services/gst" variant="primary" icon={<ArrowRight className="w-4 h-4" />}>
                   Get GST Assistance
                 </Button>
                 <a

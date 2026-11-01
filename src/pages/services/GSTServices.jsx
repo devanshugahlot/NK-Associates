@@ -1,22 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { 
-  FileCheck2, 
-  Receipt, 
-  HelpCircle, 
-  ArrowRight, 
-  ShieldCheck, 
-  CheckCircle2, 
-  AlertCircle,
-  FileSpreadsheet,
-  Clock,
-  PhoneCall
-} from 'lucide-react';
 import SEO from '../../components/SEO';
-import Button from '../../components/ui/Button';
-import { contactInfo } from '../../data/contactInfo';
+import { gstConfig } from '../../components/gst/gstConfig';
+import { GstPackageProvider } from '../../context/GstPackageContext';
+
+// GST Landing Page Section Components
+import Hero from '../../components/gst/Hero';
+import TrustStrip from '../../components/gst/TrustStrip';
+import Packages from '../../components/gst/Packages';
+import HowItWorks from '../../components/gst/HowItWorks';
+import WhoShouldRegister from '../../components/gst/WhoShouldRegister';
+import DocumentsRequired from '../../components/gst/DocumentsRequired';
+import RegistrationTypes from '../../components/gst/RegistrationTypes';
+import Benefits from '../../components/gst/Benefits';
+import Faq from '../../components/gst/Faq';
+import FinalCta from '../../components/gst/FinalCta';
+import MobileStickyBar from '../../components/gst/MobileStickyBar';
 
 const GSTServices = () => {
+  // 1. Breadcrumb Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -36,12 +37,13 @@ const GSTServices = () => {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "GST Services",
+        "name": "GST Registration Services",
         "item": "https://nkassociate.in/services/gst"
       }
     ]
   };
 
+  // 2. Service / ProfessionalService Schema
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
@@ -50,239 +52,99 @@ const GSTServices = () => {
       "@type": "AccountingService",
       "name": "NK Associates",
       "telephone": "+91-75688-20015",
-      "url": "https://nkassociate.in/"
+      "url": "https://nkassociate.in/",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Sanganer",
+        "addressLocality": "Jaipur",
+        "addressRegion": "Rajasthan",
+        "postalCode": "302029",
+        "addressCountry": "IN"
+      }
     },
-    "areaServed": "India",
-    "description": "Complete Goods and Services Tax compliance including GST registration, GSTR-1, GSTR-3B monthly filing, annual return GSTR-9/9C reconciliation, and GST department notice resolution in Jaipur and Pan-India."
+    "areaServed": {
+      "@type": "Country",
+      "name": "India"
+    },
+    "description": "100% online GST registration and return filing services by certified Chartered Accountants in Jaipur and Pan-India. Dedicated expert support, ARN/TRN generation, and fast turnaround."
+  };
+
+  // 3. FAQPage Schema dynamically mapped from gstConfig.faqs
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": gstConfig.faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  const combinedSchema = {
+    "@context": "https://schema.org",
+    "@graph": [breadcrumbSchema, serviceSchema, faqSchema]
   };
 
   return (
-    <div className="pt-20 sm:pt-24 pb-12 sm:pb-16 bg-brand-extralight min-h-screen">
+    <GstPackageProvider>
       <SEO 
-        title="GST Services | NK Associates"
-        description="Comprehensive GST registration, monthly GSTR-1 & 3B return filing, annual GSTR-9 reconciliation, and department notice assistance by NK Associates Jaipur."
-        keywords="GST registration Jaipur, GST return filing online, GSTR-1, GSTR-3B, GSTR-9C reconciliation, GST notice reply, CA for GST India"
+        title="GST Registration in India — 100% Online | NK Associates"
+        description="Fast, paperless GST registration by certified Chartered Accountants in Jaipur. Transparent pricing from ₹599, dedicated CA support, zero office visits."
+        keywords="GST registration India, online GST registration, GST registration Jaipur, CA for GST, new GSTIN application, GST filing Rajasthan"
         canonicalPath="/services/gst"
-        schemaJson={{ ...breadcrumbSchema, ...serviceSchema }}
+        schemaJson={combinedSchema}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-6">
-          <ol className="flex items-center space-x-2 text-xs text-slate-500">
-            <li>
-              <Link to="/" className="hover:text-brand-sky transition-colors font-medium">Home</Link>
-            </li>
-            <li><span>/</span></li>
-            <li>
-              <Link to="/services" className="hover:text-brand-sky transition-colors font-medium">Services</Link>
-            </li>
-            <li><span>/</span></li>
-            <li className="text-brand-sky font-semibold" aria-current="page">GST Services</li>
-          </ol>
-        </nav>
+      <main className="min-h-screen bg-white">
+        {/* 1. Hero Section: H1, subline, 4 tick benefits, right-side form card on desktop, directly below on mobile */}
+        <Hero />
 
-        {/* Hero Section */}
-        <div className="bg-white rounded-2xl shadow-premium border border-slate-100 p-5 sm:p-8 md:p-12 mb-8 sm:mb-12">
-          <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-sky-50 text-brand-sky border border-sky-100 mb-4">
-              <Receipt className="w-3.5 h-3.5 shrink-0" />
-              Goods & Services Tax (GST) Practice
-            </span>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-brand-navy tracking-tight mb-4 break-words">
-              Professional GST Registration & Return Filing Services
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-slate-600 leading-relaxed mb-6">
-              NK Associates provides end-to-end digital GST compliance solutions for proprietorships, partnership firms, LLPs, Private Limited companies, and e-commerce sellers across Jaipur and Pan-India. From new GSTIN applications to annual audits, we safeguard your business against penalties while maximizing your legal Input Tax Credit (ITC).
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <Button href="/contact" variant="primary" className="w-full sm:w-auto text-center justify-center">
-                Consult a GST Expert
-              </Button>
-              <a 
-                href={`https://wa.me/${contactInfo.whatsappNumber.replace(/[^0-9]/g, '')}?text=Hello%20NK%20Associates,%20I%20need%20assistance%20with%20GST%20services.`}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold border border-slate-300 text-brand-navy hover:bg-slate-50 transition-all min-h-[44px] w-full sm:w-auto"
-              >
-                <PhoneCall className="w-4 h-4 mr-2 text-emerald-600 shrink-0" />
-                WhatsApp Advisory
-              </a>
-            </div>
-          </div>
-        </div>
+        {/* 2. Trust Strip: Verified factual claims for NK Associates */}
+        <TrustStrip />
 
-        {/* Detailed Solutions Grid */}
-        <section className="mb-10 sm:mb-14">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-navy">
-              Comprehensive GST Compliance Spectrum
-            </h2>
-            <p className="text-slate-600 text-sm mt-2">
-              Timely filing, zero error reconciliations, and proactive tax optimization tailored to your trade volume.
-            </p>
-          </div>
+        {/* 3. Packages: 4 cards (₹599, ₹799, ₹2399, ₹7599) with Best Value highlight */}
+        <Packages />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                01
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">New GST Registration</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Fast-track GSTIN allocation with biometric Aadhaar authentication advisory, precise HSN/SAC classification, and complete principal place of business verification.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Normal Scheme & Composition Scheme</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Multi-state Branch GST Registrations</li>
-              </ul>
-            </div>
+        {/* 4. How We Work: 6 steps from form submission to certificate delivery */}
+        <HowItWorks />
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                02
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">Monthly / Quarterly Return Filing</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Error-free monthly GSTR-1 outward supply reporting and GSTR-3B tax payment submissions. QRMP scheme filing for qualifying small enterprises.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> B2B Invoice matching on GST Portal</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Zero return filing without delay penalty</li>
-              </ul>
-            </div>
+        {/* 5. Who Should Register: Turnover thresholds, e-commerce, casual person criteria */}
+        <WhoShouldRegister />
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                03
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">GSTR-2B & Purchase Reconciliation</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Automated reconciliation between your purchase ledger and GSTR-2B to capture 100% of eligible Input Tax Credit and identify defaulting vendors.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Ineligible ITC identification</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Vendor follow-up data generation</li>
-              </ul>
-            </div>
+        {/* 6. Documents Required: 8 icon cards with clear scanner instructions */}
+        <DocumentsRequired />
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                04
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">Annual Returns (GSTR-9 & 9C)</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Year-end compilation of turnover, taxes paid, and ITC availed. Preparation of GSTR-9 annual return and GSTR-9C reconciliation statement with audited financials.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Turnover reconciliation with ITR</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> DRC-03 voluntary payment guidance</li>
-              </ul>
-            </div>
+        {/* 7. Types of GST Registration: Regular, Casual, Non-Resident, E-Commerce */}
+        <RegistrationTypes />
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                05
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">GST Notice Reply & Legal Scrutiny</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Expert representation and written legal submissions for ASMT-10 scrutiny notices, DRC-01 demand notices, and ITC mismatch inquiries under section 73/74.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Case-law backed legal drafting</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Personal hearings representation</li>
-              </ul>
-            </div>
+        {/* 8. Benefits: 6 commercial & tax advantages */}
+        <Benefits />
 
-            <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
-              <div className="w-10 h-10 rounded-lg bg-sky-50 text-brand-sky flex items-center justify-center mb-4 font-bold">
-                06
-              </div>
-              <h3 className="text-lg font-bold text-brand-navy mb-2">E-Way Bill & E-Invoicing Advisory</h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-4">
-                Implementation of mandatory electronic invoicing (IRN) for businesses above turnover thresholds and smooth generation of consolidated consignment E-Way Bills.
-              </p>
-              <ul className="text-xs text-slate-500 space-y-1.5">
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> ERP & billing software integration</li>
-                <li className="flex items-center gap-1.5"><CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" /> Vehicle change & validity extension</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Content Section: Documents & Process */}
-        <section className="bg-white rounded-2xl p-5 sm:p-8 md:p-10 border border-slate-100 shadow-sm mb-8 sm:mb-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 break-words">
-                Documents Required for GST Registration
+        {/* 9. Reviews: Render ONLY if real authenticated reviews exist in gstConfig.js */}
+        {gstConfig.trust.reviews && gstConfig.trust.reviews.length > 0 && (
+          <section id="reviews" aria-labelledby="reviews-heading" className="py-12 sm:py-16 bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 id="reviews-heading" className="text-2xl font-bold text-brand-navy text-center mb-8">
+                Client Testimonials
               </h2>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
-                NK Associates ensures paperless document onboarding. To initiate your registration or transfer compliance, keep the following records ready for our chartered tax desk:
-              </p>
-              <ul className="space-y-3 text-xs sm:text-sm text-slate-700">
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
-                  <span><strong>Proprietor/Partner/Director:</strong> PAN Card, Aadhaar Card, Passport photo, and contact details.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
-                  <span><strong>Business Constitution Proof:</strong> Partnership deed, LLP agreement, or Certificate of Incorporation (MCA).</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
-                  <span><strong>Registered Office Proof:</strong> Electricity bill / property tax receipt along with NOC from the premise owner.</span>
-                </li>
-                <li className="flex items-start gap-2.5">
-                  <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs mt-0.5 shrink-0">✓</span>
-                  <span><strong>Bank Account Proof:</strong> Cancelled cheque leaf or updated bank statement showing IFSC and entity name.</span>
-                </li>
-              </ul>
+              {/* Testimonials grid */}
             </div>
+          </section>
+        )}
 
-            <div className="bg-slate-50 rounded-xl p-5 sm:p-6 border border-slate-200">
-              <h3 className="text-lg font-bold text-brand-navy mb-3">Why Choose NK Associates for GST?</h3>
-              <p className="text-xs sm:text-sm text-slate-600 mb-4">
-                We combine deep statutory knowledge with real-time tracking systems to guarantee zero late fees and complete audit defense.
-              </p>
-              <div className="space-y-3 text-xs sm:text-sm">
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-5 h-5 text-brand-sky shrink-0" />
-                  <span className="font-semibold text-slate-800">100% Digital Document Exchange</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-brand-sky shrink-0" />
-                  <span className="font-semibold text-slate-800">Advance Due-Date Alerts (3 Days Prior)</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FileSpreadsheet className="w-5 h-5 text-brand-sky shrink-0" />
-                  <span className="font-semibold text-slate-800">Monthly ITC Maximization Reconciliation</span>
-                </div>
-              </div>
-              <div className="mt-6 pt-4 border-t border-slate-200">
-                <Link 
-                  to="/contact" 
-                  className="inline-flex items-center text-brand-sky font-semibold text-sm hover:underline min-h-[44px]"
-                >
-                  Schedule a Consultation in Jaipur Office <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* 10. FAQ Accordion: 12 accessible questions with keyboard navigation */}
+        <Faq />
 
-        {/* Other Service Links */}
-        <div className="border-t border-slate-200 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 sm:gap-4 text-sm">
-          <Link to="/services" className="text-slate-600 hover:text-brand-navy font-semibold flex items-center gap-1 min-h-[44px]">
-            ← View All Core Services
-          </Link>
-          <div className="flex flex-wrap gap-4">
-            <Link to="/services/income-tax" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Income Tax Services →</Link>
-            <Link to="/services/audit-assurance" className="text-brand-sky hover:underline font-medium min-h-[44px] flex items-center">Audit & Assurance →</Link>
-          </div>
-        </div>
-      </div>
-    </div>
+        {/* 11. Final CTA Band: 'Get Started' + Call + WhatsApp buttons */}
+        <FinalCta />
+
+        {/* Mobile Sticky Bar: Hidden when form card is in the viewport */}
+        <MobileStickyBar />
+      </main>
+    </GstPackageProvider>
   );
 };
 

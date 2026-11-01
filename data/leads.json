@@ -1,0 +1,21 @@
+[
+  {
+    "id": "lead_23ec7680433cb04b",
+    "fullName": "Test User",
+    "email": "test@example.com",
+    "mobile": "9876543210",
+    "state": "Rajasthan",
+    "packageId": "smart-plan",
+    "packageName": "Smart Plan",
+    "basePrice": 7599,
+    "gstAmount": 1368,
+    "totalAmount": 8967,
+    "totalInPaise": 896700,
+    "status": "paid",
+    "createdAt": "2026-11-01T16:42:57.896Z",
+    "updatedAt": "2026-11-01T16:43:05.950Z",
+    "razorpayOrderId": "order_test_f06fa4ce1e386d",
+    "razorpayPaymentId": "pay_test_12345",
+    "paidAt": "2026-11-01T16:43:05.948Z"
+  }
+]

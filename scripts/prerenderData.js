@@ -110,65 +110,57 @@ export const routesData = {
     `
   },
   'services/gst': {
-    title: 'GST Services | NK Associates',
-    description: 'Expert GST registration, monthly GSTR-1, GSTR-3B filing, annual returns GSTR-9/9C, notice reply, and ITC optimization in Jaipur & Pan-India.',
+    title: 'GST Registration in India — 100% Online | NK Associates',
+    description: 'Fast, paperless GST registration by certified Chartered Accountants in Jaipur. Transparent pricing from ₹599, dedicated CA support, zero office visits.',
     canonical: 'https://nkassociate.in/services/gst',
     parentCrumb: { name: 'Services', url: 'https://nkassociate.in/services' },
-    breadcrumbName: 'GST Services',
+    breadcrumbName: 'GST Registration',
     content: `
       <main class="max-w-5xl mx-auto px-4 py-16">
         <nav aria-label="Breadcrumb" class="mb-6 text-sm text-slate-500">
           <a href="/" class="text-sky-600 hover:underline">Home</a> &gt; 
           <a href="/services" class="text-sky-600 hover:underline">Services</a> &gt; 
-          <span class="text-slate-800 font-medium">GST Services</span>
+          <span class="text-slate-800 font-medium">GST Registration</span>
         </nav>
-        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">GST Registration & Return Filing Services</h1>
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">GST Registration in India — 100% Online</h1>
         <p class="text-lg text-slate-700 leading-relaxed mb-8">
-          Goods and Services Tax (GST) compliance in India requires rigorous documentation, precise invoice matching, and timely portal filings. NK Associates provides end-to-end GST management for manufacturers, wholesalers, service providers, e-commerce sellers, and startups in Jaipur and throughout India.
+          Fast, paperless GST registration for proprietors, partnership firms, LLPs, and companies. Complete compliance managed by qualified Chartered Accountants with zero departmental visits.
         </p>
 
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">Our Complete GST Practice Offerings</h2>
-        <div class="space-y-6 mb-10">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Transparent GST Registration Packages</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           <div class="p-5 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 class="text-lg font-bold text-slate-900 mb-2">1. Digital GST Registration</h3>
-            <p class="text-slate-700 leading-relaxed">
-              We manage mandatory and voluntary GST registrations under the CGST/SGST Acts. Whether you are crossing the ₹40 Lakh goods or ₹20 Lakh services turnover threshold, selling on Amazon/Flipkart, or expanding interstate, our CAs prepare and file application Form GST REG-01 with verified documentation to secure GSTIN without queries.
-            </p>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">GST Complete Plan</h3>
+            <p class="text-2xl font-bold text-slate-900 mb-2">₹599 <span class="text-xs text-slate-500 font-normal">/ month (+18% GST)</span></p>
+            <p class="text-slate-700 text-xs leading-relaxed">GST registration, monthly GSTR-1 & GSTR-3B filings, accounting software, and dedicated accountant.</p>
           </div>
           <div class="p-5 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 class="text-lg font-bold text-slate-900 mb-2">2. Monthly & Quarterly GST Return Filings</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Timely filing of GSTR-1 (outward supplies), GSTR-3B (monthly summary and tax liability), and QRMP scheme returns. We perform automatic reconciliation between purchase registers and GSTR-2B to ensure 100% legitimate Input Tax Credit (ITC) claims and avoid Section 16(4) restrictions.
-            </p>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Registration Plan</h3>
+            <p class="text-2xl font-bold text-slate-900 mb-2">₹799 <span class="text-xs text-slate-500 font-normal">one-time (+18% GST)</span></p>
+            <p class="text-slate-700 text-xs leading-relaxed">Complete one-time GST registration, ARN & TRN generation, and dedicated email/phone support.</p>
           </div>
           <div class="p-5 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 class="text-lg font-bold text-slate-900 mb-2">3. Annual Returns & Reconciliation (GSTR-9 & GSTR-9C)</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Comprehensive annual compilation and self-certified reconciliation between audited financial statements and filed GST returns, eliminating spillover errors, excess ITC claims, and rate mismatch issues.
-            </p>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Business Compliance & Growth</h3>
+            <p class="text-2xl font-bold text-slate-900 mb-2">₹2,399 <span class="text-xs text-slate-500 font-normal">/ month (+18% GST)</span></p>
+            <p class="text-slate-700 text-xs leading-relaxed">GST registration & return filing, bookkeeping, ITR filing, ROC compliance, and TDS filing.</p>
           </div>
           <div class="p-5 border border-slate-200 rounded-xl bg-slate-50">
-            <h3 class="text-lg font-bold text-slate-900 mb-2">4. GST Notice Reply & Departmental Representation</h3>
-            <p class="text-slate-700 leading-relaxed">
-              Received a notice under DRC-01, ASMT-10, or Section 73/74 regarding ITC discrepancies or turnover mismatch? Our tax advocates and senior CAs draft point-by-point legal submissions and represent your enterprise before GST adjudicating authorities.
-            </p>
+            <h3 class="text-lg font-bold text-slate-900 mb-1">Smart Plan (Best Value)</h3>
+            <p class="text-2xl font-bold text-slate-900 mb-2">₹7,599 <span class="text-xs text-slate-500 font-normal">/ year (+18% GST)</span></p>
+            <p class="text-slate-700 text-xs leading-relaxed">Free GST registration, 12 months GST returns, bookkeeping, and annual ITR filing included.</p>
           </div>
         </div>
 
-        <h2 class="text-2xl font-bold text-slate-900 mb-4">Frequently Asked Questions on GST</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4">Frequently Asked Questions</h2>
         <div class="space-y-4 mb-8 text-slate-700">
           <div>
-            <h3 class="font-semibold text-slate-900">What is the penalty for late GST return filing?</h3>
-            <p>Late fees of ₹50 per day (₹20 per day for nil returns) apply under Section 47 of the CGST Act, plus 18% annual interest on delayed net tax liabilities.</p>
+            <h3 class="font-semibold text-slate-900">What is the difference between GSTIN and GSTN?</h3>
+            <p class="text-sm">GSTIN is the 15-digit registration identification number, while GSTN is the technological network portal that operates the platform.</p>
           </div>
           <div>
-            <h3 class="font-semibold text-slate-900">Can NK Associates file GST returns for businesses outside Jaipur?</h3>
-            <p>Yes. Our entire GST compliance workflow is 100% digital, serving clients in Delhi NCR, Mumbai, Bengaluru, Ahmedabad, and across India via encrypted portals.</p>
+            <h3 class="font-semibold text-slate-900">How long does GST registration take?</h3>
+            <p class="text-sm">Typically 3-7 working days, subject to GST department verification.</p>
           </div>
-        </div>
-        <div class="bg-sky-50 border border-sky-200 p-6 rounded-xl text-center">
-          <p class="text-slate-800 font-semibold mb-2">Ready to streamline your GST compliance?</p>
-          <a href="/contact" class="inline-block bg-sky-600 text-white font-medium px-6 py-2.5 rounded-lg hover:bg-sky-700">Get in Touch with GST Experts</a>
         </div>
       </main>
     `

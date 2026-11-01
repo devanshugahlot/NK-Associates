@@ -1,4 +1,5 @@
 import http from 'http';
+import saveLeadHandler from '../api/gst/save-lead.js';
 import createOrderHandler from '../api/gst/create-order.js';
 import verifyPaymentHandler from '../api/gst/verify-payment.js';
 import webhookHandler from '../api/gst/webhook.js';
@@ -64,6 +65,12 @@ const server = http.createServer(async (req, res) => {
   const pathname = url.pathname;
 
   try {
+    if (pathname === '/api/gst/save-lead' && req.method === 'POST') {
+      req.body = await parseJsonBody(req);
+      await saveLeadHandler(req, adaptResponse(res));
+      return;
+    }
+
     if (pathname === '/api/gst/create-order' && req.method === 'POST') {
       req.body = await parseJsonBody(req);
       await createOrderHandler(req, adaptResponse(res));

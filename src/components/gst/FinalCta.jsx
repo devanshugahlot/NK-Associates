@@ -10,10 +10,22 @@ const FinalCta = () => {
   const whatsappUrl = `https://wa.me/${cleanPhone}?text=${encodeURIComponent(gstConfig.contact.whatsappText)}`;
 
   return (
-    <section className="bg-gradient-to-r from-brand-navy via-slate-900 to-brand-navyLight text-white py-14 sm:py-16 lg:py-20 relative overflow-hidden">
+    <section className="relative bg-brand-navy text-white py-16 sm:py-20 lg:py-24 overflow-hidden">
+      {/* Background Image (Slot 6) with soft navy-to-sky gradient overlay (~85-90%) */}
+      <img
+        src="/images/gst/cta-bg.webp"
+        alt="Modern commercial corporate architectural skyscraper glass facade"
+        width={1400}
+        height={500}
+        loading="lazy"
+        decoding="async"
+        className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-slate-900/90 to-brand-navyLight/95 pointer-events-none" />
+
       {/* Decorative ambient gradients */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-brand-sky/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-0 w-80 h-80 bg-brand-sky/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
         

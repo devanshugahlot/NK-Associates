@@ -29,10 +29,10 @@ const RegistrationTypes = () => {
           {gstConfig.registrationTypes.map((type, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:shadow-md hover:border-slate-300 transition-all duration-200"
+              className="bg-white rounded-2xl p-6 border border-slate-200/90 shadow-sm flex flex-col justify-between hover:shadow-xl hover:border-sky-300 transition-all duration-300 group"
             >
               <div>
-                <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 mb-3">
+                <span className="inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-sky-50 text-brand-skyDark border border-sky-100 mb-3">
                   {type.badge}
                 </span>
                 <h3 className="text-base sm:text-lg font-bold text-brand-navy mb-2">

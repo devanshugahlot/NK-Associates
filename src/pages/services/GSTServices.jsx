@@ -6,6 +6,7 @@ import { GstPackageProvider } from '../../context/GstPackageContext';
 // GST Landing Page Section Components
 import Hero from '../../components/gst/Hero';
 import TrustStrip from '../../components/gst/TrustStrip';
+import WhyChooseUs from '../../components/gst/WhyChooseUs';
 import Packages from '../../components/gst/Packages';
 import HowItWorks from '../../components/gst/HowItWorks';
 import WhoShouldRegister from '../../components/gst/WhoShouldRegister';
@@ -105,7 +106,10 @@ const GSTServices = () => {
         {/* 2. Trust Strip: Verified factual claims for NK Associates */}
         <TrustStrip />
 
-        {/* 3. Packages: 4 cards (₹599, ₹799, ₹2399, ₹7599) with Best Value highlight */}
+        {/* 3. Why Choose Us / Service Overview: Split layout with Slot 2 image */}
+        <WhyChooseUs />
+
+        {/* 4. Packages: 4 cards (₹599, ₹799, ₹2399, ₹7599) with Best Value highlight */}
         <Packages />
 
         {/* 4. How We Work: 6 steps from form submission to certificate delivery */}

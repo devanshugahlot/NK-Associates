@@ -3,8 +3,12 @@ import React, { createContext, useContext, useState, useRef, useCallback } from 
 const GstPackageContext = createContext(null);
 
 export const GstPackageProvider = ({ children }) => {
-  // Default to the flagship 'smart-plan' or 'registration-plan'
+  // Current active step: 1 = Details, 2 = Package, 3 = Payment/Confirmation
+  const [currentStep, setCurrentStep] = useState(1);
+  const [hasSubmittedStep1, setHasSubmittedStep1] = useState(false);
   const [selectedPackageId, setSelectedPackageId] = useState('smart-plan');
+  const [leadId, setLeadId] = useState(null);
+  const [preselectedViaButton, setPreselectedViaButton] = useState(false);
   const [isFormHighlighted, setIsFormHighlighted] = useState(false);
 
   const formRef = useRef(null);
@@ -12,11 +16,17 @@ export const GstPackageProvider = ({ children }) => {
   const highlightTimeoutRef = useRef(null);
 
   /**
-   * Select a package and smoothly transition the user directly to the enquiry & payment form
+   * Action triggered when user clicks "Select Plan" anywhere on the page
    */
   const selectPackage = useCallback((packageId) => {
     if (packageId) {
       setSelectedPackageId(packageId);
+      setPreselectedViaButton(true);
+    }
+
+    // If user already completed Step 1 (their contact details), jump straight to Step 2
+    if (hasSubmittedStep1) {
+      setCurrentStep(2);
     }
 
     if (formRef.current) {
@@ -30,7 +40,6 @@ export const GstPackageProvider = ({ children }) => {
         block: 'start',
       });
 
-      // Apply temporary visual highlight (ring / glow animation ~1.2s)
       if (highlightTimeoutRef.current) {
         clearTimeout(highlightTimeoutRef.current);
       }
@@ -39,20 +48,27 @@ export const GstPackageProvider = ({ children }) => {
         setIsFormHighlighted(false);
       }, 1200);
 
-      // Focus on first input for instant keyboard/accessibility readiness
       setTimeout(() => {
         if (firstFieldRef.current) {
           firstFieldRef.current.focus({ preventScroll: true });
         }
       }, prefersReducedMotion ? 50 : 450);
     }
-  }, []);
+  }, [hasSubmittedStep1]);
 
   return (
     <GstPackageContext.Provider
       value={{
+        currentStep,
+        setCurrentStep,
+        hasSubmittedStep1,
+        setHasSubmittedStep1,
         selectedPackageId,
         setSelectedPackageId,
+        leadId,
+        setLeadId,
+        preselectedViaButton,
+        setPreselectedViaButton,
         selectPackage,
         formRef,
         firstFieldRef,

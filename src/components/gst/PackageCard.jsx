@@ -7,10 +7,10 @@ const PackageCard = ({ pkg, isSelected, onSelect }) => {
 
   return (
     <div
-      className={`relative rounded-2xl flex flex-col justify-between transition-all duration-300 ${
+      className={`relative rounded-2xl flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 ${
         isBestValue
-          ? 'bg-white border-2 border-brand-sky shadow-xl lg:-translate-y-2 ring-4 ring-sky-100'
-          : 'bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300'
+          ? 'bg-white border-2 border-brand-sky shadow-xl lg:-translate-y-2 ring-4 ring-sky-100/80 hover:shadow-2xl'
+          : 'bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-sky-300'
       } ${isSelected ? 'ring-2 ring-brand-sky border-brand-sky' : ''}`}
     >
       {/* Top Value Badge */}
@@ -30,17 +30,20 @@ const PackageCard = ({ pkg, isSelected, onSelect }) => {
           {pkg.description}
         </p>
 
-        <div className="mt-4 pt-4 border-t border-slate-100 flex items-baseline gap-1.5">
-          <span className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
-            {formatINR(pkg.price)}
-          </span>
-          <span className="text-xs font-semibold text-slate-500">
-            {pkg.billingPeriod}
-          </span>
+        <div className="mt-4 pt-4 border-t border-slate-100">
+          <div className="flex items-baseline gap-1.5">
+            <span className="text-3xl sm:text-4xl font-extrabold text-brand-navy tracking-tight">
+              {formatINR(pkg.price)}
+            </span>
+            <span className="text-xs font-semibold text-slate-500">
+              {pkg.billingPeriod}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] font-medium text-slate-400 mt-1">
+            <span>{pkg.periodNote}</span>
+            <span className="text-[10px] text-slate-500 font-semibold bg-slate-100 px-1.5 py-0.5 rounded">+18% GST</span>
+          </div>
         </div>
-        <p className="text-[11px] font-medium text-slate-400 mt-1">
-          {pkg.periodNote}
-        </p>
       </div>
 
       {/* Features List */}

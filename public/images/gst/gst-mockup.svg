@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" width="100%" height="100%" fill="none">
+  <defs>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+  </defs>
+
+  <!-- Card Background -->
+  <rect x="20" y="20" width="440" height="280" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" filter="url(#shadow)" />
+
+  <!-- Top Decorative Header Bar -->
+  <path d="M20 36 C20 27.16 27.16 20 36 20 L444 20 C452.84 20 460 27.16 460 36 L460 64 L20 64 Z" fill="#0f172a" />
+  
+  <!-- Mini Emblem / Icon -->
+  <circle cx="48" cy="42" r="14" fill="#0ea5e9" fill-opacity="0.2" />
+  <path d="M42 42 L46 46 L54 38" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  
+  <!-- Header Text -->
+  <text x="72" y="38" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">FORM GST REG-06</text>
+  <text x="72" y="52" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500">Government of India • GST Registration Certificate</text>
+
+  <!-- Verified Status Pill -->
+  <rect x="340" y="32" width="102" height="22" rx="11" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+  <circle cx="352" cy="43" r="4" fill="#10b981" />
+  <text x="362" y="47" fill="#10b981" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700">GSTIN ACTIVE</text>
+
+  <!-- Document Body Grid -->
+  <!-- 1. GSTIN Number Highlight Box -->
+  <rect x="42" y="82" width="396" height="52" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" />
+  <text x="56" y="100" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" text-transform="uppercase" letter-spacing="0.5">Registration Number (GSTIN)</text>
+  <text x="56" y="122" fill="#0f172a" font-family="system-ui, monospace" font-size="16" font-weight="800" letter-spacing="2">08AABCN1234F1Z5</text>
+  <rect x="320" y="93" width="104" height="28" rx="6" fill="#0ea5e9" fill-opacity="0.1" />
+  <text x="372" y="111" fill="#0284c7" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">100% ONLINE</text>
+
+  <!-- 2. Certificate Details Columns -->
+  <!-- Left Column -->
+  <text x="42" y="156" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">LEGAL NAME</text>
+  <text x="42" y="172" fill="#1e293b" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">Verified Business Enterprise</text>
+
+  <text x="42" y="198" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">CONSTITUTION OF BUSINESS</text>
+  <text x="42" y="214" fill="#1e293b" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="600">Proprietorship / LLP / Pvt Ltd</text>
+
+  <text x="42" y="240" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">PRINCIPAL PLACE OF BUSINESS</text>
+  <text x="42" y="256" fill="#1e293b" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="500">Jaipur, Rajasthan • Pan-India Operation</text>
+
+  <!-- Right Column / Stamp -->
+  <text x="250" y="156" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">DATE OF VALIDITY</text>
+  <text x="250" y="172" fill="#1e293b" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700">From Application Date • Regular</text>
+
+  <text x="250" y="198" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600">CERTIFYING AUTHORITY</text>
+  <text x="250" y="214" fill="#0284c7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">NK Associates • Chartered Accountants</text>
+
+  <!-- Official Digital Seal / Stamp -->
+  <g transform="translate(366, 222)">
+    <circle cx="26" cy="26" r="28" fill="url(#sealGrad)" fill-opacity="0.1" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 2" />
+    <circle cx="26" cy="26" r="22" stroke="#10b981" stroke-width="1" />
+    <path d="M18 26 L23 31 L34 20" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="26" y="42" fill="#059669" font-family="system-ui, -apple-system, sans-serif" font-size="6" font-weight="800" text-anchor="middle" letter-spacing="0.5">GOVT PORTAL</text>
+  </g>
+
+  <!-- Bottom Security Ribbon -->
+  <line x1="42" y1="274" x2="438" y2="274" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 3" />
+  <text x="42" y="288" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="500">Document generated electronically under the CGST &amp; SGST Act, 2017</text>
+  <text x="438" y="288" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" text-anchor="end">100% Paperless</text>
+</svg>

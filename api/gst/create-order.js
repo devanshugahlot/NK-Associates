@@ -1,9 +1,8 @@
 import crypto from 'crypto';
 import { calculateServerOrder } from '../../server/packageConfig.js';
-import { saveLead } from '../../server/leadStore.js';
+import { saveLead, getLead, updateLead } from '../../server/leadStore.js';
 
 export default async function handler(req, res) {
-  // CORS configuration
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
@@ -22,61 +21,58 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { fullName, email, mobile, state, packageId, honeypot } = req.body || {};
+    const { leadId, packageId, fullName, email, mobile, state } = req.body || {};
 
-    // 1. Anti-Bot honeypot check
-    if (honeypot) {
-      return res.status(400).json({ error: 'Automated submission detected.' });
+    if (!packageId) {
+      return res.status(400).json({ error: 'Package selection is required.' });
     }
 
-    // 2. Validate input fields
-    if (!fullName || typeof fullName !== 'string' || fullName.trim().length < 2) {
-      return res.status(400).json({ error: 'Valid full name is required.' });
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email.trim())) {
-      return res.status(400).json({ error: 'Valid email address is required.' });
-    }
-
-    const cleanMobile = (mobile || '').replace(/\D/g, '');
-    if (!cleanMobile || !/^[6-9]\d{9}$/.test(cleanMobile)) {
-      return res.status(400).json({ error: 'Valid 10-digit Indian mobile number is required.' });
-    }
-
-    if (!state) {
-      return res.status(400).json({ error: 'State of business is required.' });
-    }
-
-    // 3. Server-side authoritative price lookup
+    // 1. Authoritative server-side price calculation
     const orderPricing = calculateServerOrder(packageId);
 
-    // 4. Save lead with status 'payment_pending' BEFORE Razorpay order creation
-    const leadId = 'lead_' + crypto.randomBytes(8).toString('hex');
-    await saveLead({
-      id: leadId,
-      fullName: fullName.trim(),
-      email: email.trim().toLowerCase(),
-      mobile: cleanMobile,
-      state,
-      packageId: orderPricing.packageId,
-      packageName: orderPricing.packageName,
-      basePrice: orderPricing.basePrice,
-      gstAmount: orderPricing.gstAmount,
-      totalAmount: orderPricing.total,
-      totalInPaise: orderPricing.totalInPaise,
-      status: 'payment_pending',
-      createdAt: new Date().toISOString(),
-    });
+    // 2. Fetch or create lead
+    let targetLeadId = leadId;
+    let lead = targetLeadId ? await getLead(targetLeadId) : null;
 
-    // 5. Create Razorpay Order
+    if (lead) {
+      // Update existing lead to 'payment_pending'
+      await updateLead(lead.id, {
+        packageId: orderPricing.packageId,
+        packageName: orderPricing.packageName,
+        basePrice: orderPricing.basePrice,
+        gstAmount: orderPricing.gstAmount,
+        totalAmount: orderPricing.total,
+        totalInPaise: orderPricing.totalInPaise,
+        status: lead.status === 'paid' ? 'paid' : 'payment_pending',
+      });
+    } else {
+      // Create new lead if none exists
+      targetLeadId = 'lead_' + crypto.randomBytes(8).toString('hex');
+      const cleanMobile = (mobile || '').replace(/\D/g, '');
+      lead = await saveLead({
+        id: targetLeadId,
+        fullName: (fullName || 'Prospective Client').trim(),
+        email: (email || '').trim().toLowerCase(),
+        mobile: cleanMobile,
+        state: state || 'Rajasthan',
+        packageId: orderPricing.packageId,
+        packageName: orderPricing.packageName,
+        basePrice: orderPricing.basePrice,
+        gstAmount: orderPricing.gstAmount,
+        totalAmount: orderPricing.total,
+        totalInPaise: orderPricing.totalInPaise,
+        status: 'payment_pending',
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    // 3. Create Razorpay Order
     const keyId = process.env.RAZORPAY_KEY_ID;
     const keySecret = process.env.RAZORPAY_KEY_SECRET;
 
     let razorpayOrderId = null;
 
     if (keyId && keySecret) {
-      // Connect to official Razorpay API
       const authHeader = 'Basic ' + Buffer.from(`${keyId}:${keySecret}`).toString('base64');
       const rzpRes = await fetch('https://api.razorpay.com/v1/orders', {
         method: 'POST',
@@ -87,12 +83,12 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           amount: orderPricing.totalInPaise,
           currency: 'INR',
-          receipt: leadId,
+          receipt: lead.id,
           notes: {
-            leadId,
-            fullName: fullName.trim(),
+            leadId: lead.id,
+            fullName: lead.fullName,
             packageId: orderPricing.packageId,
-            mobile: cleanMobile,
+            mobile: lead.mobile,
           },
         }),
       });
@@ -106,17 +102,23 @@ export default async function handler(req, res) {
       const rzpData = await rzpRes.json();
       razorpayOrderId = rzpData.id;
     } else {
-      // Test / development fallback order
       razorpayOrderId = 'order_test_' + crypto.randomBytes(7).toString('hex');
-      console.log(`[Razorpay TEST Mode] Generated test order ${razorpayOrderId} for ${orderPricing.packageName}`);
+      console.log(`[Razorpay TEST Mode] Created order ${razorpayOrderId} for ${orderPricing.packageName}`);
     }
+
+    // Save orderId to lead
+    await updateLead(lead.id, {
+      razorpayOrderId,
+      orderId: razorpayOrderId,
+      status: 'payment_pending',
+    });
 
     return res.status(200).json({
       success: true,
       orderId: razorpayOrderId,
       amount: orderPricing.totalInPaise,
       currency: 'INR',
-      leadId,
+      leadId: lead.id,
       keyId: keyId || 'rzp_test_placeholder',
       packageName: orderPricing.packageName,
     });

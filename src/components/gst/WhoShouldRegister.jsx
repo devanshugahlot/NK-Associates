@@ -25,11 +25,11 @@ const WhoShouldRegister = () => {
         </div>
 
         {/* Desktop / Tablet Table View (hidden on small mobile) */}
-        <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <div className="hidden md:block overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm border-collapse">
-              <thead>
-                <tr className="bg-slate-100/80 border-b border-slate-200 text-brand-navy font-bold uppercase tracking-wider text-[11px]">
+              <thead className="sticky top-0 bg-slate-100/95 backdrop-blur-xs z-10">
+                <tr className="border-b border-slate-200 text-brand-navy font-bold uppercase tracking-wider text-[11px]">
                   <th scope="col" className="p-4 pl-6">Business Category</th>
                   <th scope="col" className="p-4">Statutory Threshold</th>
                   <th scope="col" className="p-4">Registration Timeline</th>
@@ -38,7 +38,7 @@ const WhoShouldRegister = () => {
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {gstConfig.whoShouldRegister.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-sky-50/30 transition-colors">
+                  <tr key={idx} className="odd:bg-white even:bg-slate-50/70 hover:bg-sky-50/50 transition-colors">
                     <td className="p-4 pl-6 font-bold text-brand-navy flex items-center gap-2">
                       <span className="w-2 h-2 rounded-full bg-brand-sky shrink-0" />
                       <span>{item.category}</span>

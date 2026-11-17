@@ -1,13 +1,15 @@
 /**
  * GST Registration Landing Page Configuration
- * Contains all editable copy, package pricing, steps, trust badges, FAQs, and contact links.
+ * Contains all editable copy, package pricing, steps, trust claims, FAQs, and contact links.
  */
 
 export const gstConfig = {
   // Brand & Contact Information (Synchronized with firm details)
   contact: {
-    firmName: 'NK Associates',
+    firmName: 'NK Associates - CA & Tax Consultants, Jaipur',
+    brandShort: 'NK Associates',
     qualification: 'Chartered Accountants & Tax Consultants',
+    officeAddress: 'Tonk Road, Sanganer, Jaipur, Rajasthan - 302029', // TODO: Update with exact shop/office suite number if needed
     location: 'Sanganer, Jaipur, Rajasthan',
     phoneDisplay: '+91 75688 20015',
     phoneValue: '+917568820015',
@@ -16,15 +18,44 @@ export const gstConfig = {
     email: 'info@nkassociate.in',
     processingTime: 'typically 3-7 working days, subject to GST department verification',
     workingHours: 'Monday – Saturday: 10:00 AM – 7:00 PM IST',
-    termsUrl: '/privacy',
-    refundUrl: '/privacy',
+    aboutUrl: '/about-us',
+    contactUrl: '/contact',
     privacyUrl: '/privacy',
+    termsUrl: '/privacy', // Linked to /privacy until standalone /terms-conditions page is added
+    refundUrl: '/refund-policy',
+    talkToExpertEnabled: true,
   },
 
-  // Trust Metrics & Verified Claims
-  // NOTE: Strict compliance with Trust Rules - No competitor claims, no unverified stats or fake reviews.
+  // Payment Gateway Configuration & Reassurance
+  payment: {
+    gatewayName: 'Cashfree Payments',
+    reassuranceText: 'Secure online payment powered by Cashfree Payments',
+    dataPrivacyText: 'We never store your card, UPI or bank details',
+    // Kept empty until user confirms specific payment methods enabled on Cashfree account
+    paymentMethods: [],
+  },
+
+  // "What happens after you pay" timeline (3 clear, honest steps)
+  afterPaymentSteps: [
+    {
+      step: 1,
+      title: 'Order Confirmation & Intake Call',
+      desc: 'Instant payment receipt emailed to you. A dedicated GST associate calls you within 15–30 minutes to review your business constitution.',
+    },
+    {
+      step: 2,
+      title: 'Digital Document Submission',
+      desc: 'Share clear digital copies of PAN, Aadhaar, address proof and bank proof via WhatsApp or email. No physical visits required.',
+    },
+    {
+      step: 3,
+      title: 'Portal Filing & GSTIN Issuance',
+      desc: 'We draft and submit Form GST REG-01 with ARN tracking within 24–48 hours. Final GSTIN and Certificate issued typically in 3-7 working days, subject to GST department verification.',
+    },
+  ],
+
+  // Trust Metrics & Verified Claims (Strict compliance with zero fake badges/numbers)
   trust: {
-    // Numerical stats kept null until officially verified by business owner
     yearsExperience: null,
     clientsServed: null,
     googleRating: null,
@@ -143,7 +174,7 @@ export const gstConfig = {
     {
       step: 1,
       title: 'Fill Form & Pay',
-      desc: 'Submit your contact details and securely pay the statutory service fee online.',
+      desc: 'Submit your contact details and securely pay the statutory service fee online via Cashfree.',
     },
     {
       step: 2,

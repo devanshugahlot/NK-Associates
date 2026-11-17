@@ -15,6 +15,7 @@ import Contact from "./pages/Contact";
 import Careers from "./pages/Careers";
 import Blog from "./pages/Blog";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import RefundPolicy from "./pages/RefundPolicy";
 
 // Specialized Service Subpages
 import GSTServices from "./pages/services/GSTServices";
@@ -57,6 +58,11 @@ const App = () => {
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/refund-policy" element={<RefundPolicy />} />
+          <Route path="/refund-and-cancellation" element={<RefundPolicy />} />
+          <Route path="/refund-cancellation" element={<RefundPolicy />} />
+          <Route path="/refund" element={<RefundPolicy />} />
+          <Route path="/cancellation-refund" element={<RefundPolicy />} />
 
           {/* Fallback redirecting undefined paths to Home */}
           <Route path="*" element={<Navigate to="/" replace />} />

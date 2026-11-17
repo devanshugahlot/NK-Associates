@@ -50,20 +50,27 @@ const DocumentsRequired = () => {
           
           {/* Left Column: Side Image (Slot 4) + Advisory Box (4 cols) */}
           <div className="lg:col-span-4 space-y-5">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-100">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-white group">
               <img
-                src="/images/gst/documents-checklist.webp"
-                alt="Organized KYC and business registration documentation"
-                width={540}
-                height={420}
+                src="/images/gst/gst-filing-checklist.jpg"
+                alt="GST Return GSTN and GSTIN Checklist Verification by Chartered Accountants"
+                width={1024}
+                height={768}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-64 sm:h-72 lg:h-80 object-cover rounded-2xl hover:scale-105 transition-transform duration-500"
+                className="w-full h-auto aspect-[4/3] object-cover rounded-2xl group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent pointer-events-none rounded-2xl" />
-              <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-xl shadow-md border border-white/40 text-xs">
-                <span className="font-bold text-brand-navy block">Pre-Scrutiny Guarantee</span>
-                <span className="text-[11px] text-slate-500">Every KYC file is audited before portal upload</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent pointer-events-none rounded-2xl" />
+              
+              <div className="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md p-3 rounded-xl shadow-md border border-white/40 text-xs">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span className="font-bold text-brand-navy">Pre-Scrutiny Guarantee</span>
+                  </div>
+                  <span className="text-[10px] font-bold text-brand-sky bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-full uppercase">100% Verified</span>
+                </div>
+                <span className="text-[11px] text-slate-500 block mt-0.5">Every KYC file is audited before portal upload</span>
               </div>
             </div>
 

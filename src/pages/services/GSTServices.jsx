@@ -8,6 +8,7 @@ import Hero from '../../components/gst/Hero';
 import TrustStrip from '../../components/gst/TrustStrip';
 import WhyChooseUs from '../../components/gst/WhyChooseUs';
 import Packages from '../../components/gst/Packages';
+import TrustSection from '../../components/gst/TrustSection';
 import HowItWorks from '../../components/gst/HowItWorks';
 import WhoShouldRegister from '../../components/gst/WhoShouldRegister';
 import DocumentsRequired from '../../components/gst/DocumentsRequired';
@@ -112,7 +113,10 @@ const GSTServices = () => {
         {/* 4. Packages: 4 cards (₹599, ₹799, ₹2399, ₹7599) with Best Value highlight */}
         <Packages />
 
-        {/* 4. How We Work: 6 steps from form submission to certificate delivery */}
+        {/* 4b. Why You Can Trust NK Associates & Post-Payment Timeline */}
+        <TrustSection />
+
+        {/* 5. How We Work: 6 steps from form submission to certificate delivery */}
         <HowItWorks />
 
         {/* 5. Who Should Register: Turnover thresholds, e-commerce, casual person criteria */}

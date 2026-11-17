@@ -113,7 +113,7 @@ const Hero = () => {
               <div className="relative rounded-2xl overflow-hidden border border-slate-700/80 shadow-2xl bg-slate-800 max-w-md w-full">
                 <img
                   src="/images/gst/hero-concept.webp"
-                  alt="Modern financial calculation, tax audit paperwork, and laptop workspace"
+                  alt="Modern compliance dashboard and business analytics on laptop"
                   width={540}
                   height={260}
                   fetchpriority="high"

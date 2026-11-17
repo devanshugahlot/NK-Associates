@@ -6,22 +6,14 @@ import webhookHandler from '../api/gst/webhook.js';
 
 const PORT = process.env.PORT || 5000;
 
-function parseJsonBody(req) {
+function readBody(req) {
   return new Promise((resolve, reject) => {
     let body = '';
     req.on('data', (chunk) => {
       body += chunk.toString();
     });
     req.on('end', () => {
-      if (!body) {
-        resolve({});
-        return;
-      }
-      try {
-        resolve(JSON.parse(body));
-      } catch (err) {
-        reject(err);
-      }
+      resolve(body);
     });
     req.on('error', reject);
   });
@@ -53,7 +45,10 @@ const server = http.createServer(async (req, res) => {
   // Global CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Razorpay-Signature');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'Content-Type, Authorization, x-webhook-signature, x-webhook-timestamp, x-api-version, x-client-id, x-client-secret'
+  );
 
   if (req.method === 'OPTIONS') {
     res.statusCode = 200;
@@ -64,52 +59,63 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = url.pathname;
 
+  // Populate query params onto req
+  req.query = Object.fromEntries(url.searchParams.entries());
+
   try {
     if (pathname === '/api/gst/save-lead' && req.method === 'POST') {
-      req.body = await parseJsonBody(req);
+      const raw = await readBody(req);
+      req.rawBody = raw;
+      req.body = raw ? JSON.parse(raw) : {};
       await saveLeadHandler(req, adaptResponse(res));
       return;
     }
 
     if (pathname === '/api/gst/create-order' && req.method === 'POST') {
-      req.body = await parseJsonBody(req);
+      const raw = await readBody(req);
+      req.rawBody = raw;
+      req.body = raw ? JSON.parse(raw) : {};
       await createOrderHandler(req, adaptResponse(res));
       return;
     }
 
-    if (pathname === '/api/gst/verify-payment' && req.method === 'POST') {
-      req.body = await parseJsonBody(req);
+    if (pathname === '/api/gst/verify-payment' && (req.method === 'POST' || req.method === 'GET')) {
+      if (req.method === 'POST') {
+        const raw = await readBody(req);
+        req.rawBody = raw;
+        req.body = raw ? JSON.parse(raw) : {};
+      }
       await verifyPaymentHandler(req, adaptResponse(res));
       return;
     }
 
     if (pathname === '/api/gst/webhook' && req.method === 'POST') {
-      req.body = await parseJsonBody(req);
+      const raw = await readBody(req);
+      req.rawBody = raw;
+      req.body = raw ? JSON.parse(raw) : {};
       await webhookHandler(req, adaptResponse(res));
       return;
     }
 
     if (pathname === '/api/health' || pathname === '/api/gst/health') {
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ status: 'ok', service: 'NK Associates GST API', timestamp: new Date().toISOString() }));
+      res.end(JSON.stringify({ status: 'ok', service: 'NK Associates GST API (Cashfree Payments)', timestamp: new Date().toISOString() }));
       return;
     }
 
     res.writeHead(404, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: 'Endpoint not found' }));
   } catch (err) {
-    console.error('Server error handling request:', err);
+    console.error('Server request error:', err);
     res.writeHead(500, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Internal server error: ' + err.message }));
+    res.end(JSON.stringify({ error: 'Internal server error', details: err.message }));
   }
 });
 
-server.listen(PORT, () => {
-  console.log(`=======================================================`);
-  console.log(`NK Associates GST Backend Server running on port ${PORT}`);
-  console.log(`- Health Check:    http://localhost:${PORT}/api/gst/health`);
-  console.log(`- Create Order:    http://localhost:${PORT}/api/gst/create-order`);
-  console.log(`- Verify Payment:  http://localhost:${PORT}/api/gst/verify-payment`);
-  console.log(`- Webhook:         http://localhost:${PORT}/api/gst/webhook`);
-  console.log(`=======================================================`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  server.listen(PORT, () => {
+    console.log(`NK Associates GST API Server running at http://localhost:${PORT}`);
+  });
+}
+
+export default server;

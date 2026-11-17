@@ -9,35 +9,49 @@ export default async function handler(req, res) {
   }
 
   try {
-    const webhookSecret = process.env.RAZORPAY_WEBHOOK_SECRET;
-    const webhookSignature = req.headers['x-razorpay-signature'];
+    const secretKey = process.env.CASHFREE_SECRET_KEY;
+    const timestamp = req.headers['x-webhook-timestamp'];
+    const signature = req.headers['x-webhook-signature'];
 
-    // Verify webhook signature if secret is configured
-    if (webhookSecret && webhookSignature) {
-      const rawBody = typeof req.body === 'string' ? req.body : JSON.stringify(req.body);
+    // Retrieve raw body string
+    const rawBody = req.rawBody || (typeof req.body === 'string' ? req.body : JSON.stringify(req.body));
+
+    // Verify Cashfree webhook signature if secret and headers are provided
+    if (secretKey && signature && timestamp) {
       const expectedSignature = crypto
-        .createHmac('sha256', webhookSecret)
-        .update(rawBody)
-        .digest('hex');
+        .createHmac('sha256', secretKey)
+        .update(timestamp + rawBody)
+        .digest('base64');
 
-      if (expectedSignature !== webhookSignature) {
-        console.warn('[Webhook] Invalid Razorpay webhook signature');
+      let isValid = false;
+      try {
+        const sigBuf = Buffer.from(signature, 'utf8');
+        const expectedBuf = Buffer.from(expectedSignature, 'utf8');
+        if (sigBuf.length === expectedBuf.length && crypto.timingSafeEqual(sigBuf, expectedBuf)) {
+          isValid = true;
+        }
+      } catch (e) {
+        isValid = false;
+      }
+
+      if (!isValid) {
+        console.warn('[Webhook] Invalid Cashfree webhook signature verification failure');
         return res.status(400).json({ error: 'Invalid webhook signature.' });
       }
     }
 
-    const event = req.body?.event;
-    const payload = req.body?.payload;
+    const payload = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    const eventType = payload?.type;
+    const data = payload?.data;
 
-    if (event === 'payment.captured' || event === 'order.paid') {
-      const paymentEntity = payload?.payment?.entity;
-      const orderId = paymentEntity?.order_id;
-      const paymentId = paymentEntity?.id;
-      const leadId = paymentEntity?.notes?.leadId;
+    // Cashfree v3 Payment Success Webhook
+    if (eventType === 'PAYMENT_SUCCESS_WEBHOOK' || eventType === 'ORDER_PAID') {
+      const orderId = data?.order?.order_id || data?.order_id;
+      const paymentId = data?.payment?.cf_payment_id || data?.payment_id;
 
-      const targetId = leadId || orderId;
-      if (targetId) {
-        const lead = await getLead(targetId);
+      if (orderId) {
+        const lead = await getLead(orderId);
+
         // Idempotency check: if already paid, return 200 immediately
         if (lead && lead.status === 'paid') {
           return res.status(200).json({ received: true, alreadyProcessed: true });
@@ -46,8 +60,9 @@ export default async function handler(req, res) {
         if (lead) {
           const updated = await updateLead(lead.id, {
             status: 'paid',
-            razorpayOrderId: orderId,
-            razorpayPaymentId: paymentId,
+            orderId,
+            cashfreeOrderId: orderId,
+            paymentId,
             paidViaWebhook: true,
             paidAt: new Date().toISOString(),
           });
@@ -60,14 +75,14 @@ export default async function handler(req, res) {
             packageDetails,
           });
 
-          console.log(`[Webhook] Idempotently recorded paid order: ${orderId}`);
+          console.log(`[Webhook] Idempotently recorded paid Cashfree order: ${orderId}`);
         }
       }
     }
 
     return res.status(200).json({ received: true });
   } catch (err) {
-    console.error('Error in webhook handler:', err);
+    console.error('Error in Cashfree webhook handler:', err);
     return res.status(500).json({ error: 'Internal server error processing webhook.' });
   }
 }

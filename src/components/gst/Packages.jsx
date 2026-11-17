@@ -84,7 +84,7 @@ const Packages = () => {
         <div className="mt-6 pt-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 text-center sm:text-left">
           <div className="flex items-center gap-2">
             <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-            <span>Statutory Goods & Services Tax (18%) is calculated transparently upon checkout.</span>
+            <span className="font-semibold text-slate-700">Prices exclude 18% GST; the total payable is shown before you pay.</span>
           </div>
           <p className="text-slate-500 font-medium">
             Need a custom enterprise turnover plan? Call our Jaipur desk at <strong className="text-brand-navy">{gstConfig.contact.phoneDisplay}</strong>.

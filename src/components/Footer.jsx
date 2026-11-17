@@ -122,6 +122,11 @@ const Footer = () => {
                   <span>Privacy Policy</span>
                 </Link>
               </li>
+              <li>
+                <Link to="/refund-policy" className="hover:text-white transition-colors duration-200 py-1 inline-flex items-center gap-2">
+                  <span>Refund & Cancellation</span>
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -214,8 +219,9 @@ const Footer = () => {
             <ShieldCheck className="w-3.5 h-3.5 text-brand-sky" />
             <span>Chartered Accountant Practice • Jaipur HQ & Pan-India Services</span>
           </div>
-          <div className="flex gap-6">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-x-6 gap-y-2">
             <Link to="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+            <Link to="/refund-policy" className="hover:text-slate-300 transition-colors">Refund & Cancellation</Link>
             <a href="#/terms" className="hover:text-slate-300 transition-colors">Terms & Conditions</a>
           </div>
         </div>

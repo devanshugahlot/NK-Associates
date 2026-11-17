@@ -44,28 +44,28 @@ const Benefits = () => {
           
           {/* Left Column: Side Feature Image Card (Slot 5) - 4 cols */}
           <div className="lg:col-span-4 flex flex-col justify-between">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 h-full min-h-[340px]">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 h-full min-h-[380px] sm:min-h-[440px] flex flex-col justify-end group">
               <img
-                src="/images/gst/business-benefits.webp"
-                alt="E-commerce order dispatch and growing logistics business operations"
-                width={540}
-                height={500}
+                src="/images/gst/gst-growth-benefits.jpg"
+                alt="Input Tax Credit, Tax Savings, and Business Growth with GSTIN Registration"
+                width={1024}
+                height={768}
                 loading="lazy"
                 decoding="async"
-                className="w-full h-full object-cover opacity-85 hover:opacity-95 transition-opacity duration-300"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-slate-900/60 to-transparent pointer-events-none rounded-2xl" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-slate-900/40 to-transparent pointer-events-none rounded-2xl" />
               
               {/* Overlay Content */}
               <div className="absolute bottom-5 left-5 right-5 text-white space-y-2">
-                <span className="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold bg-sky-500/30 text-sky-200 border border-sky-400/40 uppercase tracking-wider">
-                  Pan-India Growth
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-extrabold bg-emerald-500/30 text-emerald-300 border border-emerald-400/40 uppercase tracking-wider">
+                  Tax Savings &amp; ITC
                 </span>
                 <h3 className="text-lg sm:text-xl font-bold leading-tight">
-                  Sell Across India on E-Commerce Portals
+                  Claim 100% Input Tax Credit &amp; Grow Revenue
                 </h3>
                 <p className="text-slate-300 text-xs leading-relaxed">
-                  GSTIN is mandatory to list products on Amazon, Flipkart, GeM portal, and supply corporate clients with tax invoices.
+                  Save on business expenditure, offset taxes paid on purchases, and unlock seamless pan-India corporate sales.
                 </p>
               </div>
             </div>

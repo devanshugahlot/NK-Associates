@@ -29,7 +29,7 @@ export const SERVER_PACKAGES = {
 export const GST_RATE = 0.18; // 18%
 
 /**
- * Compute total amount in rupees and paise with 18% GST
+ * Compute total amount in rupees with 2 decimal places and 18% GST
  * @param {string} packageId
  * @returns {object} price computation
  */
@@ -40,9 +40,8 @@ export function calculateServerOrder(packageId) {
   }
 
   const basePrice = pkg.basePrice;
-  const gstAmount = Math.round(basePrice * GST_RATE);
-  const total = basePrice + gstAmount;
-  const totalInPaise = total * 100;
+  const gstAmount = Number((basePrice * GST_RATE).toFixed(2));
+  const total = Number((basePrice + gstAmount).toFixed(2));
 
   return {
     packageId: pkg.id,
@@ -51,6 +50,5 @@ export function calculateServerOrder(packageId) {
     gstRate: GST_RATE,
     gstAmount,
     total,
-    totalInPaise,
   };
 }

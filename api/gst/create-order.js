@@ -27,7 +27,7 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Package selection is required.' });
     }
 
-    // 1. Authoritative server-side price calculation
+    // 1. Authoritative server-side price calculation (base + 18% GST in INR)
     const orderPricing = calculateServerOrder(packageId);
 
     // 2. Fetch or create lead
@@ -35,18 +35,15 @@ export default async function handler(req, res) {
     let lead = targetLeadId ? await getLead(targetLeadId) : null;
 
     if (lead) {
-      // Update existing lead to 'payment_pending'
       await updateLead(lead.id, {
         packageId: orderPricing.packageId,
         packageName: orderPricing.packageName,
         basePrice: orderPricing.basePrice,
         gstAmount: orderPricing.gstAmount,
         totalAmount: orderPricing.total,
-        totalInPaise: orderPricing.totalInPaise,
         status: lead.status === 'paid' ? 'paid' : 'payment_pending',
       });
     } else {
-      // Create new lead if none exists
       targetLeadId = 'lead_' + crypto.randomBytes(8).toString('hex');
       const cleanMobile = (mobile || '').replace(/\D/g, '');
       lead = await saveLead({
@@ -60,66 +57,86 @@ export default async function handler(req, res) {
         basePrice: orderPricing.basePrice,
         gstAmount: orderPricing.gstAmount,
         totalAmount: orderPricing.total,
-        totalInPaise: orderPricing.totalInPaise,
         status: 'payment_pending',
         createdAt: new Date().toISOString(),
       });
     }
 
-    // 3. Create Razorpay Order
-    const keyId = process.env.RAZORPAY_KEY_ID;
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+    // 3. Cashfree API Configuration
+    const appId = process.env.CASHFREE_APP_ID;
+    const secretKey = process.env.CASHFREE_SECRET_KEY;
+    const env = (process.env.CASHFREE_ENV || 'sandbox').toLowerCase();
+    const apiVersion = process.env.CASHFREE_API_VERSION || '2023-08-01';
 
-    let razorpayOrderId = null;
+    const baseUrl = env === 'production'
+      ? 'https://api.cashfree.com'
+      : 'https://sandbox.cashfree.com';
 
-    if (keyId && keySecret) {
-      const authHeader = 'Basic ' + Buffer.from(`${keyId}:${keySecret}`).toString('base64');
-      const rzpRes = await fetch('https://api.razorpay.com/v1/orders', {
+    let orderId = `NKGST_${lead.id.replace(/[^a-zA-Z0-9]/g, '')}_${Date.now()}`.slice(0, 45);
+    let paymentSessionId = null;
+
+    if (appId && secretKey) {
+      const cleanPhone = (lead.mobile || '').replace(/\D/g, '');
+      const validPhone = cleanPhone.length === 10 ? cleanPhone : '9876543210';
+
+      const cashfreePayload = {
+        order_id: orderId,
+        order_amount: orderPricing.total,
+        order_currency: 'INR',
+        customer_details: {
+          customer_id: lead.id.replace(/[^a-zA-Z0-9_]/g, '_'),
+          customer_name: lead.fullName || 'Prospective Client',
+          customer_email: lead.email || 'care@nkassociate.in',
+          customer_phone: validPhone,
+        },
+        order_meta: {
+          return_url: 'https://nkassociate.in/services/gst?order_id={order_id}',
+          notify_url: 'https://nkassociate.in/api/gst/webhook',
+        },
+        order_note: orderPricing.packageName,
+      };
+
+      const cfRes = await fetch(`${baseUrl}/pg/orders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': authHeader,
+          'x-client-id': appId,
+          'x-client-secret': secretKey,
+          'x-api-version': apiVersion,
         },
-        body: JSON.stringify({
-          amount: orderPricing.totalInPaise,
-          currency: 'INR',
-          receipt: lead.id,
-          notes: {
-            leadId: lead.id,
-            fullName: lead.fullName,
-            packageId: orderPricing.packageId,
-            mobile: lead.mobile,
-          },
-        }),
+        body: JSON.stringify(cashfreePayload),
       });
 
-      if (!rzpRes.ok) {
-        const errorText = await rzpRes.text();
-        console.error('Razorpay API error:', errorText);
-        throw new Error('Failed to create Razorpay payment order.');
+      if (!cfRes.ok) {
+        const errorText = await cfRes.text();
+        console.error('Cashfree Create Order error:', errorText);
+        throw new Error('Failed to create Cashfree payment order.');
       }
 
-      const rzpData = await rzpRes.json();
-      razorpayOrderId = rzpData.id;
+      const cfData = await cfRes.json();
+      orderId = cfData.order_id;
+      paymentSessionId = cfData.payment_session_id;
     } else {
-      razorpayOrderId = 'order_test_' + crypto.randomBytes(7).toString('hex');
-      console.log(`[Razorpay TEST Mode] Created order ${razorpayOrderId} for ${orderPricing.packageName}`);
+      // Mock / sandbox test mode when keys are not yet configured
+      orderId = 'order_test_' + crypto.randomBytes(7).toString('hex');
+      paymentSessionId = 'session_test_' + crypto.randomBytes(12).toString('hex');
+      console.log(`[Cashfree TEST Mode] Created test order ${orderId} for ${orderPricing.packageName}`);
     }
 
-    // Save orderId to lead
+    // Save order details to lead
     await updateLead(lead.id, {
-      razorpayOrderId,
-      orderId: razorpayOrderId,
+      orderId,
+      cashfreeOrderId: orderId,
+      paymentSessionId,
       status: 'payment_pending',
     });
 
     return res.status(200).json({
       success: true,
-      orderId: razorpayOrderId,
-      amount: orderPricing.totalInPaise,
-      currency: 'INR',
+      orderId,
+      paymentSessionId,
       leadId: lead.id,
-      keyId: keyId || 'rzp_test_placeholder',
+      amount: orderPricing.total,
       packageName: orderPricing.packageName,
     });
   } catch (err) {

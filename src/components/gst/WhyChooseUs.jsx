@@ -43,33 +43,37 @@ const WhyChooseUs = () => {
             transition={{ duration: 0.5 }}
             className="lg:col-span-5 relative"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-100 bg-slate-100">
-              <img
-                src="/images/gst/why-choose-us.webp"
-                alt="Modern collaborative enterprise workspace and consultation desk"
-                width={600}
-                height={420}
-                loading="lazy"
-                decoding="async"
-                className="w-full h-[320px] sm:h-[400px] lg:h-[440px] object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent pointer-events-none rounded-2xl" />
-              
-              {/* Floating Glass Badge */}
-              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/40">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
-                    <ShieldCheck className="w-5 h-5 text-emerald-600 stroke-[2.5]" />
-                  </div>
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/80 bg-gradient-to-b from-sky-50/50 via-white to-slate-50 p-2 sm:p-2.5">
+              <div className="relative rounded-2xl overflow-hidden bg-slate-100">
+                <img
+                  src="/images/gst/trusted-ca-expert.jpg"
+                  alt="Verified Chartered Accountant Consultant - NK Associates Jaipur"
+                  width={819}
+                  height={1024}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto aspect-[4/5] object-cover rounded-2xl transition-transform duration-500 hover:scale-[1.02]"
+                />
+              </div>
+
+              {/* Verified Authority Strip */}
+              <div className="mt-2.5 p-3 bg-white/95 rounded-xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                    <ShieldCheck className="w-4 h-4 text-emerald-600 stroke-[2.5]" />
+                  </span>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-brand-navy leading-snug">
+                    <span className="text-xs font-bold text-brand-navy block leading-none">
                       Authorized CA Oversight
-                    </h4>
-                    <p className="text-[11px] text-slate-500 mt-0.5">
+                    </span>
+                    <span className="text-[10px] text-slate-500 mt-0.5 block">
                       Direct supervision by qualified Chartered Accountants
-                    </p>
+                    </span>
                   </div>
                 </div>
+                <span className="text-[10px] font-bold text-brand-sky bg-sky-50 border border-sky-100 px-2 py-0.5 rounded-full shrink-0">
+                  Jaipur HQ
+                </span>
               </div>
             </div>
           </motion.div>

@@ -1,0 +1,99 @@
+<USER_REQUEST>
+CONTEXT
+GST page of NK Associates (https://nkassociate.in/services/gst): src/pages/services/GSTServices.jsx and src/components/gst/* (Vite + React 18 + Tailwind + lucide-react + framer-motion, brand: sky #0ea5e9, navy #0f172a, font Plus Jakarta Sans). Backend handlers live in api/gst/* and server/*. The 3-step form (Details -> Package -> Payment) with lead statuses details_submitted -> payment_pending -> paid already exists. Work ONLY on the GST page, its components and its API files. Do not touch other pages or global styles. Do NOT run git add / commit / push. At the end run `npm run build` and `npm run lint`, paste the output (both must exit 0), list every changed/added file, and wait for my approval.
+
+There are THREE tasks, do them in this order: A) replace Razorpay with Cashfree, B) real GST-related images (NO generated images), C) design and trust polish so the page feels like a genuine professional CA firm, because customers are paying online.
+
+=========================================================
+TASK A — REPLACE RAZORPAY WITH CASHFREE PAYMENTS
+=========================================================
+I am using Cashfree Payment Gateway, NOT Razorpay. Remove all Razorpay code and wording from the GST flow (useRazorpay.js, checkout.js loading, razorpay env vars, razorpay_* fields, comments, UI text). Keep the 3-step form UX, server-side price calculation (never trust client amount), lead statuses and the success screen exactly as they are.
+
+First read the CURRENT official Cashfree docs (docs.cashfree.com: Payment Gateway -> Create Order API, JS SDK v3 checkout, Get Order / Order Status, Webhooks, signature verification) and use the latest stable API version and field names from there. Do not rely on memory for versions or fields.
+
+Backend (api/gst/* and server/index.js, same structure as now):
+- create-order: validate input, load the lead, recompute price server-side from the package config (base + 18% GST), then call Cashfree Create Order (POST {base}/pg/orders) with headers x-client-id, x-client-secret, x-api-version, and body: order_id (unique, e.g. NKGST_<leadId>_<timestamp>), order_amount (in RUPEES with 2 decimals, NOT paise), order_currency INR, customer_details {customer_id, customer_name, customer_email, customer_phone}, order_meta {return_url: https://nkassociate.in/services/gst?order_id={order_id}, notify_url: https://nkassociate.in/api/gst/webhook}, order_note with the plan name. Base URL: sandbox https://sandbox.cashfree.com, production https://api.cashfree.com (chosen by CASHFREE_ENV). Save cashfree order_id on the lead, set status payment_pending, return {orderId, paymentSessionId, leadId, amount} to the frontend. Never return secrets.
+- verify-payment (called by the frontend after checkout and also on return_url load): server calls Cashfree Get Order / order payments for that order_id and marks the lead "paid" ONLY if Cashfree reports the order as PAID and the paid amount matches the server-calculated amount. Never trust the frontend's claim of success. Idempotent (ignore if already paid). Send confirmation emails only once.
+- webhook (/api/gst/webhook): verify signature using the RAW request body: expected = base64( HMAC-SHA256( timestamp + rawBody , CASHFREE_SECRET_KEY ) ) compared (timing-safe) with header x-webhook-signature, using header x-webhook-timestamp; reject on mismatch. Handle the payment success event, idempotent, update the lead to paid. Failed/dropped payments keep status payment_pending. Make sure raw body is available (disable body parsing for this route on Vercel / use raw body in server/index.js).
+- Rate limit + CORS restricted to my domain, as before.
+- Lead storage: keep the current adapter, but DO NOT write to data/leads.json in production on Vercel (read-only filesystem). If Supabase env vars are set use Supabase, otherwise fall back to file only in local dev, and log a clear warning in production.
+
+Frontend:
+- Delete useRazorpay.js. Create src/hooks/useCashfree.js that loads https://sdk.cashfree.com/js/v3/cashfree.js once and exposes checkout(paymentSessionId). Initialise with Cashfree({ mode: "sandbox" | "production" }) based on VITE_CASHFREE_MODE.
+- On "Proceed to Pay": call create-order -> cashfree.checkout({ paymentSessionId, redirectTarget: "_modal" }) -> on completion call verify-payment with orderId -> show the in-card success screen only if the server confirms PAID. Handle user close/cancel/failure with a friendly message and "Try again" returning to Step 2 with all data intact.
+- Handle the redirect case: if the page loads with ?order_id=..., call verify-payment and show the correct success / pending / failed state (also covers UPI app redirects), then clean the URL.
+- Replace every "Razorpay" text with "Cashfree Payments" (see trust section for exact wording).
+
+Env vars (document them exactly; update .env.example, never commit real values):
+CASHFREE_APP_ID, CASHFREE_SECRET_KEY, CASHFREE_ENV (sandbox | production), CASHFREE_API_VERSION, VITE_CASHFREE_MODE (sandbox | production). Remove RAZORPAY_* and VITE_RAZORPAY_KEY_ID. Secrets must never appear in frontend code or the built bundle (grep dist/ for the secret name to confirm).
+
+=========================================================
+TASK B — IMAGES: REAL, GST-RELATED, ABSOLUTELY NO GENERATED IMAGES
+=========================================================
+STRICT RULES
+- Do NOT generate any image: no AI image generation, no creating illustrations/SVG artwork, no drawing shapes to act as pictures. Icons from lucide-react and simple CSS gradients/patterns for decoration are fine; they are not "images".
+- Use only real, free-commercial-use photos downloaded from Unsplash or Pexels (use their direct image URLs / download links from the shell). Skip any photo that is labelled AI-generated.
+- Do NOT use any image from onlinelegalindia.com or any competitor. No celebrity photos. No third-party company logos.
+- Do not present stock people as "our team", "our CA", "our clients" or customers, and no names/quotes attached to photos. People in photos are only generic scenery.
+- If a download fails or no suitable photo is found for a slot, do NOT create a substitute. Leave that slot out of the layout cleanly (the section must still look good without it) and list it in your final message so I can upload my own image. Never leave a broken or empty image box.
+- After downloading each photo, open it (Read the image file) and CONFIRM it actually matches the section topic. Reject unrelated or low-quality photos. Avoid close-ups of identity cards with visible personal data.
+
+Save to public/images/gst/, converted to WebP (quality ~80; hero max 1600px wide, others 900-1200px; each under ~150 KB). Create public/images/gst/CREDITS.md listing each file, its source URL, photographer and licence.
+
+Image slots - each photo must relate directly to that section's topic (minimum 6 different photos, none repeated):
+1. Hero (right of headline on large screens, as a rounded image card with a glass badge "100% Online Process"): GST / tax filing theme, e.g. person using laptop with invoice and calculator. Search: "GST invoice calculator", "tax filing laptop India", "accountant desk documents".
+2. "Why choose us / what is GST registration" section: Indian small shop or small business owner. Search: "Indian shopkeeper", "small business India", "kirana store".
+3. How it works: online process on laptop / mobile, paperwork being completed. Search: "online application laptop", "paperwork documents desk".
+4. Documents required: stack of documents / files / folder / signing paperwork (no readable personal IDs). Search: "documents folder files", "signing papers pen".
+5. Who should register / Benefits: e-commerce seller, parcels and packaging, online selling, growing business. Search: "ecommerce seller packaging", "online selling parcels".
+6. Final CTA background: modern office or city skyline, very subtle with navy-to-sky gradient overlay (85-90%). Search: "modern office", "city skyline".
+7. Optional 7th photo for Registration types or FAQ side area (e.g. "business meeting handshake", "calculator tax").
+
+Display quality:
+- Consistent rounded-2xl corners, soft shadow, thin border, correct aspect ratios (hero 4:3 or 5:4, side images 4:3 or 3:2, banner 21:9), object-cover with a sensible object-position so the subject is not cropped out; never stretched.
+- Always set width/height, descriptive alt text (describe the picture, no keyword stuffing), loading="lazy" (hero: fetchpriority="high", no lazy), decoding="async", bg-slate-100 placeholder to avoid layout shift. Preload only the hero image.
+- Navy gradient overlay wherever text sits on a photo; keep WCAG AA contrast.
+- On mobile show 3-4 key images only (hero image hidden or smaller below md, decorative ones hidden) to keep the page fast; total new image weight under ~900 KB.
+
+=========================================================
+TASK C — DESIGN AND TRUST POLISH (user is paying online, the page must feel 100% genuine)
+=========================================================
+Do not change form logic, pricing, or step flow. Improve visuals and trust only.
+
+Trust section ("Why you can trust NK Associates") placed right after the Packages and also as a compact block directly under the form card, using ONLY true information from gstConfig.js:
+- Real firm identity: "NK Associates - CA & Tax Consultants, Jaipur", full office address, phone, email, working hours (put these in gstConfig.js; if any value is missing use a clearly marked TODO and tell me, never invent). Link to Contact page, About page, Privacy Policy, Terms & Conditions, Refund / Cancellation Policy (create links only to pages that exist; list any missing page so I can add it).
+- A clear "What happens after you pay" mini timeline (3 steps: confirmation email + call from our GST expert -> send documents -> we file and share ARN/GSTIN) with the honest processing time "typically 3-7 working days, subject to GST department verification".
+- Payment reassurance, text + lucide lock icon only: "Secure online payment powered by Cashfree Payments" and "We never store your card, UPI or bank details". Do NOT use the Cashfree logo or any payment-brand logos, and do not list payment methods (UPI/cards/netbanking) unless I confirm they are enabled on my Cashfree account; put them behind a gstConfig.js flag paymentMethods = [] that stays hidden while empty.
+- Price transparency: show "Prices exclude 18% GST; the total payable is shown before you pay" near packages and in the summary; no hidden charges text unless true.
+- Support: visible "Need help before paying? Call / WhatsApp" with real number and a line like "Talk to our GST expert first - no obligation" (only if true; make it a config flag).
+- Do NOT add fake badges, ISO/ICAI/government claims, rating stars, client counts, testimonials, or "as seen on" logos. Only show a claim if it is in gstConfig.js and I have filled it.
+- Add a small footer note under the form: "By continuing you agree to our Terms, Privacy Policy and Refund Policy" with working links.
+
+Visual design system:
+- Container max-w-7xl, section padding py-16 md:py-24, alternating white / slate-50 / sky-50, navy hero and CTA. Each section: small uppercase sky eyebrow, H2 (text-3xl md:text-4xl, font-extrabold, tracking-tight), one-line slate-600 subtitle. One radius scale (xl/2xl), one shadow scale, lucide icons with consistent stroke.
+- Hero: navy with soft gradient glows and dot grid, gradient-highlighted "100% Online", benefit chips, two CTAs, image card (slot 1), white form card on the right with DARK readable input text (text-slate-900, placeholder slate-400, autofill fix) and the 1-2-3 progress bar.
+- Packages: modern cards with hover lift, Smart Plan highlighted with "Best Value" ribbon, large price, "+18% GST extra".
+- How it works: image (slot 3) with connected numbered steps; vertical timeline on mobile.
+- Who should register: rounded table, zebra rows, stacked cards on mobile.
+- Documents: image (slot 4) + clean 2-column checklist grid.
+- Benefits/types: tinted icon cards; image (slot 5) as a feature side image.
+- FAQ: clean accordion, two columns on desktop, plus a "Still have questions?" card with Call / WhatsApp.
+- Final CTA: image background (slot 6) with navy-to-sky overlay and three buttons.
+- Mobile: sticky glass bottom bar (Get Started + Call). Touch targets >= 44px, visible focus rings, no horizontal scroll at 360/390/768/1024/1440.
+- Motion: framer-motion fade-up on scroll (once: true), gentle hovers, respect prefers-reduced-motion.
+
+=========================================================
+ACCEPTANCE CHECKLIST
+=========================================================
+1. No Razorpay code, text or env var remains (grep the repo and dist/). Cashfree sandbox flow works end to end: create order -> checkout modal -> server-verified PAID -> success screen; cancel/failure/return_url cases handled; webhook signature verified on raw body; idempotent.
+2. Amount sent to Cashfree is in rupees and equals server-calculated base + 18% GST for each plan (599, 799, 2399, 7599 base). Secrets not present in dist/.
+3. At least 6 real downloaded photos, each visually confirmed to match its section; zero generated images/SVG artwork; CREDITS.md present; empty slots reported, not faked.
+4. Trust section, payment reassurance text, policy links and "what happens after you pay" visible; no fake claims or logos.
+5. Form text is dark and readable; 3-step flow unchanged and working.
+6. Looks premium and consistent at 360/390/768/1024/1440 px, no layout shift, no overflow.
+7. npm run build and npm run lint exit 0 (paste output). No git commit/push.
+8. Final message: files changed/added (with every image filename + source), exact env vars for Vercel, Cashfree dashboard steps (sandbox keys, webhook URL https://nkassociate.in/api/gst/webhook with the payment-success event, production approval / domain whitelisting), the sandbox test plan, and the list of values or pages I still need to provide (address, phone, email, working hours, policy pages, any missing image slots).
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-11-02T21:44:38+05:30.
+</ADDITIONAL_METADATA>

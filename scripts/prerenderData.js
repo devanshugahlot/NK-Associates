@@ -562,5 +562,31 @@ export const routesData = {
   },
   'privacy-policy': {
     aliasOf: 'privacy'
+  },
+  'refund-policy': {
+    title: 'Refund & Cancellation Policy | NK Associates',
+    description: 'Official Refund and Cancellation Policy of NK Associates Private Limited. Transparent guidelines on service cancellations, refund eligibility, statutory government fees, and timelines.',
+    canonical: 'https://nkassociate.in/refund-policy',
+    breadcrumbName: 'Refund & Cancellation Policy',
+    content: `
+      <main class="max-w-5xl mx-auto px-4 py-16">
+        <nav aria-label="Breadcrumb" class="mb-6 text-sm text-slate-500">
+          <a href="/" class="text-sky-600 hover:underline">Home</a> &gt; <span class="text-slate-800 font-medium">Refund & Cancellation Policy</span>
+        </nav>
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Refund & Cancellation Policy - NK Associates</h1>
+        <p class="text-lg text-slate-700 leading-relaxed mb-6">
+          NK Associates Private Limited provides transparent policies regarding service cancellations, refund eligibility, government statutory fee handling, and refund timelines for our Chartered Accountancy and tax consulting services.
+        </p>
+      </main>
+    `
+  },
+  'refund-and-cancellation': {
+    aliasOf: 'refund-policy'
+  },
+  'refund-cancellation': {
+    aliasOf: 'refund-policy'
+  },
+  'refund': {
+    aliasOf: 'refund-policy'
   }
 };

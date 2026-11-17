@@ -1,4 +1,3 @@
-import crypto from 'crypto';
 import { getLead, updateLead } from '../../server/leadStore.js';
 import { calculateServerOrder } from '../../server/packageConfig.js';
 import { sendOrderNotifications } from '../../server/mailer.js';
@@ -17,62 +16,107 @@ export default async function handler(req, res) {
     return;
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed. Use POST.' });
+  // Support both POST (from modal callback) and GET (from return_url query)
+  const orderId = req.method === 'GET'
+    ? req.query?.order_id || req.query?.orderId
+    : req.body?.orderId || req.body?.order_id;
+  const leadId = req.method === 'GET' ? req.query?.leadId : req.body?.leadId;
+
+  if (!orderId && !leadId) {
+    return res.status(400).json({ error: 'Missing order or lead identifier.' });
   }
 
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature, leadId } = req.body || {};
-
-    if (!leadId) {
-      return res.status(400).json({ error: 'Missing lead identifier.' });
-    }
-
-    const lead = await getLead(leadId);
+    const lead = await getLead(leadId || orderId);
     if (!lead) {
       return res.status(404).json({ error: 'Lead record not found.' });
     }
 
-    const keySecret = process.env.RAZORPAY_KEY_SECRET;
-    let isSignatureValid = false;
-
-    if (keySecret && razorpay_signature && !razorpay_order_id?.startsWith('order_test_')) {
-      const generatedSignature = crypto
-        .createHmac('sha256', keySecret)
-        .update(`${razorpay_order_id}|${razorpay_payment_id}`)
-        .digest('hex');
-
-      isSignatureValid = generatedSignature === razorpay_signature;
-    } else {
-      // In local TEST mode or when using mock keys, auto-validate
-      isSignatureValid = true;
-      console.log('[Razorpay TEST Mode] Verified test payment:', razorpay_payment_id);
-    }
-
-    if (!isSignatureValid) {
-      await updateLead(leadId, {
-        status: 'payment_failed',
-        razorpayOrderId: razorpay_order_id,
-        razorpayPaymentId: razorpay_payment_id,
+    // Idempotency: if already verified as paid, return early
+    if (lead.status === 'paid') {
+      return res.status(200).json({
+        success: true,
+        verified: true,
+        alreadyProcessed: true,
+        message: 'Order already verified.',
+        leadId: lead.id,
+        orderId: lead.orderId || orderId,
       });
-      return res.status(400).json({ error: 'Invalid payment signature. Verification failed.' });
     }
-
-    // Mark lead status as paid
-    const updatedLead = await updateLead(leadId, {
-      status: 'paid',
-      razorpayOrderId: razorpay_order_id,
-      razorpayPaymentId: razorpay_payment_id,
-      paidAt: new Date().toISOString(),
-    });
 
     const packageDetails = calculateServerOrder(lead.packageId);
 
-    // Send notifications to customer & business
+    const appId = process.env.CASHFREE_APP_ID;
+    const secretKey = process.env.CASHFREE_SECRET_KEY;
+    const env = (process.env.CASHFREE_ENV || 'sandbox').toLowerCase();
+    const apiVersion = process.env.CASHFREE_API_VERSION || '2023-08-01';
+
+    const baseUrl = env === 'production'
+      ? 'https://api.cashfree.com'
+      : 'https://sandbox.cashfree.com';
+
+    let isVerifiedPaid = false;
+    let paymentDetails = null;
+
+    if (appId && secretKey && !orderId?.startsWith('order_test_')) {
+      const cfRes = await fetch(`${baseUrl}/pg/orders/${encodeURIComponent(orderId)}`, {
+        method: 'GET',
+        headers: {
+          'x-client-id': appId,
+          'x-client-secret': secretKey,
+          'x-api-version': apiVersion,
+        },
+      });
+
+      if (!cfRes.ok) {
+        const errorText = await cfRes.text();
+        console.error('Cashfree Get Order error:', errorText);
+        return res.status(400).json({ error: 'Failed to verify order status with Cashfree.' });
+      }
+
+      const cfData = await cfRes.json();
+      paymentDetails = cfData;
+
+      // Check status is PAID and amount matches authoritative server calculation
+      const isPaid = cfData.order_status === 'PAID';
+      const amountMatches = Math.abs(Number(cfData.order_amount) - packageDetails.total) < 0.05;
+
+      if (isPaid && amountMatches) {
+        isVerifiedPaid = true;
+      } else {
+        console.warn(`[Payment Verification Mismatch] Status: ${cfData.order_status}, Amount: ${cfData.order_amount}, Expected: ${packageDetails.total}`);
+      }
+    } else {
+      // Test / mock mode verification
+      isVerifiedPaid = true;
+      console.log('[Cashfree TEST Mode] Verified test order:', orderId);
+    }
+
+    if (!isVerifiedPaid) {
+      await updateLead(lead.id, {
+        status: 'payment_pending',
+        lastVerificationAttempt: new Date().toISOString(),
+      });
+      return res.status(400).json({
+        error: 'Payment has not been confirmed by the gateway yet or amount mismatch.',
+        status: paymentDetails?.order_status || 'PENDING',
+      });
+    }
+
+    // Mark lead status as paid
+    const updatedLead = await updateLead(lead.id, {
+      status: 'paid',
+      orderId,
+      cashfreeOrderId: orderId,
+      paidAt: new Date().toISOString(),
+      paymentDetails,
+    });
+
+    // Send notifications to customer & firm idempotently
     await sendOrderNotifications({
       lead: updatedLead,
-      orderId: razorpay_order_id,
-      paymentId: razorpay_payment_id,
+      orderId,
+      paymentId: paymentDetails?.cf_payment_id || orderId,
       packageDetails,
     });
 
@@ -81,7 +125,7 @@ export default async function handler(req, res) {
       verified: true,
       message: 'Payment verified and lead recorded successfully.',
       leadId: updatedLead.id,
-      orderId: razorpay_order_id,
+      orderId,
     });
   } catch (err) {
     console.error('Error in verify-payment handler:', err);

@@ -112,4 +112,12 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Refund & Cancellation Policy -->
+  <url>
+    <loc>https://nkassociate.in/refund-policy</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
